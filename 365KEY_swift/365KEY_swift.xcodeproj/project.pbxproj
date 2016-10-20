@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C806066D10D881027947B14 /* Pods_365KEY_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */; };
+		1D65E24E1DB8716300C39F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D65E24D1DB8716300C39F4C /* AppDelegate.swift */; };
+		1D65E2501DB8716300C39F4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D65E24F1DB8716300C39F4C /* ViewController.swift */; };
+		1D65E2531DB8716300C39F4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2511DB8716300C39F4C /* Main.storyboard */; };
+		1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2541DB8716300C39F4C /* Assets.xcassets */; };
+		1D65E2581DB8716300C39F4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2561DB8716300C39F4C /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_365KEY_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 365KEY_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D65E24D1DB8716300C39F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1D65E24F1DB8716300C39F4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1D65E2521DB8716300C39F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1D65E2541DB8716300C39F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1D65E2571DB8716300C39F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1D65E2591DB8716300C39F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		782C16053B71CC14B077BDE0 /* Pods-365KEY_swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-365KEY_swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift.release.xcconfig"; sourceTree = "<group>"; };
+		DB4787D9ED2691CA7F518BB4 /* Pods-365KEY_swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-365KEY_swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D65E2471DB8716300C39F4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C806066D10D881027947B14 /* Pods_365KEY_swift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D65E2411DB8716300C39F4C = {
+			isa = PBXGroup;
+			children = (
+				1D65E24C1DB8716300C39F4C /* 365KEY_swift */,
+				1D65E24B1DB8716300C39F4C /* Products */,
+				A55398990FF64B79077E661B /* Pods */,
+				F73DE949BA3DDB396CE53725 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1D65E24B1DB8716300C39F4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1D65E24C1DB8716300C39F4C /* 365KEY_swift */ = {
+			isa = PBXGroup;
+			children = (
+				1D65E24D1DB8716300C39F4C /* AppDelegate.swift */,
+				1D65E24F1DB8716300C39F4C /* ViewController.swift */,
+				1D65E2511DB8716300C39F4C /* Main.storyboard */,
+				1D65E2541DB8716300C39F4C /* Assets.xcassets */,
+				1D65E2561DB8716300C39F4C /* LaunchScreen.storyboard */,
+				1D65E2591DB8716300C39F4C /* Info.plist */,
+			);
+			path = 365KEY_swift;
+			sourceTree = "<group>";
+		};
+		A55398990FF64B79077E661B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DB4787D9ED2691CA7F518BB4 /* Pods-365KEY_swift.debug.xcconfig */,
+				782C16053B71CC14B077BDE0 /* Pods-365KEY_swift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F73DE949BA3DDB396CE53725 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D65E2491DB8716300C39F4C /* 365KEY_swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D65E25C1DB8716300C39F4C /* Build configuration list for PBXNativeTarget "365KEY_swift" */;
+			buildPhases = (
+				103A18E19AD81138ACB81107 /* [CP] Check Pods Manifest.lock */,
+				1D65E2461DB8716300C39F4C /* Sources */,
+				1D65E2471DB8716300C39F4C /* Frameworks */,
+				1D65E2481DB8716300C39F4C /* Resources */,
+				C3D18AE1AF4D5421F1118846 /* [CP] Embed Pods Frameworks */,
+				FA1D7EB456E073519311F101 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 365KEY_swift;
+			productName = 365KEY_swift;
+			productReference = 1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1D65E2421DB8716300C39F4C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = DoNews;
+				TargetAttributes = {
+					1D65E2491DB8716300C39F4C = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = W2A55P52D2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1D65E2451DB8716300C39F4C /* Build configuration list for PBXProject "365KEY_swift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1D65E2411DB8716300C39F4C;
+			productRefGroup = 1D65E24B1DB8716300C39F4C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D65E2491DB8716300C39F4C /* 365KEY_swift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D65E2481DB8716300C39F4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D65E2581DB8716300C39F4C /* LaunchScreen.storyboard in Resources */,
+				1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */,
+				1D65E2531DB8716300C39F4C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		103A18E19AD81138ACB81107 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C3D18AE1AF4D5421F1118846 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA1D7EB456E073519311F101 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D65E2461DB8716300C39F4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D65E2501DB8716300C39F4C /* ViewController.swift in Sources */,
+				1D65E24E1DB8716300C39F4C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1D65E2511DB8716300C39F4C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D65E2521DB8716300C39F4C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1D65E2561DB8716300C39F4C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D65E2571DB8716300C39F4C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D65E25A1DB8716300C39F4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1D65E25B1DB8716300C39F4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1D65E25D1DB8716300C39F4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB4787D9ED2691CA7F518BB4 /* Pods-365KEY_swift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W2A55P52D2;
+				INFOPLIST_FILE = 365KEY_swift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "DoNews.-65KEY-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1D65E25E1DB8716300C39F4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 782C16053B71CC14B077BDE0 /* Pods-365KEY_swift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W2A55P52D2;
+				INFOPLIST_FILE = 365KEY_swift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "DoNews.-65KEY-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D65E2451DB8716300C39F4C /* Build configuration list for PBXProject "365KEY_swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D65E25A1DB8716300C39F4C /* Debug */,
+				1D65E25B1DB8716300C39F4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D65E25C1DB8716300C39F4C /* Build configuration list for PBXNativeTarget "365KEY_swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D65E25D1DB8716300C39F4C /* Debug */,
+				1D65E25E1DB8716300C39F4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1D65E2421DB8716300C39F4C /* Project object */;
+}

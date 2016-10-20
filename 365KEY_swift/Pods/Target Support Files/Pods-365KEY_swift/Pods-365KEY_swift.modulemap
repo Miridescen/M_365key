@@ -1,0 +1,6 @@
+framework module Pods_365KEY_swift {
+  umbrella header "Pods-365KEY_swift-umbrella.h"
+
+  export *
+  module * { export * }
+}
