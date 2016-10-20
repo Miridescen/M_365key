@@ -15,9 +15,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Thread.sleep(forTimeInterval: 0)
+        window = UIWindow()
+        window?.backgroundColor = UIColor.black
+        window?.makeKeyAndVisible()
+        
+        statrAnimation()
+        showNewFeature()
         return true
     }
+    
+    
+    func showNewFeature() {
+        var newFeatureController: SKNewFeatureController?
+        
+        newFeatureController = SKNewFeatureController()
+        
+        window?.rootViewController = newFeatureController
+        
+    }
+
+    func statrAnimation() {
+        var LunchImageController: SKLunchImageViewController?
+        
+        LunchImageController = SKLunchImageViewController()
+        
+        window?.rootViewController = LunchImageController;
+        
+        LunchImageController?.startAnimation { bool in
+            
+            if(bool){
+                self.window?.rootViewController = SKTabBarController()
+            }
+            
+        }
+    
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
