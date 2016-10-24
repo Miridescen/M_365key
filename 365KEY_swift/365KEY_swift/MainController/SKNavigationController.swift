@@ -2,13 +2,13 @@
 //  SKNavigationController.swift
 //  365KEY_swift
 //
-//  Created by 牟松 on 2016/10/20.
+//  Created by 牟松 on 2016/10/24.
 //  Copyright © 2016年 DoNews. All rights reserved.
 //
 
 import UIKit
 
-class SKNavigationController: UITabBarController {
+class SKNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -17,11 +17,9 @@ class SKNewFeatureController: UIViewController {
     var startButton: UIButton?
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         bgScrollView = UIScrollView(frame: UIScreen.main.bounds)
         bgScrollView?.contentSize = CGSize(width: UIScreen.main.screenWidth*4, height: UIScreen.main.screenHeight)
         bgScrollView?.isPagingEnabled = true
@@ -36,13 +34,21 @@ class SKNewFeatureController: UIViewController {
             var imageView: UIImageView?
             imageView = UIImageView(frame: CGRect(x: CGFloat(i) * UIScreen.main.screenWidth, y: 0, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight))
             imageView?.image = UIImage(named: "img_intro\(i+1)")
+            imageView?.isUserInteractionEnabled = true
             bgScrollView?.addSubview(imageView!)
             
             if(i == 3){
-                startButton = UIButton(frame: CGRect(x: 10, y: 100, width: 100, height: 10))
-                startButton?.backgroundColor = UIColor.red
-                startButton?.x = 100
+                startButton = UIButton()
+                startButton?.backgroundColor = UIColor.clear
+                startButton?.setImage(UIImage(named:"btm_enter"), for: .normal)
+                startButton?.size = (startButton?.currentImage?.size)!
+                startButton?.x = (UIScreen.main.screenWidth-(startButton?.width)!)/2
+                startButton?.y = UIScreen.main.screenHeight-140
+                startButton?.addTarget(self, action: #selector(startButtonDidlick), for: .touchUpInside)                
                 imageView?.addSubview(startButton!)
+                
+                
+                print(123456)
             }
             
         }
@@ -58,11 +64,17 @@ class SKNewFeatureController: UIViewController {
         
         view.addSubview(pageControl!)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @objc func startButtonDidlick(){
+        UIApplication.shared.keyWindow?.rootViewController = SKTabBarController()
+    }
+    
+
 }
 
 extension SKNewFeatureController: UIScrollViewDelegate{

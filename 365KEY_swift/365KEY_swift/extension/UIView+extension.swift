@@ -23,7 +23,7 @@ extension UIView{
             return self.frame.origin.y
         }
         set{
-            self.frame.origin.x = newValue
+            self.frame.origin.y = newValue
         }
     }
     

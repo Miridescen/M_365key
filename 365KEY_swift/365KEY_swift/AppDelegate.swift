@@ -21,9 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.black
         window?.makeKeyAndVisible()
         
-        statrAnimation()
-        showNewFeature()
+        startChoice()
         return true
+    }
+    func startChoice() {
+        
+        let lastBuildVersion = UserDefaults.standard.object(forKey: "CFBundleVersion") as? String ?? ""
+        
+        
+        let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as! String
+        if(lastBuildVersion == buildVersion){
+            statrAnimation()
+        }else{
+            showNewFeature()
+            UserDefaults.standard.set(buildVersion, forKey: "CFBundleVersion")
+        }
+        
+        
     }
     
     
@@ -35,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = newFeatureController
         
     }
-
+    
     func statrAnimation() {
         var LunchImageController: SKLunchImageViewController?
         
@@ -50,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }
-    
+        
         
     }
     
