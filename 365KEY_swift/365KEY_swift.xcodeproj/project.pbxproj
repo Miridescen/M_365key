@@ -14,6 +14,8 @@
 		1DBABE371DBDFBEC00745C5D /* Bundle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE361DBDFBEC00745C5D /* Bundle+extension.swift */; };
 		1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE381DBDFE5000745C5D /* SKNavigationController.swift */; };
 		1DBABE3B1DBE00A000745C5D /* SKUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE3A1DBE00A000745C5D /* SKUserController.swift */; };
+		1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */; };
+		1DBABE411DBE0EA900745C5D /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */; };
 		1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DCE1DB89D61003E65E3 /* SKTabBarController.swift */; };
 		1DED7DD41DB89F79003E65E3 /* SKProduceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DD31DB89F79003E65E3 /* SKProduceController.swift */; };
 		1DED7DD61DB89FAE003E65E3 /* SKNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DD51DB89FAE003E65E3 /* SKNewsController.swift */; };
@@ -34,6 +36,8 @@
 		1DBABE361DBDFBEC00745C5D /* Bundle+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+extension.swift"; sourceTree = "<group>"; };
 		1DBABE381DBDFE5000745C5D /* SKNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNavigationController.swift; sourceTree = "<group>"; };
 		1DBABE3A1DBE00A000745C5D /* SKUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserController.swift; sourceTree = "<group>"; };
+		1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+extension.swift"; sourceTree = "<group>"; };
+		1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
 		1DED7DCE1DB89D61003E65E3 /* SKTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTabBarController.swift; sourceTree = "<group>"; };
 		1DED7DD31DB89F79003E65E3 /* SKProduceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceController.swift; sourceTree = "<group>"; };
 		1DED7DD51DB89FAE003E65E3 /* SKNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsController.swift; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 				1DED7DE21DB8C03D003E65E3 /* UIColor+extension.swift */,
 				1DED7DE41DB8C928003E65E3 /* UIView+extension.swift */,
 				1DBABE361DBDFBEC00745C5D /* Bundle+extension.swift */,
+				1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */,
+				1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
 				1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */,
 				1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */,
 				1DBABE3B1DBE00A000745C5D /* SKUserController.swift in Sources */,
@@ -300,6 +307,7 @@
 				1DED7DD61DB89FAE003E65E3 /* SKNewsController.swift in Sources */,
 				1DED7DD41DB89F79003E65E3 /* SKProduceController.swift in Sources */,
 				1DED7DE51DB8C928003E65E3 /* UIView+extension.swift in Sources */,
+				1DBABE411DBE0EA900745C5D /* UIButton+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
