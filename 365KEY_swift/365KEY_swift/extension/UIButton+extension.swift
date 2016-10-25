@@ -32,4 +32,23 @@ extension UIButton{
         
         sizeToFit()
     }
+    
+    convenience init(SKTitleButton title: String!,
+                     backgroundColor: UIColor? = UIColor.clear,
+                     titleColor: UIColor? = UIColor.white,
+                     font: UIFont? = UIFont.systemFont(ofSize: 16),
+                     target: AnyObject?,
+                     action: Selector?){
+        self.init()
+        self.setTitle(title, for: .normal)
+        self.backgroundColor = backgroundColor
+        self.setTitleColor(titleColor, for: .normal)
+        self.titleLabel?.font = font
+        if let target = target,
+           let action = action{
+            self.addTarget(target, action: action, for: .touchUpInside)
+        }
+        
+        self.sizeToFit()
+    }
 }
