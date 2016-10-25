@@ -67,7 +67,7 @@ class SKProduceSearchView: UIView {
         
     }
     
-    @objc func defauleButtonDidClick(){
+    @objc private func defauleButtonDidClick(){
         
         self.searchTF?.resignFirstResponder()
         self.searchTF?.text = ""

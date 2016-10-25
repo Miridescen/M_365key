@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C806066D10D881027947B14 /* Pods_365KEY_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */; };
+		1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */; };
+		1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */; };
 		1D63CF931DBEF3CF00955DDF /* SKProduceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63CF911DBEF3CF00955DDF /* SKProduceController.swift */; };
 		1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */; };
 		1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2541DB8716300C39F4C /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_365KEY_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSessionManage.swift; sourceTree = "<group>"; };
+		1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSessionManage+extension.swift"; sourceTree = "<group>"; };
 		1D63CF911DBEF3CF00955DDF /* SKProduceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceController.swift; sourceTree = "<group>"; };
 		1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceSearchView.swift; sourceTree = "<group>"; };
 		1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 365KEY_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +68,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D0580D71DBF49CE00D8A1DA /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */,
+				1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */,
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
 		1D63CF8D1DBEF39800955DDF /* Produce */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +127,7 @@
 				1DED7DDC1DB8A30B003E65E3 /* extension */,
 				1DED7DC71DB8997E003E65E3 /* MainController */,
 				1DED7DC61DB89968003E65E3 /* appDelegate */,
+				1D0580D71DBF49CE00D8A1DA /* tool */,
 				1D65E2541DB8716300C39F4C /* Assets.xcassets */,
 				1D65E2561DB8716300C39F4C /* LaunchScreen.storyboard */,
 				1D65E2591DB8716300C39F4C /* Info.plist */,
@@ -329,6 +343,8 @@
 				1DED7DDB1DB8A070003E65E3 /* SKLunchImageViewController.swift in Sources */,
 				1DED7DE11DB8B786003E65E3 /* SKNewFeatureController.swift in Sources */,
 				1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */,
+				1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */,
+				1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */,
 				1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */,
 				1D63CF931DBEF3CF00955DDF /* SKProduceController.swift in Sources */,
 				1DBABE371DBDFBEC00745C5D /* Bundle+extension.swift in Sources */,
