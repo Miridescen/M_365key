@@ -27,6 +27,8 @@
 		1DED7DE11DB8B786003E65E3 /* SKNewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DE01DB8B786003E65E3 /* SKNewFeatureController.swift */; };
 		1DED7DE31DB8C03D003E65E3 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DE21DB8C03D003E65E3 /* UIColor+extension.swift */; };
 		1DED7DE51DB8C928003E65E3 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DE41DB8C928003E65E3 /* UIView+extension.swift */; };
+		1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF230F1DC0A6420063968B /* SKProductListModel.swift */; };
+		1DEF23121DC0A6420063968B /* SKProductUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF23101DC0A6420063968B /* SKProductUserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		1DED7DE01DB8B786003E65E3 /* SKNewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewFeatureController.swift; sourceTree = "<group>"; };
 		1DED7DE21DB8C03D003E65E3 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		1DED7DE41DB8C928003E65E3 /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		1DEF230F1DC0A6420063968B /* SKProductListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductListModel.swift; sourceTree = "<group>"; };
+		1DEF23101DC0A6420063968B /* SKProductUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductUserModel.swift; sourceTree = "<group>"; };
 		782C16053B71CC14B077BDE0 /* Pods-365KEY_swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-365KEY_swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift.release.xcconfig"; sourceTree = "<group>"; };
 		DB4787D9ED2691CA7F518BB4 /* Pods-365KEY_swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-365KEY_swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +84,7 @@
 		1D63CF8D1DBEF39800955DDF /* Produce */ = {
 			isa = PBXGroup;
 			children = (
+				1DEF230E1DC0A6420063968B /* model */,
 				1D63CF901DBEF3CF00955DDF /* controller */,
 				1D63CF921DBEF3CF00955DDF /* view */,
 			);
@@ -192,6 +197,15 @@
 				1DED7DE01DB8B786003E65E3 /* SKNewFeatureController.swift */,
 			);
 			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		1DEF230E1DC0A6420063968B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1DEF230F1DC0A6420063968B /* SKProductListModel.swift */,
+				1DEF23101DC0A6420063968B /* SKProductUserModel.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		A55398990FF64B79077E661B /* Pods */ = {
@@ -336,6 +350,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
+				1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */,
+				1DEF23121DC0A6420063968B /* SKProductUserModel.swift in Sources */,
 				1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */,
 				1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */,
 				1DBABE3B1DBE00A000745C5D /* SKUserController.swift in Sources */,
