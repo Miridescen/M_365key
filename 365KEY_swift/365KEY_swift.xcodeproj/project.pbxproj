@@ -29,6 +29,9 @@
 		1DED7DE51DB8C928003E65E3 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DE41DB8C928003E65E3 /* UIView+extension.swift */; };
 		1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF230F1DC0A6420063968B /* SKProductListModel.swift */; };
 		1DEF23121DC0A6420063968B /* SKProductUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF23101DC0A6420063968B /* SKProductUserModel.swift */; };
+		1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF23141DC1A5E80063968B /* SKProductViewModel.swift */; };
+		1DEF23181DC1E8990063968B /* SKProdectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF23161DC1E8990063968B /* SKProdectCell.swift */; };
+		1DEF23191DC1E8990063968B /* SKProdectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEF23171DC1E8990063968B /* SKProdectCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		1DED7DE41DB8C928003E65E3 /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		1DEF230F1DC0A6420063968B /* SKProductListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductListModel.swift; sourceTree = "<group>"; };
 		1DEF23101DC0A6420063968B /* SKProductUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductUserModel.swift; sourceTree = "<group>"; };
+		1DEF23141DC1A5E80063968B /* SKProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductViewModel.swift; sourceTree = "<group>"; };
+		1DEF23161DC1E8990063968B /* SKProdectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProdectCell.swift; sourceTree = "<group>"; };
+		1DEF23171DC1E8990063968B /* SKProdectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKProdectCell.xib; sourceTree = "<group>"; };
 		782C16053B71CC14B077BDE0 /* Pods-365KEY_swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-365KEY_swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift.release.xcconfig"; sourceTree = "<group>"; };
 		DB4787D9ED2691CA7F518BB4 /* Pods-365KEY_swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-365KEY_swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +90,7 @@
 		1D63CF8D1DBEF39800955DDF /* Produce */ = {
 			isa = PBXGroup;
 			children = (
+				1DEF23131DC1A5CE0063968B /* viewmodel */,
 				1DEF230E1DC0A6420063968B /* model */,
 				1D63CF901DBEF3CF00955DDF /* controller */,
 				1D63CF921DBEF3CF00955DDF /* view */,
@@ -103,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */,
+				1DEF23161DC1E8990063968B /* SKProdectCell.swift */,
+				1DEF23171DC1E8990063968B /* SKProdectCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -208,6 +217,14 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		1DEF23131DC1A5CE0063968B /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				1DEF23141DC1A5E80063968B /* SKProductViewModel.swift */,
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
 		A55398990FF64B79077E661B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +308,7 @@
 			files = (
 				1D65E2581DB8716300C39F4C /* LaunchScreen.storyboard in Resources */,
 				1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */,
+				1DEF23191DC1E8990063968B /* SKProdectCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +377,7 @@
 				1DED7DDB1DB8A070003E65E3 /* SKLunchImageViewController.swift in Sources */,
 				1DED7DE11DB8B786003E65E3 /* SKNewFeatureController.swift in Sources */,
 				1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */,
+				1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */,
 				1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */,
 				1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */,
 				1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */,
@@ -367,6 +386,7 @@
 				1DED7DE31DB8C03D003E65E3 /* UIColor+extension.swift in Sources */,
 				1DED7DD61DB89FAE003E65E3 /* SKNewsController.swift in Sources */,
 				1DED7DE51DB8C928003E65E3 /* UIView+extension.swift in Sources */,
+				1DEF23181DC1E8990063968B /* SKProdectCell.swift in Sources */,
 				1DBABE411DBE0EA900745C5D /* UIButton+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,11 +26,12 @@ class SKSessionManage: AFHTTPSessionManager {
     }()
     
     
-    func request(with requestMethod: requestMethod = .GET, url: String, paramers: [String: AnyObject?]?, completion:@escaping (_ json: Any?, _ isSuccess: Bool)->()) {
+    func request(with requestMethod: requestMethod = .POST, url: String, paramers: [String: AnyObject]?, completion:@escaping (_ json: Any?, _ isSuccess: Bool)->()) {
+        
+        let params = paramers
         
         
         let success = { (task: URLSessionDataTask, any: Any?) in
-            
             completion(any, true)
         }
         let failure = {(task: URLSessionDataTask?, error: Error) in
@@ -41,9 +42,9 @@ class SKSessionManage: AFHTTPSessionManager {
         }
         
         if requestMethod == .GET {
-            get(url, parameters: paramers, progress: nil, success: success, failure: failure)
+            get(url, parameters: params, progress: nil, success: success, failure: failure)
         } else {
-            post(url, parameters: paramers, progress: nil, success: success, failure: failure)
+            post(url, parameters: params, progress: nil, success: success, failure: failure)
         }
     }
 }
