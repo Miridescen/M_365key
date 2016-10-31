@@ -10,6 +10,7 @@
 		1C806066D10D881027947B14 /* Pods_365KEY_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */; };
 		1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */; };
 		1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */; };
+		1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */; };
 		1D63CF931DBEF3CF00955DDF /* SKProduceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63CF911DBEF3CF00955DDF /* SKProduceController.swift */; };
 		1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */; };
 		1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2541DB8716300C39F4C /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_365KEY_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSessionManage.swift; sourceTree = "<group>"; };
 		1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSessionManage+extension.swift"; sourceTree = "<group>"; };
+		1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLConnection+extension.swift"; sourceTree = "<group>"; };
 		1D63CF911DBEF3CF00955DDF /* SKProduceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceController.swift; sourceTree = "<group>"; };
 		1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceSearchView.swift; sourceTree = "<group>"; };
 		1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 365KEY_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 			children = (
 				1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */,
 				1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */,
+				1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */,
 			);
 			path = tool;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */,
 				1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */,
 				1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */,
+				1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */,
 				1D63CF931DBEF3CF00955DDF /* SKProduceController.swift in Sources */,
 				1DBABE371DBDFBEC00745C5D /* Bundle+extension.swift in Sources */,
 				1DED7DE31DB8C03D003E65E3 /* UIColor+extension.swift in Sources */,

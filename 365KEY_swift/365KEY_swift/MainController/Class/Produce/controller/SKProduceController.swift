@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class SKProduceController: UITableViewController {
     
@@ -19,33 +20,48 @@ class SKProduceController: UITableViewController {
     
     var productViewModel = SKProductViewModel()
     
+    var activityView: UIActivityIndicatorView?
+    
+    lazy var noInfoLabel = UILabel(frame: CGRect(x: 0, y: 50, width: UIScreen.main.screenWidth, height: 50))
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.separatorStyle = .none
+        
         setupNav()
         
-        addRefreshControl()
+        addSubView()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "123")
-       
         
+       
         loadData()
     }
     
     func loadData() {
         
         print("加载数据")
-        
+
         productViewModel.loadProductData(isPullUp: isPullUp){ isSuccess in
             if isSuccess{
                 self.tableView.reloadData()
-                
-                
+                self.noInfoLabel.removeFromSuperview()
+                self.tableView.tableFooterView?.isHidden = false
+            } else {
+                if self.productViewModel.prodectDataArray.count == 0{
+                    self.addNoInfoView(with: "暂无内容")
+                }
             }
+            self.refreshControl?.endRefreshing()
+            
         }
-        self.isPullUp = false
+        isPullUp = false
+        
+        activityView?.stopAnimating()
+ 
     }
    
     
@@ -75,21 +91,47 @@ extension SKProduceController{
         navigationController?.navigationBar.addSubview(searchView!)
     }
     @objc private func addButtonDidClick(){
-        print(123)
+        print("添加产品按钮点击")
     }
-    // MARK: 添加refreshControl
-    func addRefreshControl() {
+    // MARK: 添加subView
+    func addSubView() {
         refControl = UIRefreshControl()
         refControl?.tintColor = UIColor.gray
         refControl?.attributedTitle = NSAttributedString(string: "下拉刷新")
-        refControl?.addTarget(self, action: #selector(refreshControlDidRefresh), for: .valueChanged)
+        refControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
         
         refreshControl = refControl
+        
+        
+        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityView?.center = CGPoint(x: tableView.centerX, y: tableView.centerY-64)
+        activityView?.startAnimating()
+        activityView?.hidesWhenStopped = true
+        activityView?.color = UIColor.gray
+        tableView.addSubview(activityView!)
+        
+        let footView = UIButton()
+        footView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 60)
+        footView.setTitle("点击加载更多", for: .normal)
+        footView.setTitleColor(UIColor.black, for: .normal)
+        footView.addTarget(self, action: #selector(touchFooterView), for: .touchUpInside)
+        tableView.tableFooterView = footView
+        tableView.tableFooterView?.isHidden = true
+        
+    }
+    @objc func touchFooterView(){
+        isPullUp = true
+        loadData()
+    }
+    // MARK: 没有内容时显示
+    func addNoInfoView(with string: String)  {
+        noInfoLabel.text = string
+        noInfoLabel.textAlignment = .center
+        noInfoLabel.textColor = UIColor(red: 225/255.0, green: 225/255.0, blue: 225/255.0, alpha: 1)
+        noInfoLabel.font = UIFont.systemFont(ofSize: 20)
+        tableView.addSubview(self.noInfoLabel)
     }
     
-    func refreshControlDidRefresh(){
-        print(123)
-    }
 }
 
 extension SKProduceController{
@@ -157,15 +199,18 @@ extension SKProduceController{
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(indexPath)
-        if indexPath.section == productViewModel.prodectDataArray.count-1 && !isPullUp {
+        
+        if indexPath.section == productViewModel.prodectDataArray.count-1 && !isPullUp && indexPath.row == 0{
             isPullUp = true
             loadData()
             
         }
+        
     }
 
     
+    
+
     
     
     

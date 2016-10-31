@@ -25,22 +25,34 @@ class SKProductViewModel: NSObject {
             let model = value[value.count-1]
  
             params["minid"] = model.id as AnyObject?
-        }
- 
-        SKSessionManage.shared.produceControllerDataRequest(userID: nil, params: params){(dataArray: [[String : [SKProductListModel]]]?, Bool) in
-            
-            if Bool {
-                self.prodectDataArray += dataArray!
+        } else {
+            if prodectDataArray.count > 0 {
+                let modelDic = prodectDataArray[0]
+                let modelDicKeyValue = modelDic[modelDic.startIndex]
+                let value = modelDicKeyValue.1
+                let model = value[value.count-1]
                 
-                completion(Bool)
-                
-            } else {
-                
-                completion(false)
-                print("请求数据失败")
+                params["maxid"] = model.id as AnyObject?
             }
             
-            
+        }
+        print("params == \(params)")
+        
+        let urlStr = "http://www.365key.com/Produce/get_product_list"
+        
+        NSURLConnection.connection.connectionRequest(with: .POST, urlString: urlStr, paramers: params) { (isSuccess, any) in
+            if isSuccess {
+                if isPullUp{
+                    self.prodectDataArray += any as! [[String : [SKProductListModel]]]
+                } else {
+                    self.prodectDataArray = any as! [[String : [SKProductListModel]]] + self.prodectDataArray
+                }
+                
+                
+                completion(isSuccess)
+            } else {
+                completion(false)
+            }
         }
         
     }
