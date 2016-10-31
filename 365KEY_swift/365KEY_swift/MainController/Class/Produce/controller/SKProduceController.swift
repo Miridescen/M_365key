@@ -35,7 +35,7 @@ class SKProduceController: UITableViewController {
         
         addSubView()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "123")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProductCellID")
         
        
         loadData()
@@ -152,7 +152,7 @@ extension SKProduceController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "123")
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "ProductCellID")
         
         let dic = productViewModel.prodectDataArray[indexPath.section]
         
