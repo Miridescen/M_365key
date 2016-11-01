@@ -52,6 +52,7 @@ class SKProductListModel: NSObject {
     
     var isDisabled: Bool = false
     
+    
     override var description: String{
         return yy_modelDescription()
     }

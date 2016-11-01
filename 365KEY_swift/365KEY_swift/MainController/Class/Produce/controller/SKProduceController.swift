@@ -9,6 +9,8 @@
 import UIKit
 import AFNetworking
 
+private let produceCellID = "produceCellID"
+
 class SKProduceController: UITableViewController {
     
     var refControl: UIRefreshControl?
@@ -30,12 +32,13 @@ class SKProduceController: UITableViewController {
         super.viewDidLoad()
         
         tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "SKProdectCell", bundle: nil), forCellReuseIdentifier: produceCellID)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 135
         
         setupNav()
         
         addSubView()
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProductCellID")
         
        
         loadData()
@@ -152,14 +155,17 @@ extension SKProduceController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "ProductCellID")
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: produceCellID, for: indexPath) as! SKProdectCell
+        
         
         let dic = productViewModel.prodectDataArray[indexPath.section]
         
         let keyValue = dic[dic.startIndex]
         let value = keyValue.1
         
-        cell.textLabel?.text = (value[indexPath.row] as SKProductListModel).info
+        cell.productListModel = value[indexPath.row]
         
         return cell
         
@@ -206,6 +212,10 @@ extension SKProduceController{
             
         }
         
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 135
     }
 
     
