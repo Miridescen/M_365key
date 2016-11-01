@@ -11,6 +11,12 @@
 		1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */; };
 		1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */; };
 		1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */; };
+		1D3F296C1DC8721A00C0F998 /* SKLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F296A1DC8721A00C0F998 /* SKLoginController.swift */; };
+		1D3F296D1DC8721A00C0F998 /* SKLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3F296B1DC8721A00C0F998 /* SKLoginController.xib */; };
+		1D3F29701DC882E000C0F998 /* SKRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F296E1DC882E000C0F998 /* SKRegisterController.swift */; };
+		1D3F29711DC882E000C0F998 /* SKRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3F296F1DC882E000C0F998 /* SKRegisterController.xib */; };
+		1D3F29741DC8927500C0F998 /* SKForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F29721DC8927500C0F998 /* SKForgotPasswordController.swift */; };
+		1D3F29751DC8927500C0F998 /* SKForgotPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3F29731DC8927500C0F998 /* SKForgotPasswordController.xib */; };
 		1D63CF931DBEF3CF00955DDF /* SKProduceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63CF911DBEF3CF00955DDF /* SKProduceController.swift */; };
 		1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */; };
 		1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2541DB8716300C39F4C /* Assets.xcassets */; };
@@ -40,6 +46,12 @@
 		1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSessionManage.swift; sourceTree = "<group>"; };
 		1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSessionManage+extension.swift"; sourceTree = "<group>"; };
 		1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLConnection+extension.swift"; sourceTree = "<group>"; };
+		1D3F296A1DC8721A00C0F998 /* SKLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLoginController.swift; sourceTree = "<group>"; };
+		1D3F296B1DC8721A00C0F998 /* SKLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKLoginController.xib; sourceTree = "<group>"; };
+		1D3F296E1DC882E000C0F998 /* SKRegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKRegisterController.swift; sourceTree = "<group>"; };
+		1D3F296F1DC882E000C0F998 /* SKRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKRegisterController.xib; sourceTree = "<group>"; };
+		1D3F29721DC8927500C0F998 /* SKForgotPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKForgotPasswordController.swift; sourceTree = "<group>"; };
+		1D3F29731DC8927500C0F998 /* SKForgotPasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKForgotPasswordController.xib; sourceTree = "<group>"; };
 		1D63CF911DBEF3CF00955DDF /* SKProduceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceController.swift; sourceTree = "<group>"; };
 		1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceSearchView.swift; sourceTree = "<group>"; };
 		1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 365KEY_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +100,19 @@
 				1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */,
 			);
 			path = tool;
+			sourceTree = "<group>";
+		};
+		1D3F29691DC871BF00C0F998 /* LoginContrller */ = {
+			isa = PBXGroup;
+			children = (
+				1D3F296A1DC8721A00C0F998 /* SKLoginController.swift */,
+				1D3F296B1DC8721A00C0F998 /* SKLoginController.xib */,
+				1D3F296E1DC882E000C0F998 /* SKRegisterController.swift */,
+				1D3F296F1DC882E000C0F998 /* SKRegisterController.xib */,
+				1D3F29721DC8927500C0F998 /* SKForgotPasswordController.swift */,
+				1D3F29731DC8927500C0F998 /* SKForgotPasswordController.xib */,
+			);
+			path = LoginContrller;
 			sourceTree = "<group>";
 		};
 		1D63CF8D1DBEF39800955DDF /* Produce */ = {
@@ -175,6 +200,7 @@
 		1DED7DD21DB89F54003E65E3 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				1D3F29691DC871BF00C0F998 /* LoginContrller */,
 				1D63CF8D1DBEF39800955DDF /* Produce */,
 				1DED7DD51DB89FAE003E65E3 /* SKNewsController.swift */,
 				1DBABE3A1DBE00A000745C5D /* SKUserController.swift */,
@@ -310,8 +336,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D65E2581DB8716300C39F4C /* LaunchScreen.storyboard in Resources */,
+				1D3F29751DC8927500C0F998 /* SKForgotPasswordController.xib in Resources */,
+				1D3F296D1DC8721A00C0F998 /* SKLoginController.xib in Resources */,
 				1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */,
 				1DEF23191DC1E8990063968B /* SKProdectCell.xib in Resources */,
+				1D3F29711DC882E000C0F998 /* SKRegisterController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +401,9 @@
 			files = (
 				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
 				1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */,
+				1D3F296C1DC8721A00C0F998 /* SKLoginController.swift in Sources */,
 				1DEF23121DC0A6420063968B /* SKProductUserModel.swift in Sources */,
+				1D3F29701DC882E000C0F998 /* SKRegisterController.swift in Sources */,
 				1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */,
 				1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */,
 				1DBABE3B1DBE00A000745C5D /* SKUserController.swift in Sources */,
@@ -380,6 +411,7 @@
 				1DED7DDB1DB8A070003E65E3 /* SKLunchImageViewController.swift in Sources */,
 				1DED7DE11DB8B786003E65E3 /* SKNewFeatureController.swift in Sources */,
 				1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */,
+				1D3F29741DC8927500C0F998 /* SKForgotPasswordController.swift in Sources */,
 				1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */,
 				1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */,
 				1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */,

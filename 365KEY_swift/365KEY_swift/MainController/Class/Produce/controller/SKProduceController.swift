@@ -94,7 +94,12 @@ extension SKProduceController{
         navigationController?.navigationBar.addSubview(searchView!)
     }
     @objc private func addButtonDidClick(){
-        print("添加产品按钮点击")
+        
+        let loginVC = SKNavigationController(rootViewController: SKLoginController())
+        
+        
+        
+        present(loginVC, animated: true, completion: nil)
     }
     // MARK: 添加subView
     func addSubView() {
