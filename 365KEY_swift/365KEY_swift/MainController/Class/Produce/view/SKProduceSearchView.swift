@@ -28,7 +28,7 @@ class SKProduceSearchView: UIView {
     }
     
     convenience init(withAnimation animation: Bool){
-        self.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 44))
+        self.init(frame: CGRect(x: 0, y: 20, width: UIScreen.main.screenWidth, height: 44))
     }
     
     required init?(coder aDecoder: NSCoder) {

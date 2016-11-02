@@ -1,8 +1,8 @@
 //
-//  SKProduceController.swift
+//  SKProductVC.swift
 //  365KEY_swift
 //
-//  Created by 牟松 on 2016/10/20.
+//  Created by 牟松 on 2016/11/2.
 //  Copyright © 2016年 DoNews. All rights reserved.
 //
 
@@ -11,120 +11,146 @@ import AFNetworking
 
 private let produceCellID = "produceCellID"
 
-class SKProduceController: UITableViewController {
+class SKProductVC: UIViewController {
     
     var refControl: UIRefreshControl?
     
     var searchView: SKProduceSearchView?
+    
+    var navBar: UINavigationBar?
+    
+    var navItem: UINavigationItem?
+    
+    
+    var tableView: UITableView?
+    
+    var activityView: UIActivityIndicatorView?
     
     // 用于判断是否是上啦加载
     var isPullUp = false
     
     var productViewModel = SKProductViewModel()
     
-    var activityView: UIActivityIndicatorView?
+    
     
     lazy var noInfoLabel = UILabel(frame: CGRect(x: 0, y: 50, width: UIScreen.main.screenWidth, height: 50))
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: "SKProdectCell", bundle: nil), forCellReuseIdentifier: produceCellID)
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 135
-        
-        setupNav()
-        
         addSubView()
         
-       
+        
         loadData()
     }
-    
     func loadData() {
         
         print("加载数据")
-
+        
         productViewModel.loadProductData(isPullUp: isPullUp){ isSuccess in
             if isSuccess{
-                self.tableView.reloadData()
+                self.tableView?.reloadData()
                 self.noInfoLabel.removeFromSuperview()
-                self.tableView.tableFooterView?.isHidden = false
+                self.tableView?.tableFooterView?.isHidden = false
             } else {
                 if self.productViewModel.prodectDataArray.count == 0{
                     self.addNoInfoView(with: "暂无内容")
                 }
             }
-            self.refreshControl?.endRefreshing()
+            if #available(iOS 10.0, *) {
+                self.tableView?.refreshControl?.endRefreshing()
+            } else {
+                self.refControl?.endRefreshing()
+            }
             
         }
         isPullUp = false
         
         activityView?.stopAnimating()
- 
+        
     }
-   
-    
-}
 
-extension SKProduceController: UITextFieldDelegate{
+   
+
+}
+extension SKProductVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(123)
         return true
     }
 }
 
-extension SKProduceController{
+extension SKProductVC{
     
-    func setupNav() {
-        
-        navigationItem.title = "365KEY"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(SK_barButtonItem: UIImage(named:"icon_search"), selectorImage: UIImage(named:"icon_search"), tragtic: self, action: #selector(searchButtonDidclick))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(SK_barButtonItem: UIImage(named:"icon_add"), selectorImage: UIImage(named:"icon_add"), tragtic: self, action: #selector(addButtonDidClick))
-        
-    }
     
     @objc private func searchButtonDidclick(){
         // MARK: 添加searchBar
         searchView = SKProduceSearchView(withAnimation: true)
         searchView?.searchTF?.delegate = self
-        navigationController?.navigationBar.addSubview(searchView!)
+        navBar?.addSubview(searchView!)
     }
     @objc private func addButtonDidClick(){
         
         let loginVC = SKNavigationController(rootViewController: SKLoginController())
-        
-        
-        
+ 
         present(loginVC, animated: true, completion: nil)
     }
     // MARK: 添加subView
     func addSubView() {
+        
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar?.isTranslucent = false
+        navBar?.barTintColor = UIColor().mainColor
+        navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        view.addSubview(navBar!)
+        
+        navItem = UINavigationItem()
+        navItem?.title = "365KEY"
+        navItem?.leftBarButtonItem = UIBarButtonItem(SK_barButtonItem: UIImage(named:"icon_search"), selectorImage: UIImage(named:"icon_search"), tragtic: self, action: #selector(searchButtonDidclick))
+        navItem?.rightBarButtonItem = UIBarButtonItem(SK_barButtonItem: UIImage(named:"icon_add"), selectorImage: UIImage(named:"icon_add"), tragtic: self, action: #selector(addButtonDidClick))
+        
+        navBar?.items = [navItem!]
+        
+        
+        
+        tableView = UITableView(frame: view.bounds)
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        tableView?.separatorStyle = .none
+        tableView?.register(UINib(nibName: "SKProdectCell", bundle: nil), forCellReuseIdentifier: produceCellID)
+        tableView?.contentInset = UIEdgeInsets(top: 44, left: 0, bottom:  tabBarController?.tabBar.bounds.height ?? 49, right: 0)
+        
+        tableView?.scrollIndicatorInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
+        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView?.estimatedRowHeight = 300
+        view.insertSubview(tableView!, at: 0)
+        
         refControl = UIRefreshControl()
         refControl?.tintColor = UIColor.gray
         refControl?.attributedTitle = NSAttributedString(string: "下拉刷新")
         refControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
         
-        refreshControl = refControl
+        if #available(iOS 10.0, *) {
+            tableView?.refreshControl = refControl
+        } else {
+            tableView?.addSubview(refControl!)
+        }
         
         
         activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityView?.center = CGPoint(x: tableView.centerX, y: tableView.centerY-64)
+        activityView?.center = CGPoint(x: (tableView?.centerX)!, y: (tableView?.centerY)!-64)
         activityView?.startAnimating()
         activityView?.hidesWhenStopped = true
         activityView?.color = UIColor.gray
-        tableView.addSubview(activityView!)
+        tableView?.addSubview(activityView!)
         
         let footView = UIButton()
         footView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 60)
         footView.setTitle("点击加载更多", for: .normal)
         footView.setTitleColor(UIColor.black, for: .normal)
         footView.addTarget(self, action: #selector(touchFooterView), for: .touchUpInside)
-        tableView.tableFooterView = footView
-        tableView.tableFooterView?.isHidden = true
+        tableView?.tableFooterView = footView
+        tableView?.tableFooterView?.isHidden = true
         
     }
     @objc func touchFooterView(){
@@ -137,19 +163,19 @@ extension SKProduceController{
         noInfoLabel.textAlignment = .center
         noInfoLabel.textColor = UIColor(red: 225/255.0, green: 225/255.0, blue: 225/255.0, alpha: 1)
         noInfoLabel.font = UIFont.systemFont(ofSize: 20)
-        tableView.addSubview(self.noInfoLabel)
+        tableView?.addSubview(self.noInfoLabel)
     }
     
 }
 
-extension SKProduceController{
+extension SKProductVC: UITableViewDelegate, UITableViewDataSource{
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return productViewModel.prodectDataArray.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let dic = productViewModel.prodectDataArray[section] as [String : [SKProductListModel]]
         
@@ -159,7 +185,7 @@ extension SKProduceController{
         return value.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: produceCellID, for: indexPath) as! SKProdectCell
@@ -177,7 +203,7 @@ extension SKProduceController{
         
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         
         view.frame = CGRect(x: 0, y: -10, width: UIScreen.main.screenWidth, height: 40)
@@ -205,11 +231,11 @@ extension SKProduceController{
         return view
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if indexPath.section == productViewModel.prodectDataArray.count-1 && !isPullUp && indexPath.row == 0{
             isPullUp = true
@@ -219,14 +245,12 @@ extension SKProduceController{
         
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135
     }
-
     
-    
-
-    
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(SKProductDetailController(), animated: true)
+    }
 }
+

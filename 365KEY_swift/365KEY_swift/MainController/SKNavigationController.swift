@@ -8,18 +8,23 @@
 
 import UIKit
 
-class SKNavigationController: UINavigationController {
+class SKNavigationController: UINavigationController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationBar.isTranslucent = false
-        navigationBar.barTintColor = UIColor().mainColor
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-
+        navigationBar.isHidden = true        
+        
     }
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return UIStatusBarStyle.lightContent
+    }
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if childViewControllers.count > 0 {
+            viewController.hidesBottomBarWhenPushed = true
+        }
+        super.pushViewController(viewController, animated: animated)
     }
 
 }

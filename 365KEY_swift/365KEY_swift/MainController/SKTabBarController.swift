@@ -13,7 +13,7 @@ class SKTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vc1 = getController(with: SKProduceController(), title: "产品", image: "1_1", selectedImage: "1_2")
+        let vc1 = getController(with: SKProductVC(), title: "产品", image: "1_1", selectedImage: "1_2")
         let vc2 = getController(with: SKNewsController(), title: "行业资讯", image: "2_1", selectedImage: "2_2")
         let vc3 = getController(with: SKUserController(), title: "个人中心", image: "3_1", selectedImage: "3_2")
         
@@ -29,7 +29,7 @@ class SKTabBarController: UITabBarController {
 
     }
     
-    func getController(with controller:UITableViewController?, title:String?, image:String?, selectedImage: String?) -> UIViewController {
+    func getController(with controller:UIViewController?, title:String?, image:String?, selectedImage: String?) -> UIViewController {
         controller?.title = title ?? ""
         controller?.tabBarItem.image = UIImage(named: selectedImage!)
         controller?.tabBarItem.selectedImage = UIImage(named: image!)?.withRenderingMode(.alwaysOriginal)
