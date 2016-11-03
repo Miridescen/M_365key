@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Acf-rG-jKg" userLabel="phoneNum">
-                    <rect key="frame" x="40" y="40" width="295" height="40"/>
+                    <rect key="frame" x="40" y="106" width="295" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="5Xa-fb-yGq"/>
                     </constraints>
@@ -32,7 +32,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="O6p-DN-8A2" userLabel="验证码">
-                    <rect key="frame" x="40" y="90" width="295" height="40"/>
+                    <rect key="frame" x="40" y="156" width="295" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="38g-cf-aY5"/>
                     </constraints>
@@ -41,7 +41,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IVd-2u-Qx2" userLabel="passwordTF">
-                    <rect key="frame" x="40" y="140" width="295" height="40"/>
+                    <rect key="frame" x="40" y="206" width="295" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="KY5-q9-7VF"/>
                     </constraints>
@@ -50,7 +50,7 @@
                     <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZk-1B-XGd" userLabel="fitchCapuchaBtn">
-                    <rect key="frame" x="269" y="90" width="66" height="40"/>
+                    <rect key="frame" x="269" y="156" width="66" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="66" id="5cm-Kp-nha"/>
                         <constraint firstAttribute="height" constant="40" id="jyr-mv-ZKm"/>
@@ -63,7 +63,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5O-K9-nAh" userLabel="registerBtn">
-                    <rect key="frame" x="110" y="213" width="156" height="45"/>
+                    <rect key="frame" x="110" y="279" width="156" height="45"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="156" id="DWH-jM-Ftt"/>
                         <constraint firstAttribute="height" constant="45" id="FvU-EO-uq9"/>
@@ -77,7 +77,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读并接受《365key用户协议》" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QA-9E-nuU">
-                    <rect key="frame" x="108" y="287" width="200" height="13"/>
+                    <rect key="frame" x="108" y="353" width="200" height="13"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="13" id="I0S-Sj-glr"/>
                         <constraint firstAttribute="width" constant="200" id="X9M-FE-ouK"/>
@@ -87,7 +87,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btm_select" translatesAutoresizingMaskIntoConstraints="NO" id="jLz-gl-kkn" userLabel="aggree">
-                    <rect key="frame" x="91" y="287.5" width="12" height="12"/>
+                    <rect key="frame" x="91" y="353.5" width="12" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="Hzg-PJ-Dm9"/>
                         <constraint firstAttribute="width" constant="12" id="q6q-L9-4c1"/>
@@ -101,7 +101,7 @@
                 <constraint firstItem="IVd-2u-Qx2" firstAttribute="top" secondItem="O6p-DN-8A2" secondAttribute="bottom" constant="10" id="Ive-yD-BGS"/>
                 <constraint firstItem="4QA-9E-nuU" firstAttribute="leading" secondItem="jLz-gl-kkn" secondAttribute="trailing" constant="5" id="OTK-w6-yQc"/>
                 <constraint firstItem="jLz-gl-kkn" firstAttribute="centerY" secondItem="4QA-9E-nuU" secondAttribute="centerY" id="Y6X-7v-JaH"/>
-                <constraint firstItem="Acf-rG-jKg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="Ypp-wa-ijp"/>
+                <constraint firstItem="Acf-rG-jKg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="106" id="Ypp-wa-ijp"/>
                 <constraint firstItem="sZk-1B-XGd" firstAttribute="trailing" secondItem="O6p-DN-8A2" secondAttribute="trailing" id="ZPj-hz-7Bd"/>
                 <constraint firstItem="Acf-rG-jKg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="agc-a9-TCJ"/>
                 <constraint firstItem="4QA-9E-nuU" firstAttribute="centerX" secondItem="w5O-K9-nAh" secondAttribute="centerX" constant="20" id="gXb-BH-bbF"/>

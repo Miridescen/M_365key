@@ -104,6 +104,13 @@
 			path = tool;
 			sourceTree = "<group>";
 		};
+		1D3AE6BB1DCB20CE00119A0E /* usserInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = usserInfo;
+			sourceTree = "<group>";
+		};
 		1D3F29691DC871BF00C0F998 /* LoginContrller */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +210,7 @@
 		1DED7DD21DB89F54003E65E3 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				1D3AE6BB1DCB20CE00119A0E /* usserInfo */,
 				1D3F29691DC871BF00C0F998 /* LoginContrller */,
 				1D63CF8D1DBEF39800955DDF /* Produce */,
 				1DED7DD51DB89FAE003E65E3 /* SKNewsController.swift */,

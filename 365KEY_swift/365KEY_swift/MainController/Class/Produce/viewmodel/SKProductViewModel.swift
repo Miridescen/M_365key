@@ -40,7 +40,7 @@ class SKProductViewModel: NSObject {
         
         let urlStr = "http://www.365key.com/Produce/get_product_list"
         
-        NSURLConnection.connection.connectionRequest(with: .POST, urlString: urlStr, paramers: params) { (isSuccess, any) in
+        NSURLConnection.connection.productListDataRequest(with: urlStr, params: params){ (isSuccess, any) in
             if isSuccess {
                 if isPullUp{
                     self.prodectDataArray += any as! [[String : [SKProductListModel]]]
@@ -54,6 +54,21 @@ class SKProductViewModel: NSObject {
                 completion(false)
             }
         }
+        
+//        NSURLConnection.connection.connectionRequest(with: .POST, urlString: urlStr, paramers: params) { (isSuccess, any) in
+//            if isSuccess {
+//                if isPullUp{
+//                    self.prodectDataArray += any as! [[String : [SKProductListModel]]]
+//                } else {
+//                    self.prodectDataArray = any as! [[String : [SKProductListModel]]] + self.prodectDataArray
+//                }
+//                
+//                
+//                completion(isSuccess)
+//            } else {
+//                completion(false)
+//            }
+//        }
         
     }
     
