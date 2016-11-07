@@ -13,16 +13,21 @@ class SKUserInfo: NSObject, NSCoding {
     
     var thumbnail: String? {
         didSet{
-            let headImageStr = (thumbnail?.hasPrefix("http"))! ? thumbnail: "http://www.365key.com\(thumbnail)"
-          
-            thumbnailData = try! NSData(contentsOf: URL(string: headImageStr!)!) as Data
             
-            print(thumbnailData ?? "缺少头像data")
+            guard let thumbnail =  thumbnail else {
+                
+                thumbnailData = NSData()
+                return
+            }
+            
+            let headImageStr = (thumbnail.hasPrefix("http")) ? thumbnail: "http://www.365key.com\(thumbnail)"
+            print(headImageStr)
+            thumbnailData = try? NSData(contentsOf: URL(string: headImageStr)!)
             
         }
     }
     
-    var thumbnailData: Data?
+    var thumbnailData: NSData?
  
     var job: String?
     
@@ -49,13 +54,17 @@ class SKUserInfo: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         super.init()
         self.thumbnail = aDecoder.decodeObject(forKey: "userName") as! String?
-        self.thumbnailData = aDecoder.decodeObject(forKey: "passWord") as! Data?
+        self.thumbnailData = aDecoder.decodeObject(forKey: "passWord") as! NSData?
         self.job = aDecoder.decodeObject(forKey: "job") as! String?
         self.nickname = aDecoder.decodeObject(forKey: "nickname") as! String?
         self.realname = aDecoder.decodeObject(forKey: "realname") as! String?
         self.info = aDecoder.decodeObject(forKey: "info") as! String?
         self.email = aDecoder.decodeObject(forKey: "email") as! String?
         self.tel = aDecoder.decodeObject(forKey: "tel") as! String?
+    }
+    
+    override init() {
+        
     }
     
     override var description: String{
