@@ -55,21 +55,7 @@ class SKProductViewModel: NSObject {
             }
         }
         
-//        NSURLConnection.connection.connectionRequest(with: .POST, urlString: urlStr, paramers: params) { (isSuccess, any) in
-//            if isSuccess {
-//                if isPullUp{
-//                    self.prodectDataArray += any as! [[String : [SKProductListModel]]]
-//                } else {
-//                    self.prodectDataArray = any as! [[String : [SKProductListModel]]] + self.prodectDataArray
-//                }
-//                
-//                
-//                completion(isSuccess)
-//            } else {
-//                completion(false)
-//            }
-//        }
-        
+
     }
     
 

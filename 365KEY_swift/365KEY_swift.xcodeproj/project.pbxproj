@@ -19,6 +19,9 @@
 		1D3F29751DC8927500C0F998 /* SKForgotPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3F29731DC8927500C0F998 /* SKForgotPasswordController.xib */; };
 		1D3F29771DC9C3BF00C0F998 /* SKProductDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F29761DC9C3BF00C0F998 /* SKProductDetailController.swift */; };
 		1D3F29791DC9D74800C0F998 /* SKProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F29781DC9D74800C0F998 /* SKProductVC.swift */; };
+		1D5E81FA1DD02330003E9D14 /* SKUserShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81F91DD02330003E9D14 /* SKUserShared.swift */; };
+		1D5E81FC1DD02399003E9D14 /* SKUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81FB1DD02399003E9D14 /* SKUserInfo.swift */; };
+		1D5E81FE1DD05F2F003E9D14 /* commomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81FD1DD05F2F003E9D14 /* commomClass.swift */; };
 		1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */; };
 		1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2541DB8716300C39F4C /* Assets.xcassets */; };
 		1D65E2581DB8716300C39F4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2561DB8716300C39F4C /* LaunchScreen.storyboard */; };
@@ -55,6 +58,9 @@
 		1D3F29731DC8927500C0F998 /* SKForgotPasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKForgotPasswordController.xib; sourceTree = "<group>"; };
 		1D3F29761DC9C3BF00C0F998 /* SKProductDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailController.swift; sourceTree = "<group>"; };
 		1D3F29781DC9D74800C0F998 /* SKProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductVC.swift; sourceTree = "<group>"; };
+		1D5E81F91DD02330003E9D14 /* SKUserShared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserShared.swift; sourceTree = "<group>"; };
+		1D5E81FB1DD02399003E9D14 /* SKUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserInfo.swift; sourceTree = "<group>"; };
+		1D5E81FD1DD05F2F003E9D14 /* commomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commomClass.swift; sourceTree = "<group>"; };
 		1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceSearchView.swift; sourceTree = "<group>"; };
 		1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 365KEY_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D65E2541DB8716300C39F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +113,8 @@
 		1D3AE6BB1DCB20CE00119A0E /* usserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				1D5E81F91DD02330003E9D14 /* SKUserShared.swift */,
+				1D5E81FB1DD02399003E9D14 /* SKUserInfo.swift */,
 			);
 			path = usserInfo;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 				1DBABE361DBDFBEC00745C5D /* Bundle+extension.swift */,
 				1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */,
 				1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */,
+				1D5E81FD1DD05F2F003E9D14 /* commomClass.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -410,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D5E81FC1DD02399003E9D14 /* SKUserInfo.swift in Sources */,
 				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
 				1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */,
 				1D3F296C1DC8721A00C0F998 /* SKLoginController.swift in Sources */,
@@ -422,6 +432,7 @@
 				1DED7DDE1DB8A562003E65E3 /* UIScreen+extension.swift in Sources */,
 				1DED7DDB1DB8A070003E65E3 /* SKLunchImageViewController.swift in Sources */,
 				1DED7DE11DB8B786003E65E3 /* SKNewFeatureController.swift in Sources */,
+				1D5E81FA1DD02330003E9D14 /* SKUserShared.swift in Sources */,
 				1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */,
 				1D3F29741DC8927500C0F998 /* SKForgotPasswordController.swift in Sources */,
 				1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */,
@@ -430,6 +441,7 @@
 				1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */,
 				1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */,
 				1D3F29791DC9D74800C0F998 /* SKProductVC.swift in Sources */,
+				1D5E81FE1DD05F2F003E9D14 /* commomClass.swift in Sources */,
 				1DBABE371DBDFBEC00745C5D /* Bundle+extension.swift in Sources */,
 				1DED7DE31DB8C03D003E65E3 /* UIColor+extension.swift in Sources */,
 				1DED7DD61DB89FAE003E65E3 /* SKNewsController.swift in Sources */,

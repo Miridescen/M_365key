@@ -17,9 +17,38 @@ extension NSURLConnection{
         return connectionShare
         
     }()
-    
-    
-    func userLoginRequset(with userName: String, password: String, completion:@escaping ((_ isSuccess: Bool)->())) {
+    // MARK: 个人中心信息请求
+    func userInfoRequest(compeltion:@escaping(_ isSuccess: Bool)->()) {
+        
+        let userShared = SKUserShared.shared.getUserShared()
+        
+        let urlStr = "http://www.365key.com/User/personal_center"
+        
+        var params = [String: AnyObject]()
+        params["id"] = userShared?.uid
+        params["type"] = "iOS" as AnyObject?
+        
+        connectionRequest(urlString: urlStr, paramers: params){ (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                let userInfoData = jsonData?["userinfo"]
+                
+                let userInfo = SKUserInfo.yy_model(withJSON: userInfoData as Any)
+                
+                userShared?.userInfo = userInfo
+                userShared?.saveUserShared(shared: userShared!)
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: SKUserLoginSuccessNotifiction), object: userShared, userInfo: nil)
+                
+                compeltion(true)
+            } else {
+                compeltion(false)
+            }
+        }
+        
+    }
+    // MARK: 登录请求
+    func userLoginRequset(with userName: String, password: String, completion:@escaping (_ isSuccess: Bool, _ data: AnyObject?)->()) {
         
         var params = [String: AnyObject]()
         params["phone"] = userName as AnyObject?
@@ -32,7 +61,29 @@ extension NSURLConnection{
             if bool {
                 let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: []) as? [String: AnyObject?] ?? [:]
                 
-                print(jsonData)
+                let code = jsonData!["code"]
+                
+                guard let code1 = code,
+                let code2 = code1 else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if code2 as! Int == 0{
+    
+                    let userSared = SKUserShared.yy_model(withJSON: jsonData!)
+                    
+                    userSared?.userName = userName
+                    userSared?.passWord = password
+                    SKUserShared.shared.saveUserShared(shared: userSared!)
+                    
+                    completion(bool, jsonData as AnyObject?)
+                } else {
+                    completion(false, nil)
+                }
+               
+            } else {
+                completion(false, nil)
             }
     
         }

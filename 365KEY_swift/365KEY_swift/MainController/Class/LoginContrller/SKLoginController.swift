@@ -26,9 +26,19 @@ class SKLoginController: UIViewController {
         if checkPhoneNumOrEmail(string: userNameTF.text!) && checkPassword(string: passwordTF.text!) {
             print("登录")
             NSURLConnection.connection.userLoginRequset(with: userNameTF.text!, password: passwordTF.text!){
-                bool in
-                
-                print(bool)
+                (bool, jsonData) in
+                if bool {
+                    NSURLConnection.connection.userInfoRequest(compeltion: { (bool) in
+                        if bool {
+                            self.dismiss(animated: true, completion: nil)
+                        } else {
+                            print("登录成功但请求用户信息不成功")
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
+                } else {
+                    SVProgressHUD.showError(withStatus: "登录失败")
+                }
             }
         }
         
