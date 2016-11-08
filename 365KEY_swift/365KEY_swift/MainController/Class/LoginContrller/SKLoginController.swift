@@ -35,14 +35,14 @@ class SKLoginController: UIViewController {
                             print("登录成功但请求用户信息不成功")
                             self.dismiss(animated: true, completion: nil)
                         }
+                        
                     })
                 } else {
                     SVProgressHUD.showError(withStatus: "登录失败")
                 }
             }
         }
-        
-        
+       
     }
     
     @IBAction func registBtn(_ sender: UIButton) {
@@ -110,7 +110,7 @@ extension SKLoginController{
     func checkPhoneNumOrEmail(string: String) -> Bool {
         
         if string.isEmpty || string.characters.count == 0 {
-            SVProgressHUD.showError(withStatus: "用户名不能为空")
+            SKProgressHUD.setErrorString(with: "用户名不能为空")
             return false
         }
         
@@ -126,7 +126,7 @@ extension SKLoginController{
         let isEmail: Bool = emailPred.evaluate(with: string)
         
         if !isPhoneNum && !isEmail {
-            SVProgressHUD.showError(withStatus: "用户名格式不正确")
+            SKProgressHUD.setErrorString(with: "用户名格式不正确")
             return false
         }
         
@@ -135,7 +135,7 @@ extension SKLoginController{
     }
     func checkPassword(string: String) -> Bool {
         if string.isEmpty || string.characters.count == 0 {
-            SVProgressHUD.showError(withStatus: "密码不能为空")
+            SKProgressHUD.setErrorString(with: "密码不能为空")
             return false
         }
         return true

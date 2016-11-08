@@ -22,6 +22,8 @@
 		1D5E81FA1DD02330003E9D14 /* SKUserShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81F91DD02330003E9D14 /* SKUserShared.swift */; };
 		1D5E81FC1DD02399003E9D14 /* SKUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81FB1DD02399003E9D14 /* SKUserInfo.swift */; };
 		1D5E81FE1DD05F2F003E9D14 /* commomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81FD1DD05F2F003E9D14 /* commomClass.swift */; };
+		1D5E82001DD1776A003E9D14 /* SVProgressHUD+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81FF1DD1776A003E9D14 /* SVProgressHUD+extension.swift */; };
+		1D5E82021DD1788B003E9D14 /* SKProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E82011DD1788B003E9D14 /* SKProgressHUD.swift */; };
 		1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */; };
 		1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2541DB8716300C39F4C /* Assets.xcassets */; };
 		1D65E2581DB8716300C39F4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2561DB8716300C39F4C /* LaunchScreen.storyboard */; };
@@ -61,6 +63,8 @@
 		1D5E81F91DD02330003E9D14 /* SKUserShared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserShared.swift; sourceTree = "<group>"; };
 		1D5E81FB1DD02399003E9D14 /* SKUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserInfo.swift; sourceTree = "<group>"; };
 		1D5E81FD1DD05F2F003E9D14 /* commomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commomClass.swift; sourceTree = "<group>"; };
+		1D5E81FF1DD1776A003E9D14 /* SVProgressHUD+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+extension.swift"; sourceTree = "<group>"; };
+		1D5E82011DD1788B003E9D14 /* SKProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProgressHUD.swift; sourceTree = "<group>"; };
 		1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceSearchView.swift; sourceTree = "<group>"; };
 		1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 365KEY_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D65E2541DB8716300C39F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */,
 				1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */,
 				1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */,
+				1D5E81FF1DD1776A003E9D14 /* SVProgressHUD+extension.swift */,
+				1D5E82011DD1788B003E9D14 /* SKProgressHUD.swift */,
 			);
 			path = tool;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D5E81FC1DD02399003E9D14 /* SKUserInfo.swift in Sources */,
+				1D5E82001DD1776A003E9D14 /* SVProgressHUD+extension.swift in Sources */,
 				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
 				1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */,
 				1D3F296C1DC8721A00C0F998 /* SKLoginController.swift in Sources */,
@@ -434,6 +441,7 @@
 				1DED7DE11DB8B786003E65E3 /* SKNewFeatureController.swift in Sources */,
 				1D5E81FA1DD02330003E9D14 /* SKUserShared.swift in Sources */,
 				1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */,
+				1D5E82021DD1788B003E9D14 /* SKProgressHUD.swift in Sources */,
 				1D3F29741DC8927500C0F998 /* SKForgotPasswordController.swift in Sources */,
 				1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */,
 				1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */,

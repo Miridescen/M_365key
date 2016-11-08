@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SKRegisterController: UIViewController {
 
@@ -18,6 +19,62 @@ class SKRegisterController: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     
     @IBAction func fitchCaptuchBtn(_ sender: UIButton) {
+        print("获取验证码")
+        if checkPhoneNum(string: phoneNumTF.text!) {
+            let available = NSURLConnection.connection.checkPhoneNumIsUsed(with: phoneNumTF.text!)
+            if !available {
+                print("发送验证码")
+                // 倒计时
+                var timeout: Int = 60
+                let queue = DispatchQueue.global()
+                let source = DispatchSource.makeTimerSource(flags: [], queue: queue)
+                source.scheduleRepeating(deadline: .now(), interval: DispatchTimeInterval.seconds(1), leeway: DispatchTimeInterval.milliseconds(100))
+                source.setEventHandler{
+                    timeout -= 1
+                    if timeout <= 0 {
+                        source.cancel()
+                        DispatchQueue.main.async {
+                            sender.setTitle("获取", for: .normal)
+                            sender.isUserInteractionEnabled = true
+                        }
+                        
+                    } else {
+                        sender.isUserInteractionEnabled = false
+                        DispatchQueue.main.async {
+                            
+                            UIView.beginAnimations(nil, context: nil)
+                            UIView.setAnimationDuration(1)
+                            sender.setTitle("\(timeout)秒", for: .normal)
+                            UIView.commitAnimations()
+                        }
+                    }
+                }
+                source.resume()
+                
+                // 发送请求
+                NSURLConnection.connection.registerFatchCaptcha(with: phoneNumTF.text!){isSuccess,codeNum in
+                    print(isSuccess)
+                    print(codeNum!)
+                    
+                    switch codeNum! {
+                    case 0:{
+                        SKProgressHUD.setSuccessString(with: "验证码发送成功")
+                    }()
+                    case 1:{
+                        SKProgressHUD.setErrorString(with: "手机号已被注册")
+                    }()
+                    default:{
+                        SKProgressHUD.setErrorString(with: "验证码发送失败")
+                    }()
+                    }
+                }
+   
+            } else {
+                SKProgressHUD.setErrorString(with: "该手机号已被注册")
+            }
+        }
+        
+        
     }
     
     @IBAction func registerBtn(_ sender: UIButton) {
@@ -57,4 +114,43 @@ class SKRegisterController: UIViewController {
         _ = navigationController?.popViewController(animated: true)
     }
 
+}
+
+extension SKRegisterController {
+    func checkPhoneNum(string: String) -> Bool {
+        
+        if string.isEmpty || string.characters.count == 0 {
+            
+            SKProgressHUD.setErrorString(with: "手机号不能为空")
+            return false
+        }
+        
+        
+        let phoneRegex = "^1(3[0-9]|5[0-9]|7[0-9]|8[0-9])\\d{8}$"
+        let phonePred = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        
+        let isPhoneNum: Bool = phonePred.evaluate(with: string)
+        
+        if !isPhoneNum {
+            SKProgressHUD.setErrorString(with: "手机号格式不正确")
+            return false
+        }
+        
+        return true
+        
+    }
+    func checkPassword(string: String) -> Bool {
+        if string.isEmpty || string.characters.count == 0 {
+            SKProgressHUD.setErrorString(with: "密码不能为空")
+            return false
+        }
+        return true
+    }
+    func checkCaptcha(string: String) -> Bool {
+        if string.isEmpty || string.characters.count == 0 {
+            SKProgressHUD.setErrorString(with: "验证码不能为空")
+            return false
+        }
+        return true
+    }
 }

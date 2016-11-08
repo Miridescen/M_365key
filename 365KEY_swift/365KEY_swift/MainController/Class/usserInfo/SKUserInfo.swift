@@ -13,19 +13,20 @@ class SKUserInfo: NSObject, NSCoding {
     
     var thumbnail: String? {
         didSet{
-            
             guard let thumbnail =  thumbnail else {
-                
+                print("缺少头像地址")
                 thumbnailData = NSData()
                 return
             }
             
             let headImageStr = (thumbnail.hasPrefix("http")) ? thumbnail: "http://www.365key.com\(thumbnail)"
             print(headImageStr)
-            thumbnailData = try? NSData(contentsOf: URL(string: headImageStr)!)
+            thumbnailData = NSData(contentsOf: URL(string: "http://www.365key.com/upload/user/569854ac3c587.jpeg")!)
             
         }
     }
+    /*
+     */
     
     var thumbnailData: NSData?
  
@@ -53,8 +54,8 @@ class SKUserInfo: NSObject, NSCoding {
     }
     required init?(coder aDecoder: NSCoder) {
         super.init()
-        self.thumbnail = aDecoder.decodeObject(forKey: "userName") as! String?
-        self.thumbnailData = aDecoder.decodeObject(forKey: "passWord") as! NSData?
+        self.thumbnail = aDecoder.decodeObject(forKey: "thumbnail") as! String?
+        self.thumbnailData = aDecoder.decodeObject(forKey: "thunbnailData") as! NSData?
         self.job = aDecoder.decodeObject(forKey: "job") as! String?
         self.nickname = aDecoder.decodeObject(forKey: "nickname") as! String?
         self.realname = aDecoder.decodeObject(forKey: "realname") as! String?

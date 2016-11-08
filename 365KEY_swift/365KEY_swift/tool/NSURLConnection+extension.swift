@@ -17,6 +17,56 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 注册界面获取验证码
+    func registerFatchCaptcha(with phoneNumber: String, completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
+        let urlStr = "http://www.365key.com/User/check_code"
+        var params = [String: AnyObject]()
+        params["phone"] = phoneNumber as AnyObject?
+        params["type"] = "iOS" as AnyObject?
+        
+        connectionRequest(urlString: urlStr, paramers: params){ (bool, data) in
+            if bool{
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        completion(false, nil)
+                        return
+                }
+                print(code2)
+                completion(true, code2 as! Int)
+            } else {
+                completion(false, nil)
+            }
+            
+        }
+        
+    }
+    // MARK: 检查获取验证码时，手机号是否被用过
+    func checkPhoneNumIsUsed(with phoneNumber: String) -> Bool {
+        let urlStr = "http://www.365key.com/User/check_phone_mobile"
+        var params = [String: AnyObject]()
+        params["phone"] = phoneNumber as AnyObject?
+        
+        var used = false
+
+        connectionRequest(urlString: urlStr, paramers: params){ (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        return
+                }
+                used = code2 as! Int == 0 ? true : false
+            } else {
+                used = false
+            }
+        }
+ 
+        return used
+        
+    }
     // MARK: 个人中心信息请求
     func userInfoRequest(compeltion:@escaping(_ isSuccess: Bool)->()) {
         
@@ -34,9 +84,8 @@ extension NSURLConnection{
                 let userInfoData = jsonData?["userinfo"]
                 
                 let userInfo = SKUserInfo.yy_model(withJSON: userInfoData as Any)
-                
                 userShared?.userInfo = userInfo
-                userShared?.saveUserShared(shared: userShared!)
+                SKUserShared.shared.saveUserShared(shared: userShared!)
                 
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: SKUserLoginSuccessNotifiction), object: userShared, userInfo: nil)
                 
