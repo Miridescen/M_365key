@@ -17,6 +17,54 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 找回密码请求
+    func findPasswordRequest(with phoneNumber: String, captcha: String, password: String, completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
+        let urlStr = "http://www.365key.com/Feedback/retrieve_pwd"
+        var params = [String: AnyObject]()
+        params["phone"] = phoneNumber as AnyObject?
+        params["checkcode"] = captcha as AnyObject?
+        params["password"] = password as AnyObject?
+        
+        connectionRequest(urlString: urlStr, paramers: params){ (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        completion(false, nil)
+                        return
+                }
+                completion(true, code2 as? Int)
+            } else {
+                completion(false, nil)
+            }
+        }
+        
+    }
+    // MARK: 新用户注册请求
+    func userRegisterRequest(with phoneNumber: String, captcha: String, password: String, completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
+        let urlStr = "http://www.365key.com/User/reg"
+        var params = [String: AnyObject]()
+        params["phone"] = phoneNumber as AnyObject?
+        params["checkcode"] = captcha as AnyObject?
+        params["password"] = password as AnyObject?
+        
+        connectionRequest(urlString: urlStr, paramers: params){ (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        completion(false, nil)
+                        return
+                }
+                completion(true, code2 as? Int)
+            } else {
+                completion(false, nil)
+            }
+        }
+        
+    }
     // MARK: 注册界面获取验证码
     func registerFatchCaptcha(with phoneNumber: String, completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
         let urlStr = "http://www.365key.com/User/check_code"
@@ -33,8 +81,7 @@ extension NSURLConnection{
                         completion(false, nil)
                         return
                 }
-                print(code2)
-                completion(true, code2 as! Int)
+                completion(true, code2 as? Int)
             } else {
                 completion(false, nil)
             }

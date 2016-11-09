@@ -22,8 +22,7 @@ class SKRegisterController: UIViewController {
         print("获取验证码")
         if checkPhoneNum(string: phoneNumTF.text!) {
             let available = NSURLConnection.connection.checkPhoneNumIsUsed(with: phoneNumTF.text!)
-            if !available {
-                print("发送验证码")
+            if available {
                 // 倒计时
                 var timeout: Int = 60
                 let queue = DispatchQueue.global()
@@ -53,8 +52,7 @@ class SKRegisterController: UIViewController {
                 
                 // 发送请求
                 NSURLConnection.connection.registerFatchCaptcha(with: phoneNumTF.text!){isSuccess,codeNum in
-                    print(isSuccess)
-                    print(codeNum!)
+                   
                     
                     switch codeNum! {
                     case 0:{
@@ -78,6 +76,41 @@ class SKRegisterController: UIViewController {
     }
     
     @IBAction func registerBtn(_ sender: UIButton) {
+        if checkPhoneNum(string: phoneNumTF.text!) && checkCaptcha(string: captauchtf.text!) && checkPassword(string: passwordTF.text!) {
+            NSURLConnection.connection.userRegisterRequest(with: phoneNumTF.text!, captcha: captauchtf.text!, password: passwordTF.text!){isSuccess,codeNum in
+                if isSuccess {
+                    switch codeNum! {
+                    case 0:{
+                        SKProgressHUD.setSuccessString(with: "注册成功")
+                        NSURLConnection.connection.userLoginRequset(with: self.phoneNumTF.text!, password: self.passwordTF.text!){ (isSuccess, jsonData) in
+                            if isSuccess {
+                                NSURLConnection.connection.userInfoRequest(compeltion: { (bool) in
+                                    self.dismiss(animated: true, completion: nil)
+                                })
+                            } else {
+                                SKProgressHUD.setErrorString(with: "登录失败")
+                            }
+                        }
+                    }()
+                    case 1:{
+                        SKProgressHUD.setErrorString(with: "手机号已经被注册")
+                    }()
+                    case -3:{
+                        SKProgressHUD.setErrorString(with: "验证码过期")
+                    }()
+                    case -5:{
+                        SKProgressHUD.setErrorString(with: "验证码错误")
+                    }()
+                    default:{
+                        SKProgressHUD.setErrorString(with: "注册失败")
+                        }()
+                    }
+                } else {
+                    SKProgressHUD.setErrorString(with: "注册失败")
+                }
+            }
+        }
+        
     }
     
     var navBar: UINavigationBar?
@@ -88,6 +121,8 @@ class SKRegisterController: UIViewController {
         super.viewDidLoad()
 
         setupNav()
+        
+        passwordTF.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,7 +148,17 @@ class SKRegisterController: UIViewController {
     @objc func backBtnDidClick(){
         _ = navigationController?.popViewController(animated: true)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
+}
+extension SKRegisterController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension SKRegisterController {
