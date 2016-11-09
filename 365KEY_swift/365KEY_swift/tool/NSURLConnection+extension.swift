@@ -17,6 +17,7 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 产品详情请求
     // MARK: 找回密码请求
     func findPasswordRequest(with phoneNumber: String, captcha: String, password: String, completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
         let urlStr = "http://www.365key.com/Feedback/retrieve_pwd"
@@ -117,7 +118,7 @@ extension NSURLConnection{
     // MARK: 个人中心信息请求
     func userInfoRequest(compeltion:@escaping(_ isSuccess: Bool)->()) {
         
-        let userShared = SKUserShared.shared.getUserShared()
+        let userShared = SKUserShared.getUserShared()
         
         let urlStr = "http://www.365key.com/User/personal_center"
         
@@ -132,7 +133,7 @@ extension NSURLConnection{
                 
                 let userInfo = SKUserInfo.yy_model(withJSON: userInfoData as Any)
                 userShared?.userInfo = userInfo
-                SKUserShared.shared.saveUserShared(shared: userShared!)
+                SKUserShared.saveUserShared(shared: userShared!)
                 
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: SKUserLoginSuccessNotifiction), object: userShared, userInfo: nil)
                 
@@ -171,7 +172,7 @@ extension NSURLConnection{
                     
                     userSared?.userName = userName
                     userSared?.passWord = password
-                    SKUserShared.shared.saveUserShared(shared: userSared!)
+                    SKUserShared.saveUserShared(shared: userSared!)
                     
                     completion(bool, jsonData as AnyObject?)
                 } else {
@@ -188,10 +189,8 @@ extension NSURLConnection{
     func productListDataRequest(with urlStr: String, params:[String: AnyObject]?,completion:@escaping (_ isSuccess: Bool, _ data: Any?)->()) {
         
         connectionRequest(with: .POST, urlString: urlStr, paramers: params) { (bool, Data) in
-            
-            
+     
             let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: []) as? [String: AnyObject?] ?? [:]
-            
             
             let productListDataArray = NSArray.yy_modelArray(with: SKProductListModel.self, json: jsonData?["prolist"] as Any) ?? []
             if productListDataArray.count > 0 {

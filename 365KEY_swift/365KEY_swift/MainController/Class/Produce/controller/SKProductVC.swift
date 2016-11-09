@@ -62,12 +62,11 @@ class SKProductVC: UIViewController {
             } else {
                 self.refControl?.endRefreshing()
             }
+            self.activityView?.stopAnimating()
             
         }
         isPullUp = false
-        
-        activityView?.stopAnimating()
-        
+    
     }
 
    
@@ -137,12 +136,7 @@ extension SKProductVC{
         }
         
         
-        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityView?.center = CGPoint(x: (tableView?.centerX)!, y: (tableView?.centerY)!-64)
-        activityView?.startAnimating()
-        activityView?.hidesWhenStopped = true
-        activityView?.color = UIColor.gray
-        tableView?.addSubview(activityView!)
+        
         
         let footView = UIButton()
         footView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 60)
@@ -151,6 +145,14 @@ extension SKProductVC{
         footView.addTarget(self, action: #selector(touchFooterView), for: .touchUpInside)
         tableView?.tableFooterView = footView
         tableView?.tableFooterView?.isHidden = true
+        
+        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityView?.center = CGPoint(x: (view?.centerX)!, y: (view?.centerY)!)
+        activityView?.startAnimating()
+        activityView?.hidesWhenStopped = true
+        activityView?.color = UIColor.gray
+        view.addSubview(activityView!)
+        view.bringSubview(toFront: activityView!)
         
     }
     @objc func touchFooterView(){
@@ -250,7 +252,15 @@ extension SKProductVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(SKProductDetailController(), animated: true)
+        let dic = productViewModel.prodectDataArray[indexPath.section]
+        let keyValue = dic[dic.startIndex]
+        let value = keyValue.1
+        let productListModel = value[indexPath.row]
+        
+        let detailVC = SKProductDetailController()
+        detailVC.productListModel = productListModel
+        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

@@ -23,23 +23,22 @@ class SKUserShared: NSObject, NSCoding {
   
     static let shared: SKUserShared = {
         let shared = SKUserShared()
-        
-        return shared        
+        return shared
     }()
     
-    func saveUserShared(shared: SKUserShared) {
+    class func saveUserShared(shared: SKUserShared) {
         
         NSKeyedArchiver.archiveRootObject(shared, toFile: SKUserSharedFilePath)
         
     }
     
-    func getUserShared() -> SKUserShared? {
+    class func getUserShared() -> SKUserShared? {
         
         let userShared = NSKeyedUnarchiver.unarchiveObject(withFile: SKUserSharedFilePath) as? SKUserShared ?? SKUserShared()
         
         
         let nowDate = Date()
-        
+        // 7776000
         let threeMouth: TimeInterval = 7776000
         
         let expiresTime = Date(timeInterval: threeMouth, since: userShared.loginData)

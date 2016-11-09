@@ -17,6 +17,11 @@ class SKProductViewModel: NSObject {
         
         var params = [String: AnyObject]()
         
+        if SKUserShared.getUserShared()?.uid != 0 {
+            params["id"] = SKUserShared.getUserShared()?.uid as AnyObject?
+        }
+        
+        
         if isPullUp {
             
             let modelDic = prodectDataArray[prodectDataArray.count-1]
@@ -47,8 +52,7 @@ class SKProductViewModel: NSObject {
                 } else {
                     self.prodectDataArray = any as! [[String : [SKProductListModel]]] + self.prodectDataArray
                 }
-                
-                
+
                 completion(isSuccess)
             } else {
                 completion(false)
