@@ -41,7 +41,7 @@ class SKProductViewModel: NSObject {
             }
             
         }
-        print("params == \(params)")
+        
         
         let urlStr = "http://www.365key.com/Produce/get_product_list"
         

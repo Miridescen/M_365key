@@ -18,6 +18,23 @@ extension NSURLConnection{
         
     }()
     // MARK: 产品详情请求
+    func productDetailRequest(with productID:Int64) {
+        let urlStr = "http://www.365key.com/Produce/get_pro_detail_mobile"
+        var params = [String: AnyObject]()
+        params["pid"] = productID as AnyObject?
+        if SKUserShared.getUserShared()?.uid != 0 {
+            params["id"] = SKUserShared.getUserShared()?.uid as AnyObject?
+        }
+        
+        print("params == \(params)")
+        
+        connectionRequest(urlString: urlStr, paramers: params){ (bool, data) in
+            
+            let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+            print(jsonData)
+        }
+        
+    }
     // MARK: 找回密码请求
     func findPasswordRequest(with phoneNumber: String, captcha: String, password: String, completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
         let urlStr = "http://www.365key.com/Feedback/retrieve_pwd"
