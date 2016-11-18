@@ -78,7 +78,7 @@
                                 <action selector="focusBtn:" destination="Yca-55-quz" eventType="touchUpInside" id="1ra-h0-4KY"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMI-1T-9rB" userLabel="peopleNameLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMI-1T-9rB" userLabel="peopleNameLabel">
                             <rect key="frame" x="80" y="170" width="100" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="vV1-6m-fBf"/>
@@ -121,7 +121,7 @@
                         <constraint firstAttribute="bottom" secondItem="PR5-cu-kO0" secondAttribute="bottom" constant="20" id="yOi-vb-iEp"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T84-gP-MCO" userLabel="introduceLabel">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T84-gP-MCO" userLabel="introduceLabel">
                     <rect key="frame" x="16" y="220" width="343" height="70"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="NEU-Uv-VJ5"/>
@@ -145,6 +145,8 @@
             </constraints>
             <connections>
                 <outlet property="bottemCoverView" destination="heb-I9-QCU" id="G3J-AM-yi6"/>
+                <outlet property="focusButton" destination="PR5-cu-kO0" id="OgH-ip-uT0"/>
+                <outlet property="goodButton" destination="XHN-tQ-ENy" id="Ii8-Z2-aaQ"/>
                 <outlet property="headImageView" destination="XdJ-A4-zsU" id="BuO-to-Hpr"/>
                 <outlet property="introduceLabel" destination="T84-gP-MCO" id="9yb-pJ-IFx"/>
                 <outlet property="numLabel" destination="hhd-oP-LAF" id="wu1-Hc-Ffw"/>

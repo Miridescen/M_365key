@@ -17,8 +17,37 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 产品详情页点赞
+    func productGoodBtnDidClick(with params: [String: AnyObject]) -> Bool {
+        let urlString = "http://www.365key.com/Right/follow_for_modile"
+        var isSuccess: Bool = false
+        
+        
+        connectionRequest(urlString: urlString, paramers: params) { (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        isSuccess = false
+                        return
+                }
+                if code2 as! Int == 0 {
+                    isSuccess = true
+                } else {
+                    isSuccess = false
+                }
+                
+                
+            } else {
+                isSuccess = false
+            }
+        }
+        return isSuccess
+        
+    }
     // MARK: 产品详情请求
-    func productDetailRequest(with productID:Int64) {
+    func productDetailRequest(with productID:Int64, completion: @escaping(_ isSuccess: Bool, _ productDetailModel: SKProductDetailModel?)->()) {
         let urlStr = "http://www.365key.com/Produce/get_pro_detail_mobile"
         var params = [String: AnyObject]()
         params["pid"] = productID as AnyObject?
@@ -30,8 +59,19 @@ extension NSURLConnection{
         
         connectionRequest(urlString: urlStr, paramers: params){ (bool, data) in
             
-            let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
-            print(jsonData)
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: [])
+                
+                guard let jsondata: Any = jsonData else{
+                    return
+                }
+                let productDetailModel = SKProductDetailModel.yy_model(withJSON: jsondata)
+                
+                completion(bool, productDetailModel)
+            } else {
+                completion(false, nil)
+            }
+            
         }
         
     }

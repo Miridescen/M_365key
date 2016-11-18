@@ -33,7 +33,14 @@ class SKProductDetailController: UIViewController {
         
     }
     func loadData() {
-        NSURLConnection.connection.productDetailRequest(with: (productListModel?.id)!)
+        NSURLConnection.connection.productDetailRequest(with: (productListModel?.id)!){ isSuccess, productDetailModel in
+            if isSuccess {
+                self.headView?.model = productDetailModel?.produceinfo
+            } else {
+                SKProgressHUD.setErrorString(with: "请求信息失败")
+            }
+            
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         navBgView?.backgroundColor = UIColor().mainColor

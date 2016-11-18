@@ -38,10 +38,18 @@ class SKProductVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SKNoUserLoginNotifiction), object: nil, queue: OperationQueue.main) { notifiction in
+            self.present(SKLoginController(), animated: true, completion: nil)
+            
+        }
+        
         addSubView()
         
         
         loadData()
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     func loadData() {
         

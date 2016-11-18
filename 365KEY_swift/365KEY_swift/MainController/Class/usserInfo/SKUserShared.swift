@@ -48,6 +48,37 @@ class SKUserShared: NSObject, NSCoding {
         if compariseResult != .orderedDescending {
             return nil
         }
+        
+        
+        
+        return userShared
+        
+        
+    }
+    // 用于获取登录信息失败是弹出登录界面的方法（上面的方法及时获取登录信息失败也不弹出登录按钮）
+    class func getUserSharedNeedPresentLoginView() -> SKUserShared? {
+        
+        let userShared = NSKeyedUnarchiver.unarchiveObject(withFile: SKUserSharedFilePath) as? SKUserShared ?? SKUserShared()
+        if userShared.uid == 0 {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: SKNoUserLoginNotifiction), object: nil)
+            
+            return nil
+        }
+        
+        let nowDate = Date()
+        // 7776000
+        let threeMouth: TimeInterval = 7776000
+        
+        let expiresTime = Date(timeInterval: threeMouth, since: userShared.loginData)
+        
+        let compariseResult = expiresTime.compare(nowDate)
+        
+        if compariseResult != .orderedDescending {
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: SKNoUserLoginNotifiction), object: nil)
+            return nil
+        }
+        
         return userShared
         
         
