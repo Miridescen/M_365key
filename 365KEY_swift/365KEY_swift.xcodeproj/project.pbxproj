@@ -11,6 +11,8 @@
 		1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */; };
 		1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */; };
 		1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */; };
+		1D2C6A921DE2E90F007D9D4D /* SKProductDetailBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C6A911DE2E90F007D9D4D /* SKProductDetailBtnView.swift */; };
+		1D2C6A941DE2F345007D9D4D /* SKProductDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C6A931DE2F345007D9D4D /* SKProductDetailInfoView.swift */; };
 		1D3F296C1DC8721A00C0F998 /* SKLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F296A1DC8721A00C0F998 /* SKLoginController.swift */; };
 		1D3F296D1DC8721A00C0F998 /* SKLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3F296B1DC8721A00C0F998 /* SKLoginController.xib */; };
 		1D3F29701DC882E000C0F998 /* SKRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F296E1DC882E000C0F998 /* SKRegisterController.swift */; };
@@ -60,6 +62,8 @@
 		1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSessionManage.swift; sourceTree = "<group>"; };
 		1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSessionManage+extension.swift"; sourceTree = "<group>"; };
 		1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLConnection+extension.swift"; sourceTree = "<group>"; };
+		1D2C6A911DE2E90F007D9D4D /* SKProductDetailBtnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailBtnView.swift; sourceTree = "<group>"; };
+		1D2C6A931DE2F345007D9D4D /* SKProductDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailInfoView.swift; sourceTree = "<group>"; };
 		1D3F296A1DC8721A00C0F998 /* SKLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLoginController.swift; sourceTree = "<group>"; };
 		1D3F296B1DC8721A00C0F998 /* SKLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKLoginController.xib; sourceTree = "<group>"; };
 		1D3F296E1DC882E000C0F998 /* SKRegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKRegisterController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 			children = (
 				1D5E82431DD459F8003E9D14 /* SKProductDetailHeadView.swift */,
 				1D5E82471DD45A54003E9D14 /* ProductDetailHeadView.xib */,
+				1D2C6A911DE2E90F007D9D4D /* SKProductDetailBtnView.swift */,
+				1D2C6A931DE2F345007D9D4D /* SKProductDetailInfoView.swift */,
 			);
 			path = ProductDetailView;
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D5E81FC1DD02399003E9D14 /* SKUserInfo.swift in Sources */,
+				1D2C6A941DE2F345007D9D4D /* SKProductDetailInfoView.swift in Sources */,
 				1D5E82001DD1776A003E9D14 /* SVProgressHUD+extension.swift in Sources */,
 				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
 				1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */,
@@ -477,6 +484,7 @@
 				1D3F29771DC9C3BF00C0F998 /* SKProductDetailController.swift in Sources */,
 				1D60E3A31DDD8F910015A7A8 /* SKProductDetailProductInfoModel.swift in Sources */,
 				1D60E3A11DDD8D0A0015A7A8 /* SKProductDetailUserInfoModel.swift in Sources */,
+				1D2C6A921DE2E90F007D9D4D /* SKProductDetailBtnView.swift in Sources */,
 				1D3F29701DC882E000C0F998 /* SKRegisterController.swift in Sources */,
 				1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */,
 				1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */,

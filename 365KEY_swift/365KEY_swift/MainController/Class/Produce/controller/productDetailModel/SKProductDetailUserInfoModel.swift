@@ -12,7 +12,10 @@ class SKProductDetailUserInfoModel: NSObject {
     
     var thumbnail: String? {
         didSet{
-            let showThumbanilString = (thumbnail?.hasPrefix("http"))! ? thumbnail: "http://www.365key.com\(thumbnail)"
+            guard let thunbal = thumbnail else {
+                return
+            }
+            let showThumbanilString = thunbal.hasPrefix("http") ? thunbal: "http://www.365key.com" + thunbal
             showThumbnail = showThumbanilString
         }
     }

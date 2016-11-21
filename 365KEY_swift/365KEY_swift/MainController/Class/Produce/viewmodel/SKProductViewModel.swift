@@ -21,7 +21,6 @@ class SKProductViewModel: NSObject {
             params["id"] = SKUserShared.getUserShared()?.uid as AnyObject?
         }
         
-        
         if isPullUp {
             
             let modelDic = prodectDataArray[prodectDataArray.count-1]

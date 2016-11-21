@@ -37,9 +37,12 @@ class SKProdectCell: UITableViewCell {
             
             nameLabel.text = productListModel?.pro_name
             
-            let headImageStr = (productListModel?.userinfo?.thumbnail?.hasPrefix("http"))! ? productListModel?.userinfo?.thumbnail: "http://www.365key.com\(productListModel?.userinfo?.thumbnail)"
+            guard let thunbal = productListModel?.userinfo?.thumbnail else {
+                return
+            }
+            let headImageStr = thunbal.hasPrefix("http") ? thunbal: "http://www.365key.com" + thunbal
             
-            headImageView.sd_setImage(with: URL(string: headImageStr!), placeholderImage: UIImage(named: "pic_touxiang_little"))
+            headImageView.sd_setImage(with: URL(string: headImageStr), placeholderImage: UIImage(named: "pic_touxiang_little"))
             
             introduceLabel.text = (productListModel?.info?.isEmpty)! ? "无简介" : productListModel?.info
             

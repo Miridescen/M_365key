@@ -19,9 +19,8 @@ class SKUserInfo: NSObject, NSCoding {
                 return
             }
             
-            let headImageStr = (thumbnail.hasPrefix("http")) ? thumbnail: "http://www.365key.com\(thumbnail)"
-            print(headImageStr)
-            thumbnailData = NSData(contentsOf: URL(string: "http://www.365key.com/upload/user/569854ac3c587.jpeg")!)
+            let headImageStr = thumbnail.hasPrefix("http") ? thumbnail: "http://www.365key.com" + thumbnail
+            thumbnailData = NSData(contentsOf: URL(string: headImageStr)!)
             
         }
     }

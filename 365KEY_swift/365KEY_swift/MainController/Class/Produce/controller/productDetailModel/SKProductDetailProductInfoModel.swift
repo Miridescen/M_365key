@@ -15,7 +15,10 @@ class SKProductDetailProductInfoModel: NSObject, YYModel {
     var id: Int64 = 0
     var image: String? {
         didSet{
-            let showImageString = (image?.hasPrefix("http"))! ? image : "http://www.365key.com\(image)"
+            guard let image1 = image else {
+                return
+            }
+            let showImageString = image1.hasPrefix("http") ? image1 : "http://www.365key.com" + image1
             showImage = showImageString
         }
     }

@@ -24,6 +24,7 @@ class SKProductDetailHeadView: UIView {
             } else {
                 upImageView.image = UIImage(named: "icon_up1")
                 goodButton.isSelected = true
+                goodButton.isUserInteractionEnabled = false
             }
             guard let priesent = model?.praisecount else {
                 return
@@ -74,18 +75,54 @@ class SKProductDetailHeadView: UIView {
         params["type"] = "good" as AnyObject?
         params["model"] = "pro" as AnyObject?
         
-        let isSuccess = NSURLConnection.connection.productGoodBtnDidClick(with: params)
-        if isSuccess {
-            SKProgressHUD.setSuccessString(with: "点赞成功")
-        } else {
-            SKProgressHUD.setErrorString(with: "点赞失败")
+        NSURLConnection.connection.productGoodBtnDidClick(with: params) { isSuccess in
+            if isSuccess {
+                self.upImageView.image = UIImage(named: "icon_up1")
+                sender.isUserInteractionEnabled = false
+                SKProgressHUD.setSuccessString(with: "点赞成功")
+                guard let priesent = self.model?.praisecount else {
+                    return
+                }
+                self.numLabel.text = "\(priesent+1)"
+            } else {
+                SKProgressHUD.setErrorString(with: "点赞失败")
+            }
         }
-        
-        
     }
     @IBOutlet weak var focusButton: UIButton!
     @IBAction func focusBtn(_ sender: UIButton) {
         print("关注")
+        let userShard = SKUserShared.getUserSharedNeedPresentLoginView()
+        if userShard == nil {
+            return
+        }
+        var params = [String: AnyObject]()
+        
+        params["uid"] = userShard?.uid as AnyObject?
+        params["id"] = model?.id as AnyObject?
+        params["type"] = "gz" as AnyObject?
+        params["model"] = "pro" as AnyObject?
+        
+        if !sender.isSelected {
+            NSURLConnection.connection.productGoodBtnDidClick(with: params) { isSuccess in
+                if isSuccess {
+                    SKProgressHUD.setSuccessString(with: "关注成功")
+                    sender.isSelected = !sender.isSelected
+                } else {
+                    SKProgressHUD.setErrorString(with: "点赞失败")
+                }
+            }
+        } else {
+            NSURLConnection.connection.productCancleFocusRequest(params: params, completion: { (isSuccess) in
+                if isSuccess {
+                    SKProgressHUD.setSuccessString(with: "取消关注成功")
+                    sender.isSelected = !sender.isSelected
+                } else {
+                    SKProgressHUD.setErrorString(with: "取消关注失败")
+                }
+            })
+        }
+        
     }
     @IBOutlet weak var upImageView: UIImageView!{
         didSet{

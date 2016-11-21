@@ -17,33 +17,46 @@ extension NSURLConnection{
         return connectionShare
         
     }()
-    // MARK: 产品详情页点赞
-    func productGoodBtnDidClick(with params: [String: AnyObject]) -> Bool {
+    // mark: 取消产品详情页关注接口
+    func productCancleFocusRequest(params: [String: AnyObject], completion: @escaping(_ isSuccess: Bool)->()) {
+        let urlString = "http://www.365key.com/Right/cancel_follow_modile"
+        print(params)
+        connectionRequest(urlString: urlString, paramers: params){ (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        completion(false)
+                        return
+                }
+                completion(code2 as! Int == 0 ? true : false)
+                
+            } else {
+                completion(false)
+            }
+        }
+    }
+    // MARK: 产品详情页点赞或者关注接口（参数不同功能不同）
+    func productGoodBtnDidClick(with params: [String: AnyObject], completion: @escaping(_ isSuccess: Bool)-> ()) {
         let urlString = "http://www.365key.com/Right/follow_for_modile"
-        var isSuccess: Bool = false
-        
-        
+        print(params)
         connectionRequest(urlString: urlString, paramers: params) { (bool, data) in
             if bool {
                 let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
                 let code = jsonData!["code"]
                 guard let code1 = code,
                     let code2 = code1 else {
-                        isSuccess = false
+                        completion(false)
                         return
                 }
-                if code2 as! Int == 0 {
-                    isSuccess = true
-                } else {
-                    isSuccess = false
-                }
-                
+                completion(code2 as! Int == 0 ? true : false)
                 
             } else {
-                isSuccess = false
+                completion(false)
             }
         }
-        return isSuccess
+        
         
     }
     // MARK: 产品详情请求
@@ -52,7 +65,7 @@ extension NSURLConnection{
         var params = [String: AnyObject]()
         params["pid"] = productID as AnyObject?
         if SKUserShared.getUserShared()?.uid != 0 {
-            params["id"] = SKUserShared.getUserShared()?.uid as AnyObject?
+            params["uid"] = SKUserShared.getUserShared()?.uid as AnyObject?
         }
         
         print("params == \(params)")
@@ -61,7 +74,6 @@ extension NSURLConnection{
             
             if bool {
                 let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: [])
-                
                 guard let jsondata: Any = jsonData else{
                     return
                 }
@@ -148,7 +160,7 @@ extension NSURLConnection{
         
     }
     // MARK: 检查获取验证码时，手机号是否被用过
-    func checkPhoneNumIsUsed(with phoneNumber: String) -> Bool {
+    func checkPhoneNumIsUsed(with phoneNumber: String, completion:@escaping (_ isSuccess: Bool)->()) {
         let urlStr = "http://www.365key.com/User/check_phone_mobile"
         var params = [String: AnyObject]()
         params["phone"] = phoneNumber as AnyObject?
@@ -164,12 +176,13 @@ extension NSURLConnection{
                         return
                 }
                 used = code2 as! Int == 0 ? true : false
+                completion(used)
             } else {
                 used = false
+                completion(false)
             }
+            
         }
- 
-        return used
         
     }
     // MARK: 个人中心信息请求

@@ -17,55 +17,59 @@ class SKForgotPasswordController: UIViewController {
     @IBAction func fitchChaptchBtn(_ sender: UIButton) {
         print("获取验证码")
         if checkPhoneNum(string: phoneNumTF.text!) {
-            let available = NSURLConnection.connection.checkPhoneNumIsUsed(with: phoneNumTF.text!)
-            if available {
-                // 倒计时
-                var timeout: Int = 60
-                let queue = DispatchQueue.global()
-                let source = DispatchSource.makeTimerSource(flags: [], queue: queue)
-                source.scheduleRepeating(deadline: .now(), interval: DispatchTimeInterval.seconds(1), leeway: DispatchTimeInterval.milliseconds(100))
-                source.setEventHandler{
-                    timeout -= 1
-                    if timeout <= 0 {
-                        source.cancel()
-                        DispatchQueue.main.async {
-                            sender.setTitle("获取", for: .normal)
-                            sender.isUserInteractionEnabled = true
-                        }
-                        
-                    } else {
-                        sender.isUserInteractionEnabled = false
-                        DispatchQueue.main.async {
+            
+            NSURLConnection.connection.checkPhoneNumIsUsed(with: phoneNumTF.text!) { isSuccess in
+                
+                if isSuccess {
+                    // 倒计时
+                    var timeout: Int = 60
+                    let queue = DispatchQueue.global()
+                    let source = DispatchSource.makeTimerSource(flags: [], queue: queue)
+                    source.scheduleRepeating(deadline: .now(), interval: DispatchTimeInterval.seconds(1), leeway: DispatchTimeInterval.milliseconds(100))
+                    source.setEventHandler{
+                        timeout -= 1
+                        if timeout <= 0 {
+                            source.cancel()
+                            DispatchQueue.main.async {
+                                sender.setTitle("获取", for: .normal)
+                                sender.isUserInteractionEnabled = true
+                            }
                             
-                            UIView.beginAnimations(nil, context: nil)
-                            UIView.setAnimationDuration(1)
-                            sender.setTitle("\(timeout)秒", for: .normal)
-                            UIView.commitAnimations()
+                        } else {
+                            sender.isUserInteractionEnabled = false
+                            DispatchQueue.main.async {
+                                
+                                UIView.beginAnimations(nil, context: nil)
+                                UIView.setAnimationDuration(1)
+                                sender.setTitle("\(timeout)秒", for: .normal)
+                                UIView.commitAnimations()
+                            }
                         }
                     }
-                }
-                source.resume()
-                
-                // 发送请求
-                NSURLConnection.connection.registerFatchCaptcha(with: phoneNumTF.text!){isSuccess,codeNum in
+                    source.resume()
                     
-                    
-                    switch codeNum! {
-                    case 0:{
-                        SKProgressHUD.setSuccessString(with: "验证码发送成功")
-                    }()
-                    case 1:{
-                        SKProgressHUD.setErrorString(with: "手机号已被注册")
-                    }()
-                    default:{
-                        SKProgressHUD.setErrorString(with: "验证码发送失败")
-                    }()
+                    // 发送请求
+                    NSURLConnection.connection.registerFatchCaptcha(with: self.phoneNumTF.text!){isSuccess,codeNum in
+                        
+                        
+                        switch codeNum! {
+                        case 0:{
+                            SKProgressHUD.setSuccessString(with: "验证码发送成功")
+                        }()
+                        case 1:{
+                            SKProgressHUD.setErrorString(with: "手机号已被注册")
+                        }()
+                        default:{
+                            SKProgressHUD.setErrorString(with: "验证码发送失败")
+                        }()
+                        }
                     }
+                    
+                } else {
+                    SKProgressHUD.setErrorString(with: "该手机号已被注册")
                 }
-                
-            } else {
-                SKProgressHUD.setErrorString(with: "该手机号已被注册")
             }
+            
         }
     }
     @IBAction func sureBtn(_ sender: UIButton) {
