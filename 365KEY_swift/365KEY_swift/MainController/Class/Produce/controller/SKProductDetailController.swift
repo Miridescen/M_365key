@@ -65,19 +65,20 @@ extension SKProductDetailController {
         
         buttonView = SKProductDetailBtnView(frame: CGRect(x: 0, y: 290, width: UIScreen.main.screenWidth, height: 50))
         buttonView?.firstBtn?.addTarget(self, action: #selector(firstBtnDidClick), for: .touchUpInside)
+        buttonView?.firstBtn?.isSelected = true
         buttonView?.secondBtn?.addTarget(self, action: #selector(secondBtnDidClick), for: .touchUpInside)
         buttonView?.thirdBtn?.addTarget(self, action: #selector(thirdBtnDidClick), for: .touchUpInside)
         bgScrollView?.addSubview(buttonView!)
         
         detailView = UIView(frame: CGRect(x: 0, y: 340, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-64-50))
-        detailView?.backgroundColor = UIColor.blue
+        detailView?.backgroundColor = UIColor.white
         bgScrollView?.addSubview(detailView!)
         
         detailInfoScrollView = SKProductDetailInfoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-64-50))
+        detailInfoScrollView?.isScrollEnabled = false
+        detailInfoScrollView?.bounces = false
         detailView?.addSubview(detailInfoScrollView!)
-        
-        
-   
+
     }
     @objc func firstBtnDidClick(btn: UIButton){
         btn.isSelected = true
@@ -127,12 +128,31 @@ extension SKProductDetailController: UIScrollViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == bgScrollView {
-            
-            let scale = ((bgScrollView?.contentOffset.y)!+20)/162
-            if scale<=1 && scale>=0 {
-                navBgView?.backgroundColor = UIColor(red: 252/255.0, green: 102/255.0, blue: 34/255.0, alpha: scale)
+            if scrollView.contentOffset.y >= -20 {
+                let scale = (scrollView.contentOffset.y+20)/226
+                if scale<=1 && scale>=0 {
+                    navBgView?.backgroundColor = UIColor(red: 252/255.0, green: 102/255.0, blue: 34/255.0, alpha: scale)
+                }
             }
             
+            if scrollView.contentOffset.y >= 206 {
+                scrollView.setContentOffset(CGPoint(x: 0, y: 206), animated: false)
+                detailInfoScrollView?.isScrollEnabled = true
+            } else {
+                detailInfoScrollView?.isScrollEnabled = false
+            }
+        }
+        
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        print("anyimation = \(scrollView.contentOffset.y)")
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("decelerating = \(scrollView.contentOffset.y)")
+        let scale = (scrollView.contentOffset.y+20)/226
+        if scale<=1 && scale>=0 {
+            navBgView?.backgroundColor = UIColor(red: 252/255.0, green: 102/255.0, blue: 34/255.0, alpha: scale)
         }
     }
     

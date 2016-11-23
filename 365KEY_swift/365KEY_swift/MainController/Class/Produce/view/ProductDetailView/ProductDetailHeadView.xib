@@ -95,11 +95,6 @@
                                 <constraint firstAttribute="height" constant="40" id="blZ-oX-YR4"/>
                                 <constraint firstAttribute="width" constant="40" id="s7R-W7-pls"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
-                                    <integer key="value" value="20"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>

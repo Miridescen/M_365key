@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // 沙盒路径
 let SKDocumentFilePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
@@ -21,4 +22,14 @@ let SKUserSharedFilePath = (SKDocumentFilePath! as NSString).appendingPathCompon
 let SKUserLoginSuccessNotifiction = "SKUserLoginSuccessNotifiction"
 // 当前没有用户登录通知，用于弹出登录界面
 let SKNoUserLoginNotifiction = "SKNoUserLoginNotifiction"
+
+// 根据给定的宽，字体大小和内容，给出label的大小
+func SKLabelSizeWith(labelText: String, font: UIFont = UIFont.systemFont(ofSize: 17), width: CGFloat) -> CGSize {
+    let attrs = [NSFontAttributeName: font]
+    
+    let cString = NSString(cString: labelText.cString(using: String.Encoding.utf8)!, encoding: String.Encoding.utf8.rawValue)
+    
+    return (cString?.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attrs, context: nil).size)!
+   
+}
 

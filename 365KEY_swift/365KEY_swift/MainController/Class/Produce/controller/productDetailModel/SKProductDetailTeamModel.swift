@@ -17,7 +17,19 @@ class SKProductDetailTeamModel: NSObject {
     var name: String?
     var pro_id: Int64 = 0
     var role_id: Int64 = 0
-    var thumbnail: String?
+    var thumbnail: String? {
+        
+        didSet{
+            guard let thumb = thumbnail else {
+                return
+            }
+            showThumbnail = thumb.hasPrefix("http") ? thumb : "http://www.365key.com" + thumb
+        }
+    }
+    
+    var showThumbnail: String?
+    
+    
     var weight: Int64 = 0
     
     override var description: String{

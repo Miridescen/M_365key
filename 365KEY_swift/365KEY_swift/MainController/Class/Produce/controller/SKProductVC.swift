@@ -31,8 +31,6 @@ class SKProductVC: UIViewController {
     
     var productViewModel = SKProductViewModel()
     
-    
-    
     lazy var noInfoLabel = UILabel(frame: CGRect(x: 0, y: 50, width: UIScreen.main.screenWidth, height: 50))
     
     override func viewDidLoad() {
@@ -44,8 +42,7 @@ class SKProductVC: UIViewController {
         }
         
         addSubView()
-        
-        
+  
         loadData()
     }
     deinit {
@@ -76,8 +73,6 @@ class SKProductVC: UIViewController {
         isPullUp = false
     
     }
-
-   
 
 }
 extension SKProductVC: UITextFieldDelegate{
