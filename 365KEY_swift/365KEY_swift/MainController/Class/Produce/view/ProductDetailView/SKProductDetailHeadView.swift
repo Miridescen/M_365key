@@ -31,7 +31,13 @@ class SKProductDetailHeadView: UIView {
             }
             numLabel.text = "\(priesent)"
             peopleNameLabel.text = model?.userinfo?.username
-            picTouxingImageView.sd_setImage(with: URL(string: (model?.userinfo?.showThumbnail)!), placeholderImage: UIImage(named: "pic_touxiang_little"))
+            
+            if model?.userinfo?.showThumbnail == nil {
+                picTouxingImageView.image = UIImage(named: "pic_touxiang_little")
+            } else {
+                picTouxingImageView.sd_setImage(with: URL(string: (model?.userinfo?.showThumbnail)!), placeholderImage: UIImage(named: "pic_touxiang_little"))
+            }
+            
             
             if (model?.info?.isEmpty)! {
                 introduceLabel.text = "无简介"

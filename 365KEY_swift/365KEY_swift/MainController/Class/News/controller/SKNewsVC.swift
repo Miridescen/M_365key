@@ -1,25 +1,23 @@
 //
-//  SKProductVC.swift
+//  SKNewsVC.swift
 //  365KEY_swift
 //
-//  Created by 牟松 on 2016/11/2.
+//  Created by 牟松 on 2016/11/25.
 //  Copyright © 2016年 DoNews. All rights reserved.
 //
 
 import UIKit
 
-private let produceCellID = "produceCellID"
+private let newsCellID = "newsCellID"
 
-class SKProductVC: UIViewController {
-    
+class SKNewsVC: UIViewController {
     var refControl: UIRefreshControl?
-    
-    var searchView: SKProduceSearchView?
     
     var navBar: UINavigationBar?
     
     var navItem: UINavigationItem?
     
+    var searchView: SKProduceSearchView?
     
     var tableView: UITableView?
     
@@ -27,37 +25,33 @@ class SKProductVC: UIViewController {
     
     // 用于判断是否是上啦加载
     var isPullUp = false
-    
-    var productViewModel = SKProductViewModel()
-    
+    var newsViewModel = SKNewsViewModel()
     lazy var noInfoLabel = UILabel(frame: CGRect(x: 0, y: 50, width: UIScreen.main.screenWidth, height: 50))
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SKNoUserLoginNotifiction), object: nil, queue: OperationQueue.main) { notifiction in
             self.present(SKLoginController(), animated: true, completion: nil)
             
         }
         
         addSubView()
-  
+        
         loadData()
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
     func loadData() {
-        
         print("加载数据")
         
-        productViewModel.loadProductData(isPullUp: isPullUp){ isSuccess in
+        newsViewModel.loadNewsData(isPullUp: isPullUp){ isSuccess in
             if isSuccess{
                 self.tableView?.reloadData()
                 self.noInfoLabel.removeFromSuperview()
                 self.tableView?.tableFooterView?.isHidden = false
             } else {
-                if self.productViewModel.prodectDataArray.count == 0{
+                if self.newsViewModel.newsDataArray.count == 0{
                     self.addNoInfoView(with: "暂无内容")
                 }
             }
@@ -70,19 +64,10 @@ class SKProductVC: UIViewController {
             
         }
         isPullUp = false
-    
     }
 
 }
-extension SKProductVC: UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(123)
-        return true
-    }
-}
-
-extension SKProductVC{
-    
+extension SKNewsVC {
     
     @objc private func searchButtonDidclick(){
         // MARK: 添加searchBar
@@ -90,15 +75,8 @@ extension SKProductVC{
         searchView?.searchTF?.delegate = self
         navBar?.addSubview(searchView!)
     }
-    @objc private func addButtonDidClick(){
-        
-        let loginVC = SKNavigationController(rootViewController: SKLoginController())
- 
-        present(loginVC, animated: true, completion: nil)
-    }
-    // MARK: 添加subView
+    
     func addSubView() {
-        
         navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.barTintColor = UIColor().mainColor
@@ -108,7 +86,6 @@ extension SKProductVC{
         navItem = UINavigationItem()
         navItem?.title = "365KEY"
         navItem?.leftBarButtonItem = UIBarButtonItem(SK_barButtonItem: UIImage(named:"icon_search"), selectorImage: UIImage(named:"icon_search"), tragtic: self, action: #selector(searchButtonDidclick))
-        navItem?.rightBarButtonItem = UIBarButtonItem(SK_barButtonItem: UIImage(named:"icon_add"), selectorImage: UIImage(named:"icon_add"), tragtic: self, action: #selector(addButtonDidClick))
         
         navBar?.items = [navItem!]
         
@@ -118,12 +95,12 @@ extension SKProductVC{
         tableView?.delegate = self
         tableView?.dataSource = self
         tableView?.separatorStyle = .none
-        tableView?.register(UINib(nibName: "SKProdectCell", bundle: nil), forCellReuseIdentifier: produceCellID)
+        tableView?.register(UINib(nibName: "SKNewsCell", bundle: nil), forCellReuseIdentifier: newsCellID)
         tableView?.contentInset = UIEdgeInsets(top: 44, left: 0, bottom:  tabBarController?.tabBar.bounds.height ?? 49, right: 0)
         
         tableView?.scrollIndicatorInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
         tableView?.rowHeight = UITableViewAutomaticDimension
-        tableView?.estimatedRowHeight = 300
+        tableView?.estimatedRowHeight = 100
         view.insertSubview(tableView!, at: 0)
         
         refControl = UIRefreshControl()
@@ -137,7 +114,9 @@ extension SKProductVC{
             tableView?.addSubview(refControl!)
         }
         
-
+        
+        
+        
         let footView = UIButton()
         footView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 60)
         footView.setTitle("点击加载更多", for: .normal)
@@ -153,8 +132,8 @@ extension SKProductVC{
         activityView?.color = UIColor.gray
         view.addSubview(activityView!)
         view.bringSubview(toFront: activityView!)
-        
     }
+    
     @objc func touchFooterView(){
         isPullUp = true
         loadData()
@@ -170,16 +149,14 @@ extension SKProductVC{
     
 }
 
-extension SKProductVC: UITableViewDelegate, UITableViewDataSource{
-    // MARK: - Table view data source
-    
+extension SKNewsVC: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return productViewModel.prodectDataArray.count
+        return newsViewModel.newsDataArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let dic = productViewModel.prodectDataArray[section] as [String : [SKProductListModel]]
+        let dic = newsViewModel.newsDataArray[section] as [String : [SKNewsListModel]]
         
         let keyValue = dic[dic.startIndex]
         let value = keyValue.1
@@ -190,15 +167,15 @@ extension SKProductVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: produceCellID, for: indexPath) as! SKProdectCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: newsCellID, for: indexPath) as! SKNewsCell
         
         
-        let dic = productViewModel.prodectDataArray[indexPath.section]
+        let dic = newsViewModel.newsDataArray[indexPath.section]
         
         let keyValue = dic[dic.startIndex]
         let value = keyValue.1
-        cell.productListModel = value[indexPath.row]
-        
+        cell.newsListModel = value[indexPath.row]
+
         return cell
         
         
@@ -214,7 +191,7 @@ extension SKProductVC: UITableViewDelegate, UITableViewDataSource{
         let strIndex = todayDate.index(todayDate.startIndex, offsetBy: 10)
         let todayDateStr = todayDate.substring(to: strIndex)
         
-        let dic = productViewModel.prodectDataArray[section] as [String : [SKProductListModel]]
+        let dic = newsViewModel.newsDataArray[section] as [String : [SKNewsListModel]]
         let keyValue = dic[dic.startIndex]
         let value = keyValue.0
         
@@ -238,7 +215,7 @@ extension SKProductVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        if indexPath.section == productViewModel.prodectDataArray.count-1 && !isPullUp && indexPath.row == 0{
+        if indexPath.section == newsViewModel.newsDataArray.count-1 && !isPullUp && indexPath.row == 0{
             isPullUp = true
             loadData()
             
@@ -247,19 +224,21 @@ extension SKProductVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135
+        return 113
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let dic = productViewModel.prodectDataArray[indexPath.section]
+        
+        let dic = newsViewModel.newsDataArray[indexPath.section]
         let keyValue = dic[dic.startIndex]
         let value = keyValue.1
-        let productListModel = value[indexPath.row]
         
-        let detailVC = SKProductDetailController()
-        detailVC.productListModel = productListModel
+        let newsDetailVC = SKNewsDetailController()
+        newsDetailVC.newsListModel = value[indexPath.row]
         
-        navigationController?.pushViewController(detailVC, animated: true)
+        navigationController?.pushViewController(newsDetailVC, animated: true)
     }
 }
-
+extension SKNewsVC: UITextFieldDelegate{
+    
+}

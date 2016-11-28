@@ -11,8 +11,18 @@
 		1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */; };
 		1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */; };
 		1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */; };
+		1D2AF1661DEBCB1900E618D3 /* SKNewsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2AF1641DEBCB1900E618D3 /* SKNewsDetailController.swift */; };
+		1D2AF16A1DEBD17E00E618D3 /* SKNewsDetailHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2AF1691DEBD17E00E618D3 /* SKNewsDetailHeadView.swift */; };
+		1D2AF16C1DEBD19C00E618D3 /* SKNewsDetailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2AF16B1DEBD19C00E618D3 /* SKNewsDetailButtonView.swift */; };
+		1D2AF16E1DEBD1AF00E618D3 /* SKNewsDetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2AF16D1DEBD1AF00E618D3 /* SKNewsDetailScrollView.swift */; };
+		1D2AF1701DEBD42400E618D3 /* SKNewsDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2AF16F1DEBD42400E618D3 /* SKNewsDetailModel.swift */; };
 		1D2C6A921DE2E90F007D9D4D /* SKProductDetailBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C6A911DE2E90F007D9D4D /* SKProductDetailBtnView.swift */; };
 		1D2C6A941DE2F345007D9D4D /* SKProductDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C6A931DE2F345007D9D4D /* SKProductDetailInfoView.swift */; };
+		1D39C64C1DE81E860017289F /* SKNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C64B1DE81E860017289F /* SKNewsVC.swift */; };
+		1D39C64F1DE828BA0017289F /* SKNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C64E1DE828BA0017289F /* SKNewsViewModel.swift */; };
+		1D39C6511DE8292E0017289F /* SKNewsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C6501DE8292E0017289F /* SKNewsListModel.swift */; };
+		1D39C6541DE839C50017289F /* SKNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C6521DE839C50017289F /* SKNewsCell.swift */; };
+		1D39C6551DE839C50017289F /* SKNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D39C6531DE839C50017289F /* SKNewsCell.xib */; };
 		1D3F296C1DC8721A00C0F998 /* SKLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F296A1DC8721A00C0F998 /* SKLoginController.swift */; };
 		1D3F296D1DC8721A00C0F998 /* SKLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3F296B1DC8721A00C0F998 /* SKLoginController.xib */; };
 		1D3F29701DC882E000C0F998 /* SKRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F296E1DC882E000C0F998 /* SKRegisterController.swift */; };
@@ -44,7 +54,6 @@
 		1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */; };
 		1DBABE411DBE0EA900745C5D /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */; };
 		1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DCE1DB89D61003E65E3 /* SKTabBarController.swift */; };
-		1DED7DD61DB89FAE003E65E3 /* SKNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DD51DB89FAE003E65E3 /* SKNewsController.swift */; };
 		1DED7DDB1DB8A070003E65E3 /* SKLunchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DDA1DB8A070003E65E3 /* SKLunchImageViewController.swift */; };
 		1DED7DDE1DB8A562003E65E3 /* UIScreen+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DDD1DB8A562003E65E3 /* UIScreen+extension.swift */; };
 		1DED7DE11DB8B786003E65E3 /* SKNewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DE01DB8B786003E65E3 /* SKNewFeatureController.swift */; };
@@ -62,8 +71,18 @@
 		1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSessionManage.swift; sourceTree = "<group>"; };
 		1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSessionManage+extension.swift"; sourceTree = "<group>"; };
 		1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLConnection+extension.swift"; sourceTree = "<group>"; };
+		1D2AF1641DEBCB1900E618D3 /* SKNewsDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsDetailController.swift; sourceTree = "<group>"; };
+		1D2AF1691DEBD17E00E618D3 /* SKNewsDetailHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsDetailHeadView.swift; sourceTree = "<group>"; };
+		1D2AF16B1DEBD19C00E618D3 /* SKNewsDetailButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsDetailButtonView.swift; sourceTree = "<group>"; };
+		1D2AF16D1DEBD1AF00E618D3 /* SKNewsDetailScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsDetailScrollView.swift; sourceTree = "<group>"; };
+		1D2AF16F1DEBD42400E618D3 /* SKNewsDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsDetailModel.swift; sourceTree = "<group>"; };
 		1D2C6A911DE2E90F007D9D4D /* SKProductDetailBtnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailBtnView.swift; sourceTree = "<group>"; };
 		1D2C6A931DE2F345007D9D4D /* SKProductDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailInfoView.swift; sourceTree = "<group>"; };
+		1D39C64B1DE81E860017289F /* SKNewsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsVC.swift; sourceTree = "<group>"; };
+		1D39C64E1DE828BA0017289F /* SKNewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsViewModel.swift; sourceTree = "<group>"; };
+		1D39C6501DE8292E0017289F /* SKNewsListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsListModel.swift; sourceTree = "<group>"; };
+		1D39C6521DE839C50017289F /* SKNewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsCell.swift; sourceTree = "<group>"; };
+		1D39C6531DE839C50017289F /* SKNewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKNewsCell.xib; sourceTree = "<group>"; };
 		1D3F296A1DC8721A00C0F998 /* SKLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLoginController.swift; sourceTree = "<group>"; };
 		1D3F296B1DC8721A00C0F998 /* SKLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKLoginController.xib; sourceTree = "<group>"; };
 		1D3F296E1DC882E000C0F998 /* SKRegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKRegisterController.swift; sourceTree = "<group>"; };
@@ -97,7 +116,6 @@
 		1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+extension.swift"; sourceTree = "<group>"; };
 		1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
 		1DED7DCE1DB89D61003E65E3 /* SKTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTabBarController.swift; sourceTree = "<group>"; };
-		1DED7DD51DB89FAE003E65E3 /* SKNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsController.swift; sourceTree = "<group>"; };
 		1DED7DDA1DB8A070003E65E3 /* SKLunchImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLunchImageViewController.swift; sourceTree = "<group>"; };
 		1DED7DDD1DB8A562003E65E3 /* UIScreen+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+extension.swift"; sourceTree = "<group>"; };
 		1DED7DE01DB8B786003E65E3 /* SKNewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewFeatureController.swift; sourceTree = "<group>"; };
@@ -135,6 +153,65 @@
 			);
 			path = tool;
 			sourceTree = "<group>";
+		};
+		1D2AF1681DEBD14F00E618D3 /* NewsDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				1D2AF1691DEBD17E00E618D3 /* SKNewsDetailHeadView.swift */,
+				1D2AF16B1DEBD19C00E618D3 /* SKNewsDetailButtonView.swift */,
+				1D2AF16D1DEBD1AF00E618D3 /* SKNewsDetailScrollView.swift */,
+			);
+			name = NewsDetailView;
+			path = 365KEY_swift/MainController/Class/News/viewModel/NewsDetailView;
+			sourceTree = SOURCE_ROOT;
+		};
+		1D39C6471DE81CB70017289F /* News */ = {
+			isa = PBXGroup;
+			children = (
+				1D39C6481DE81E690017289F /* controller */,
+				1D39C6491DE81E690017289F /* model */,
+				1D39C64D1DE8287B0017289F /* viewModel */,
+				1D39C64A1DE81E690017289F /* view */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		1D39C6481DE81E690017289F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D39C64B1DE81E860017289F /* SKNewsVC.swift */,
+				1D2AF1641DEBCB1900E618D3 /* SKNewsDetailController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		1D39C6491DE81E690017289F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1D39C6501DE8292E0017289F /* SKNewsListModel.swift */,
+				1D2AF16F1DEBD42400E618D3 /* SKNewsDetailModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		1D39C64A1DE81E690017289F /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1D2AF1681DEBD14F00E618D3 /* NewsDetailView */,
+				1D39C6521DE839C50017289F /* SKNewsCell.swift */,
+				1D39C6531DE839C50017289F /* SKNewsCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		1D39C64D1DE8287B0017289F /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D39C64E1DE828BA0017289F /* SKNewsViewModel.swift */,
+			);
+			name = viewModel;
+			path = 365KEY_swift/MainController/Class/News/viewModel;
+			sourceTree = SOURCE_ROOT;
 		};
 		1D3AE6BB1DCB20CE00119A0E /* usserInfo */ = {
 			isa = PBXGroup;
@@ -186,10 +263,10 @@
 		1D63CF8D1DBEF39800955DDF /* Produce */ = {
 			isa = PBXGroup;
 			children = (
-				1DEF23131DC1A5CE0063968B /* viewmodel */,
-				1DEF230E1DC0A6420063968B /* model */,
 				1D63CF901DBEF3CF00955DDF /* controller */,
 				1D63CF921DBEF3CF00955DDF /* view */,
+				1DEF23131DC1A5CE0063968B /* viewmodel */,
+				1DEF230E1DC0A6420063968B /* model */,
 			);
 			path = Produce;
 			sourceTree = "<group>";
@@ -273,7 +350,7 @@
 				1D3AE6BB1DCB20CE00119A0E /* usserInfo */,
 				1D3F29691DC871BF00C0F998 /* LoginContrller */,
 				1D63CF8D1DBEF39800955DDF /* Produce */,
-				1DED7DD51DB89FAE003E65E3 /* SKNewsController.swift */,
+				1D39C6471DE81CB70017289F /* News */,
 				1DBABE3A1DBE00A000745C5D /* SKUserController.swift */,
 			);
 			path = Class;
@@ -410,6 +487,7 @@
 			files = (
 				1D65E2581DB8716300C39F4C /* LaunchScreen.storyboard in Resources */,
 				1D3F29751DC8927500C0F998 /* SKForgotPasswordController.xib in Resources */,
+				1D39C6551DE839C50017289F /* SKNewsCell.xib in Resources */,
 				1D3F296D1DC8721A00C0F998 /* SKLoginController.xib in Resources */,
 				1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */,
 				1DEF23191DC1E8990063968B /* SKProdectCell.xib in Resources */,
@@ -474,16 +552,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D5E81FC1DD02399003E9D14 /* SKUserInfo.swift in Sources */,
+				1D2AF1701DEBD42400E618D3 /* SKNewsDetailModel.swift in Sources */,
 				1D2C6A941DE2F345007D9D4D /* SKProductDetailInfoView.swift in Sources */,
 				1D5E82001DD1776A003E9D14 /* SVProgressHUD+extension.swift in Sources */,
 				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
+				1D39C64C1DE81E860017289F /* SKNewsVC.swift in Sources */,
+				1D2AF16A1DEBD17E00E618D3 /* SKNewsDetailHeadView.swift in Sources */,
+				1D2AF16E1DEBD1AF00E618D3 /* SKNewsDetailScrollView.swift in Sources */,
 				1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */,
 				1D3F296C1DC8721A00C0F998 /* SKLoginController.swift in Sources */,
 				1D60E3A91DDD97EA0015A7A8 /* SKProductDetailPimgModel.swift in Sources */,
+				1D39C6511DE8292E0017289F /* SKNewsListModel.swift in Sources */,
 				1DEF23121DC0A6420063968B /* SKProductUserModel.swift in Sources */,
 				1D3F29771DC9C3BF00C0F998 /* SKProductDetailController.swift in Sources */,
 				1D60E3A31DDD8F910015A7A8 /* SKProductDetailProductInfoModel.swift in Sources */,
 				1D60E3A11DDD8D0A0015A7A8 /* SKProductDetailUserInfoModel.swift in Sources */,
+				1D2AF16C1DEBD19C00E618D3 /* SKNewsDetailButtonView.swift in Sources */,
 				1D2C6A921DE2E90F007D9D4D /* SKProductDetailBtnView.swift in Sources */,
 				1D3F29701DC882E000C0F998 /* SKRegisterController.swift in Sources */,
 				1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */,
@@ -501,17 +585,19 @@
 				1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */,
 				1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */,
 				1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */,
+				1D39C64F1DE828BA0017289F /* SKNewsViewModel.swift in Sources */,
 				1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */,
 				1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */,
+				1D2AF1661DEBCB1900E618D3 /* SKNewsDetailController.swift in Sources */,
 				1D5E82441DD459F8003E9D14 /* SKProductDetailHeadView.swift in Sources */,
 				1D60E39F1DDD8A340015A7A8 /* SKProductDetailModel.swift in Sources */,
 				1D3F29791DC9D74800C0F998 /* SKProductVC.swift in Sources */,
 				1D5E81FE1DD05F2F003E9D14 /* commomClass.swift in Sources */,
 				1DBABE371DBDFBEC00745C5D /* Bundle+extension.swift in Sources */,
 				1DED7DE31DB8C03D003E65E3 /* UIColor+extension.swift in Sources */,
-				1DED7DD61DB89FAE003E65E3 /* SKNewsController.swift in Sources */,
 				1DED7DE51DB8C928003E65E3 /* UIView+extension.swift in Sources */,
 				1DEF23181DC1E8990063968B /* SKProdectCell.swift in Sources */,
+				1D39C6541DE839C50017289F /* SKNewsCell.swift in Sources */,
 				1DBABE411DBE0EA900745C5D /* UIButton+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

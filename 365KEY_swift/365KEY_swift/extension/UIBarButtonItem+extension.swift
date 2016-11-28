@@ -22,7 +22,7 @@ extension UIBarButtonItem{
         
         button.sizeToFit()
         
-        self.init(customView: button)
-        
+        self.init(customView: button)    
     }
+    
 }

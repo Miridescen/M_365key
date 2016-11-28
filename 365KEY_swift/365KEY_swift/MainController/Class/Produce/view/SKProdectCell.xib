@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="449" height="370"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gyd-cl-AUo" id="Fw3-YZ-y4p">
-                <rect key="frame" x="0.0" y="0.0" width="449" height="369"/>
+                <rect key="frame" x="0.0" y="0.0" width="449" height="369.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoJ-GD-3nE" userLabel="goodButton">
@@ -26,7 +26,7 @@
                             <constraint firstAttribute="height" constant="11" id="tbl-yk-29e"/>
                         </constraints>
                         <state key="normal" title="Button" image="icon_up2"/>
-                        <state key="selected" image="icon_up1"/>
+                        <state key="selected" image="icon_up1" backgroundImage="icon_up1"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsM-MX-7gX" userLabel="goodNumLabel">
                         <rect key="frame" x="26.5" y="53" width="34" height="13"/>

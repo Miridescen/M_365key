@@ -1,24 +1,22 @@
 //
-//  SKProdectCell.swift
+//  SKNewsCell.swift
 //  365KEY_swift
 //
-//  Created by 牟松 on 2016/10/27.
+//  Created by 牟松 on 2016/11/25.
 //  Copyright © 2016年 DoNews. All rights reserved.
 //
 
 import UIKit
-import SDWebImage
 
-class SKProdectCell: UITableViewCell {
+class SKNewsCell: UITableViewCell {
+    
+    
 
-    
-    
-    @IBOutlet weak var goodbutton: UIButton!
-    @IBOutlet weak var goodNumLabel: UILabel!
-    
+    @IBOutlet weak var goodButton: UIButton!
+    @IBOutlet weak var goodNumberLabel: UILabel!
     @IBAction func touchButton(_ sender: UIButton) {
-        if (productListModel?.isDisabled)! {
-            goodbutton.isSelected = true
+        if (newsListModel?.isgood == "yes") {
+            goodButton.isSelected = true
             sender.isUserInteractionEnabled = false
             return
         }
@@ -30,51 +28,51 @@ class SKProdectCell: UITableViewCell {
         var params = [String: AnyObject]()
         
         params["uid"] = userShard?.uid as AnyObject?
-        params["id"] = productListModel?.id as AnyObject?
+        params["id"] = newsListModel?.id as AnyObject?
         params["type"] = "good" as AnyObject?
-        params["model"] = "pro" as AnyObject?
+        params["model"] = "event" as AnyObject?
         
         NSURLConnection.connection.productGoodBtnDidClick(with: params) { isSuccess in
             if isSuccess {
-                self.goodNumLabel.text = "\((self.productListModel?.praisecounts)!+1)"
-                self.goodbutton.isSelected = true
+                self.goodNumberLabel.text = "\((self.newsListModel?.counts)!+1)"
+                self.goodButton.isSelected = true
                 sender.isUserInteractionEnabled = false
                 SKProgressHUD.setSuccessString(with: "点赞成功")
             } else {
                 SKProgressHUD.setErrorString(with: "点赞失败")
             }
         }
-        
     }
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var touchButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var headImageView: UIImageView!
-    @IBOutlet weak var introduceLabel: UILabel!
-    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var dataLabel: UILabel!
     
-    var productListModel: SKProductListModel? {
+    
+    var newsListModel: SKNewsListModel? {
         didSet{
             
-            if (productListModel?.isDisabled)! {
-                goodbutton.isSelected = true
+            if (newsListModel?.isgood == "yes") {
+                goodButton.isSelected = true
             } else {
-                goodbutton.isSelected = false
+                goodButton.isSelected = false
             }
             
-            nameLabel.text = productListModel?.pro_name
             
-            introduceLabel.text = (productListModel?.info?.isEmpty)! ? "无简介" : productListModel?.info
+            titleLabel.text = (newsListModel?.content?.isEmpty)! ? "无标题" : newsListModel?.content
+            dataLabel.text = newsListModel?.timeLabelStr
             
-            guard let thunbal = productListModel?.userinfo?.thumbnail else {
+            guard let thunbal = newsListModel?.userinfo?.thumbnail else {
                 return
             }
             let headImageStr = thunbal.hasPrefix("http") ? thunbal: "http://www.365key.com" + thunbal
             
             headImageView.sd_setImage(with: URL(string: headImageStr), placeholderImage: UIImage(named: "pic_touxiang_little"))
             
-            guard let num = productListModel?.praisecounts  else {
-                return goodNumLabel.text = "0"
+            guard let num = newsListModel?.counts  else {
+                return goodNumberLabel.text = "0"
             }
-            goodNumLabel.text = "\(num)"
+            goodNumberLabel.text = "\(num)"
             
         }
     }

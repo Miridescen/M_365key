@@ -17,6 +17,88 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 新闻详情获取请求
+    func newsDetailDataRequest(newsID: Int64, completion: @escaping(_ isSuccess: Bool, _ newsDetailModel: SKNewsDetailModel)->()) {
+        
+        let urlStr = "http://www.365key.com/Event/get_event_detail_mobile"
+        var params = [String: AnyObject]()
+        params["id"] = newsID as AnyObject
+        
+        if SKUserShared.getUserShared()?.uid != 0 {
+            params["uid"] = SKUserShared.getUserShared()?.uid as AnyObject?
+        }
+        
+        connectionRequest(urlString: urlStr, paramers: params) { (bool, Data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: [])
+                let detailModel = SKNewsDetailModel.yy_model(withJSON: jsonData!)
+                print(detailModel)
+                completion(true, detailModel!)
+            }
+        }
+        
+        
+        
+        
+        
+    }
+    // MARK: 新闻列表数据请求
+    func newsListDataRequest(with urlStr: String, params:[String: AnyObject]?,completion:@escaping (_ isSuccess: Bool, _ data: Any?)->()){
+        
+        connectionRequest(with: .POST, urlString: urlStr, paramers: params) { (bool, Data) in
+            
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: []) as? [String: AnyObject?] ?? [:]
+                let newsListDataArray = NSArray.yy_modelArray(with: SKNewsListModel.self, json: jsonData?["eventlist"] as Any) ?? []
+ 
+                if newsListDataArray.count > 0 {
+                    
+                    var dateArray = [String?]()
+                    var dTime: String?
+                    for i in 0..<newsListDataArray.count {
+                        
+                        let newsModel = newsListDataArray[i] as? SKNewsListModel
+                        if i == 0{
+                            dTime = newsModel?.showTime
+                            dateArray.append(dTime)
+                        } else {
+                            if dTime != newsModel?.showTime{
+                                dTime = newsModel?.showTime
+                                dateArray.append(dTime)
+                            }
+                        }
+                        
+                    }
+                    
+                    var allDataArray = [[String: [SKNewsListModel]]]()
+                    
+                    for i in 0..<dateArray.count {
+                        let showTime = dateArray[i]
+                        var modelArray = [SKNewsListModel]()
+                        for model in newsListDataArray {
+                            
+                            if (model as! SKNewsListModel).showTime == showTime {
+                                modelArray.append(model as! SKNewsListModel)
+                            }
+                        }
+                        
+                        let modelDic: [String: [SKNewsListModel]] = [showTime!: modelArray]
+                        
+                        allDataArray.append(modelDic)
+                        
+                    }
+                    completion(true, allDataArray)
+                    
+                } else{
+                    completion(false, nil)
+                }
+                
+            } else {
+                completion (false, nil)
+            }
+   
+        }
+    }
     // mark: 取消产品详情页关注接口
     func productCancleFocusRequest(params: [String: AnyObject], completion: @escaping(_ isSuccess: Bool)->()) {
         let urlString = "http://www.365key.com/Right/cancel_follow_modile"
@@ -259,53 +341,58 @@ extension NSURLConnection{
     func productListDataRequest(with urlStr: String, params:[String: AnyObject]?,completion:@escaping (_ isSuccess: Bool, _ data: Any?)->()) {
         
         connectionRequest(with: .POST, urlString: urlStr, paramers: params) { (bool, Data) in
-     
-            let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: []) as? [String: AnyObject?] ?? [:]
             
-            let productListDataArray = NSArray.yy_modelArray(with: SKProductListModel.self, json: jsonData?["prolist"] as Any) ?? []
-            if productListDataArray.count > 0 {
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: []) as? [String: AnyObject?] ?? [:]
                 
-                var dateArray = [String?]()
-                var dTime: String?
-                for i in 0..<productListDataArray.count {
+                let productListDataArray = NSArray.yy_modelArray(with: SKProductListModel.self, json: jsonData?["prolist"] as Any) ?? []
+                if productListDataArray.count > 0 {
                     
-                    let ProductModel = productListDataArray[i] as? SKProductListModel
-                    if i == 0{
-                        dTime = ProductModel?.showTime
-                        dateArray.append(dTime)
-                    } else {
-                        if dTime != ProductModel?.showTime{
+                    var dateArray = [String?]()
+                    var dTime: String?
+                    for i in 0..<productListDataArray.count {
+                        
+                        let ProductModel = productListDataArray[i] as? SKProductListModel
+                        if i == 0{
                             dTime = ProductModel?.showTime
                             dateArray.append(dTime)
+                        } else {
+                            if dTime != ProductModel?.showTime{
+                                dTime = ProductModel?.showTime
+                                dateArray.append(dTime)
+                            }
                         }
-                    }
-                    
-                }
-                
-                var allDataArray = [[String: [SKProductListModel]]]()
-                
-                for i in 0..<dateArray.count {
-                    let showTime = dateArray[i]
-                    var modelArray = [SKProductListModel]()
-                    for model in productListDataArray {
                         
-                        if (model as! SKProductListModel).showTime == showTime {
-                            modelArray.append(model as! SKProductListModel)
-                        }
                     }
                     
-                    let modelDic: [String: [SKProductListModel]] = [showTime!: modelArray]
+                    var allDataArray = [[String: [SKProductListModel]]]()
                     
-                    allDataArray.append(modelDic)
+                    for i in 0..<dateArray.count {
+                        let showTime = dateArray[i]
+                        var modelArray = [SKProductListModel]()
+                        for model in productListDataArray {
+                            
+                            if (model as! SKProductListModel).showTime == showTime {
+                                modelArray.append(model as! SKProductListModel)
+                            }
+                        }
+                        
+                        let modelDic: [String: [SKProductListModel]] = [showTime!: modelArray]
+                        
+                        allDataArray.append(modelDic)
+                        
+                    }
                     
+                    completion(true, allDataArray)
                     
+                } else{
+                    completion(false, nil)
                 }
-                
-                completion(true, allDataArray)
-                
-            } else{
-                completion(false, nil)
+            } else {
+                completion (false, nil)
             }
+            
+            
 
         }
         
