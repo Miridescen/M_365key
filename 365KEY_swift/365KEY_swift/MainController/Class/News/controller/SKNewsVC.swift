@@ -89,8 +89,6 @@ extension SKNewsVC {
         
         navBar?.items = [navItem!]
         
-        
-        
         tableView = UITableView(frame: view.bounds)
         tableView?.delegate = self
         tableView?.dataSource = self

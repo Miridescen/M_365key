@@ -21,7 +21,7 @@ class SKNewsDetailHeadView: UIView {
             }
             
             nameLabel?.text = newsDetailModel?.userinfo?.username
-            timeLabel?.text = newsDetailModel?.logdate
+            timeLabel?.text = newsDetailModel?.timeLabelStr
             
             
             guard let titleLabelText = newsDetailModel?.content  else {
@@ -34,6 +34,8 @@ class SKNewsDetailHeadView: UIView {
                 }
                 let nameLabelSize = SKLabelSizeWith(labelText: nameLabelText, font: UIFont.systemFont(ofSize: 12), width: CGFloat(MAXFLOAT))
                 nameLabel?.frame = CGRect(origin: CGPoint(x: 60, y: 32), size: nameLabelSize)
+                
+                timeLabel?.frame = CGRect(x: 60+nameLabelSize.width+20, y: 32, width: 200, height: nameLabelSize.height)
 
                 return
             }
@@ -48,7 +50,9 @@ class SKNewsDetailHeadView: UIView {
             }
             let nameLabelSize = SKLabelSizeWith(labelText: nameLabelText, font: UIFont.systemFont(ofSize: 12), width: CGFloat(MAXFLOAT))
             print(nameLabelSize)
-            nameLabel?.frame = CGRect(origin: CGPoint(x: 60, y: 38+nameLabelSize.height), size: nameLabelSize)
+            nameLabel?.frame = CGRect(origin: CGPoint(x: 60, y: 28+titleLabelSize.height), size: nameLabelSize)
+            
+            timeLabel?.frame = CGRect(x: 60+nameLabelSize.width+20, y: 28+titleLabelSize.height, width: 200, height: nameLabelSize.height)
             
             
         }
@@ -69,7 +73,6 @@ class SKNewsDetailHeadView: UIView {
         titleLabel?.textColor = UIColor.black
         titleLabel?.font = UIFont.systemFont(ofSize: 20)
         titleLabel?.numberOfLines = 0
-        titleLabel?.backgroundColor = UIColor.red
         addSubview(titleLabel!)
         
         headImageView = UIImageView()

@@ -17,6 +17,10 @@ class SKNewsDetailController: UIViewController {
     var navItem: UINavigationItem?
     
     var headView: SKNewsDetailHeadView?
+    var buttonView: SKNewsDetailButtonView?
+    var foodScrollView: SKNewsDetailScrollView?
+    
+    
     
     
     override func viewDidLoad() {
@@ -33,16 +37,18 @@ class SKNewsDetailController: UIViewController {
         NSURLConnection.connection.newsDetailDataRequest(newsID: (newsListModel?.id)!) { bool, newsDetailModel in
             if bool {
                 self.headView?.newsDetailModel = newsDetailModel
+                self.foodScrollView?.scrollViewModel = newsDetailModel
                 guard let titleLabelText = newsDetailModel.content else {
                     return
                 }
                 let headViewSize = SKLabelSizeWith(labelText: titleLabelText, font: UIFont.systemFont(ofSize: 20), width: UIScreen.main.screenWidth-32)
-                self.headView?.frame = CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: 75+headViewSize.height)
+                self.headView?.frame = CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: 65+headViewSize.height)
+                self.buttonView?.frame = CGRect(x: 0, y: 64+65+headViewSize.height, width: UIScreen.main.screenWidth, height: 65+headViewSize.height)
+                self.foodScrollView?.frame = CGRect(x: 0, y: 64+65+50+headViewSize.height, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-(64+65+50+44+headViewSize.height))
             }
             
         }
     }
-    
 
 }
 
@@ -65,9 +71,35 @@ extension SKNewsDetailController {
         
         navBar?.items = [navItem!]
         
-        headView = SKNewsDetailHeadView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: 75))
-        headView?.backgroundColor = UIColor.yellow
+        headView = SKNewsDetailHeadView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: 65))
+        headView?.backgroundColor = UIColor.white
         view.addSubview(headView!)
+        
+        buttonView = SKNewsDetailButtonView(frame: CGRect(x: 0, y: 64+65, width: UIScreen.main.screenWidth, height: 50))
+        buttonView?.firstBtn?.addTarget(self, action: #selector(firstBtnDidClick), for: .touchUpInside)
+        buttonView?.firstBtn?.isSelected = true
+        buttonView?.secondBtn?.addTarget(self, action: #selector(secondBtnDidClick), for: .touchUpInside)
+        buttonView?.thirdBtn?.addTarget(self, action: #selector(thirdBtnDidClick), for: .touchUpInside)
+        view.addSubview(buttonView!)
+        
+        foodScrollView = SKNewsDetailScrollView(frame: CGRect(x: 0, y: 64+65+50, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-(64+65+50+20)))
+        view.addSubview(foodScrollView!)
+    }
+    
+    @objc func firstBtnDidClick(btn: UIButton){
+        btn.isSelected = true
+        buttonView?.secondBtn?.isSelected = false
+        buttonView?.thirdBtn?.isSelected = false
+    }
+    @objc func secondBtnDidClick(btn: UIButton){
+        btn.isSelected = true
+        buttonView?.firstBtn?.isSelected = false
+        buttonView?.thirdBtn?.isSelected = false
+    }
+    @objc func thirdBtnDidClick(btn: UIButton){
+        btn.isSelected = true
+        buttonView?.secondBtn?.isSelected = false
+        buttonView?.firstBtn?.isSelected = false
     }
     
     @objc private func backBtnDidClick(){
