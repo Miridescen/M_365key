@@ -50,7 +50,6 @@
 		1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE341DBDF80F00745C5D /* AppDelegate.swift */; };
 		1DBABE371DBDFBEC00745C5D /* Bundle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE361DBDFBEC00745C5D /* Bundle+extension.swift */; };
 		1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE381DBDFE5000745C5D /* SKNavigationController.swift */; };
-		1DBABE3B1DBE00A000745C5D /* SKUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE3A1DBE00A000745C5D /* SKUserController.swift */; };
 		1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */; };
 		1DBABE411DBE0EA900745C5D /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */; };
 		1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DCE1DB89D61003E65E3 /* SKTabBarController.swift */; };
@@ -64,6 +63,8 @@
 		1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF23141DC1A5E80063968B /* SKProductViewModel.swift */; };
 		1DEF23181DC1E8990063968B /* SKProdectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF23161DC1E8990063968B /* SKProdectCell.swift */; };
 		1DEF23191DC1E8990063968B /* SKProdectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEF23171DC1E8990063968B /* SKProdectCell.xib */; };
+		1DFE2F861DEEADB200F3C8BE /* SKUserCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE2F851DEEADB200F3C8BE /* SKUserCenterController.swift */; };
+		1DFE2F881DEEB36D00F3C8BE /* SKUserCenterHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE2F871DEEB36D00F3C8BE /* SKUserCenterHeadView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,7 +113,6 @@
 		1DBABE341DBDF80F00745C5D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = 365KEY_swift/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		1DBABE361DBDFBEC00745C5D /* Bundle+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+extension.swift"; sourceTree = "<group>"; };
 		1DBABE381DBDFE5000745C5D /* SKNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNavigationController.swift; sourceTree = "<group>"; };
-		1DBABE3A1DBE00A000745C5D /* SKUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserController.swift; sourceTree = "<group>"; };
 		1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+extension.swift"; sourceTree = "<group>"; };
 		1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
 		1DED7DCE1DB89D61003E65E3 /* SKTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTabBarController.swift; sourceTree = "<group>"; };
@@ -126,6 +126,8 @@
 		1DEF23141DC1A5E80063968B /* SKProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductViewModel.swift; sourceTree = "<group>"; };
 		1DEF23161DC1E8990063968B /* SKProdectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProdectCell.swift; sourceTree = "<group>"; };
 		1DEF23171DC1E8990063968B /* SKProdectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKProdectCell.xib; sourceTree = "<group>"; };
+		1DFE2F851DEEADB200F3C8BE /* SKUserCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserCenterController.swift; sourceTree = "<group>"; };
+		1DFE2F871DEEB36D00F3C8BE /* SKUserCenterHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserCenterHeadView.swift; sourceTree = "<group>"; };
 		782C16053B71CC14B077BDE0 /* Pods-365KEY_swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-365KEY_swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift.release.xcconfig"; sourceTree = "<group>"; };
 		DB4787D9ED2691CA7F518BB4 /* Pods-365KEY_swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-365KEY_swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-365KEY_swift/Pods-365KEY_swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -351,7 +353,7 @@
 				1D3F29691DC871BF00C0F998 /* LoginContrller */,
 				1D63CF8D1DBEF39800955DDF /* Produce */,
 				1D39C6471DE81CB70017289F /* News */,
-				1DBABE3A1DBE00A000745C5D /* SKUserController.swift */,
+				1DFE2F811DEEAD4900F3C8BE /* UserCenter */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -402,6 +404,39 @@
 				1DEF23141DC1A5E80063968B /* SKProductViewModel.swift */,
 			);
 			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		1DFE2F811DEEAD4900F3C8BE /* UserCenter */ = {
+			isa = PBXGroup;
+			children = (
+				1DFE2F821DEEAD4900F3C8BE /* controller */,
+				1DFE2F831DEEAD4900F3C8BE /* model */,
+				1DFE2F841DEEAD4900F3C8BE /* view */,
+			);
+			path = UserCenter;
+			sourceTree = "<group>";
+		};
+		1DFE2F821DEEAD4900F3C8BE /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				1DFE2F851DEEADB200F3C8BE /* SKUserCenterController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		1DFE2F831DEEAD4900F3C8BE /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		1DFE2F841DEEAD4900F3C8BE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1DFE2F871DEEB36D00F3C8BE /* SKUserCenterHeadView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		A55398990FF64B79077E661B /* Pods */ = {
@@ -572,7 +607,6 @@
 				1D3F29701DC882E000C0F998 /* SKRegisterController.swift in Sources */,
 				1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */,
 				1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */,
-				1DBABE3B1DBE00A000745C5D /* SKUserController.swift in Sources */,
 				1DED7DDE1DB8A562003E65E3 /* UIScreen+extension.swift in Sources */,
 				1D60E3A71DDD904F0015A7A8 /* SKProductDetailbig_eventModel.swift in Sources */,
 				1DED7DDB1DB8A070003E65E3 /* SKLunchImageViewController.swift in Sources */,
@@ -581,6 +615,7 @@
 				1D5E81FA1DD02330003E9D14 /* SKUserShared.swift in Sources */,
 				1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */,
 				1D5E82021DD1788B003E9D14 /* SKProgressHUD.swift in Sources */,
+				1DFE2F881DEEB36D00F3C8BE /* SKUserCenterHeadView.swift in Sources */,
 				1D3F29741DC8927500C0F998 /* SKForgotPasswordController.swift in Sources */,
 				1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */,
 				1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */,
@@ -593,6 +628,7 @@
 				1D60E39F1DDD8A340015A7A8 /* SKProductDetailModel.swift in Sources */,
 				1D3F29791DC9D74800C0F998 /* SKProductVC.swift in Sources */,
 				1D5E81FE1DD05F2F003E9D14 /* commomClass.swift in Sources */,
+				1DFE2F861DEEADB200F3C8BE /* SKUserCenterController.swift in Sources */,
 				1DBABE371DBDFBEC00745C5D /* Bundle+extension.swift in Sources */,
 				1DED7DE31DB8C03D003E65E3 /* UIColor+extension.swift in Sources */,
 				1DED7DE51DB8C928003E65E3 /* UIView+extension.swift in Sources */,

@@ -21,13 +21,10 @@ class SKNewsDetailScrollView: UIView {
             if (scrollViewModel?.type)! {
                 
                 for subView in (webview?.subviews)! {
-                    print("456")
                     if subView.isKind(of: UIScrollView.self) {
                         scrollView = subView as? UIScrollView
                     }
                 }
-                
-                
                 
                 formView = UIView(frame: CGRect(x: 16, y: 0, width: UIScreen.main.screenWidth-32, height: 233))
                 formView?.layer.borderColor = UIColor(white: 245/255.0, alpha: 1).cgColor
@@ -111,7 +108,6 @@ class SKNewsDetailScrollView: UIView {
 extension SKNewsDetailScrollView: UIWebViewDelegate{
     func webViewDidFinishLoad(_ webView: UIWebView) {
         let height = webview?.stringByEvaluatingJavaScript(from: "document.body.offsetHeight;")
-        
         
         formView?.frame.origin.y = CGFloat((height! as NSString).floatValue+30)
     }

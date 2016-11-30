@@ -18,7 +18,7 @@ extension NSURLConnection{
         
     }()
     // MARK: 新闻详情获取请求
-    func newsDetailDataRequest(newsID: Int64, completion: @escaping(_ isSuccess: Bool, _ newsDetailModel: SKNewsDetailModel)->()) {
+    func newsDetailDataRequest(newsID: Int64, completion: @escaping(_ isSuccess: Bool, _ newsDetailModel: SKNewsDetailModel?)->()) {
         
         let urlStr = "http://www.365key.com/Event/get_event_detail_mobile"
         var params = [String: AnyObject]()
@@ -32,8 +32,9 @@ extension NSURLConnection{
             if bool {
                 let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: [])
                 let detailModel = SKNewsDetailModel.yy_model(withJSON: jsonData!)
-                print(detailModel)
                 completion(true, detailModel!)
+            } else {
+                completion(false, nil)
             }
         }
         

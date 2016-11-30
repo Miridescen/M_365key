@@ -15,7 +15,7 @@ class SKTabBarController: UITabBarController {
         
         let vc1 = getController(with: SKProductVC(), title: "产品", image: "1_1", selectedImage: "1_2")
         let vc2 = getController(with: SKNewsVC(), title: "行业资讯", image: "2_1", selectedImage: "2_2")
-        let vc3 = getController(with: SKUserController(), title: "个人中心", image: "3_1", selectedImage: "3_2")
+        let vc3 = getController(with: SKUserCenterController(), title: "个人中心", image: "3_1", selectedImage: "3_2")
         
         var controllerArray = [UIViewController]()
         

@@ -38,7 +38,7 @@ class SKNewsDetailController: UIViewController {
             if bool {
                 self.headView?.newsDetailModel = newsDetailModel
                 self.foodScrollView?.scrollViewModel = newsDetailModel
-                guard let titleLabelText = newsDetailModel.content else {
+                guard let titleLabelText = newsDetailModel?.content else {
                     return
                 }
                 let headViewSize = SKLabelSizeWith(labelText: titleLabelText, font: UIFont.systemFont(ofSize: 20), width: UIScreen.main.screenWidth-32)
@@ -71,21 +71,15 @@ extension SKNewsDetailController {
         
         navBar?.items = [navItem!]
         
-        headView = SKNewsDetailHeadView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: 65))
-        headView?.backgroundColor = UIColor.white
-        view.addSubview(headView!)
         
-        buttonView = SKNewsDetailButtonView(frame: CGRect(x: 0, y: 64+65, width: UIScreen.main.screenWidth, height: 50))
-        buttonView?.firstBtn?.addTarget(self, action: #selector(firstBtnDidClick), for: .touchUpInside)
-        buttonView?.firstBtn?.isSelected = true
-        buttonView?.secondBtn?.addTarget(self, action: #selector(secondBtnDidClick), for: .touchUpInside)
-        buttonView?.thirdBtn?.addTarget(self, action: #selector(thirdBtnDidClick), for: .touchUpInside)
-        view.addSubview(buttonView!)
-        
-        foodScrollView = SKNewsDetailScrollView(frame: CGRect(x: 0, y: 64+65+50, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-(64+65+50+20)))
-        view.addSubview(foodScrollView!)
     }
-    
+    @objc private func backBtnDidClick(){
+        _ = navigationController?.popViewController(animated: true)
+    }
+    @objc private func shareButtonDidClick(){
+        
+        print("分享按钮点击")
+    }
     @objc func firstBtnDidClick(btn: UIButton){
         btn.isSelected = true
         buttonView?.secondBtn?.isSelected = false
@@ -102,15 +96,19 @@ extension SKNewsDetailController {
         buttonView?.firstBtn?.isSelected = false
     }
     
-    @objc private func backBtnDidClick(){
-        _ = navigationController?.popViewController(animated: true)
-    }
-    @objc private func shareButtonDidClick(){
-        
-        print("分享按钮点击")
-    }
-    
     func setupSubView() {
+        headView = SKNewsDetailHeadView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: 65))
+        headView?.backgroundColor = UIColor.white
+        view.addSubview(headView!)
         
+        buttonView = SKNewsDetailButtonView(frame: CGRect(x: 0, y: 64+65, width: UIScreen.main.screenWidth, height: 50))
+        buttonView?.firstBtn?.addTarget(self, action: #selector(firstBtnDidClick), for: .touchUpInside)
+        buttonView?.firstBtn?.isSelected = true
+        buttonView?.secondBtn?.addTarget(self, action: #selector(secondBtnDidClick), for: .touchUpInside)
+        buttonView?.thirdBtn?.addTarget(self, action: #selector(thirdBtnDidClick), for: .touchUpInside)
+        view.addSubview(buttonView!)
+        
+        foodScrollView = SKNewsDetailScrollView(frame: CGRect(x: 0, y: 64+65+50, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-(64+65+50+20)))
+        view.addSubview(foodScrollView!)
     }
 }
