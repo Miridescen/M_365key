@@ -35,7 +35,10 @@ class SKUserShared: NSObject, NSCoding {
     class func getUserShared() -> SKUserShared? {
         
         let userShared = NSKeyedUnarchiver.unarchiveObject(withFile: SKUserSharedFilePath) as? SKUserShared ?? SKUserShared()
-        
+        if userShared.uid == 0 {
+            
+            return nil
+        }
         
         let nowDate = Date()
         // 7776000

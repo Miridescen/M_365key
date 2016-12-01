@@ -30,9 +30,10 @@ class SKNewsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SKNoUserLoginNotifiction), object: nil, queue: OperationQueue.main) { notifiction in
-            self.present(SKLoginController(), animated: true, completion: nil)
+            self.present(SKNavigationController(rootViewController: SKLoginController()), animated: true, completion: nil)
             
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(userLoginSuccess), name: NSNotification.Name(rawValue: SKUserLoginSuccessNotifiction), object: nil)
         
         addSubView()
         
@@ -41,9 +42,13 @@ class SKNewsVC: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    func userLoginSuccess() {
+        print("新闻加载")
+        loadData()
+    }
     
     func loadData() {
-        print("加载数据")
+        print("新闻加载数据")
         
         newsViewModel.loadNewsData(isPullUp: isPullUp){ isSuccess in
             if isSuccess{

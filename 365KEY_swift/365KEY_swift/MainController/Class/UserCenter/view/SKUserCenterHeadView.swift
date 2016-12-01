@@ -9,6 +9,17 @@
 import UIKit
 
 class SKUserCenterHeadView: UIView {
+    
+    var userInfo: SKUserInfo? {
+        didSet{
+            if userInfo?.thumbnailData != nil {
+                headImageView?.image = UIImage(data: userInfo?.thumbnailData as! Data)
+            }
+            nameLabel?.text = userInfo?.nickname
+            introduceLabel?.text = userInfo?.info
+        }
+    }
+    
 
     var headImageView: UIImageView?
     

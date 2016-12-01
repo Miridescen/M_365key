@@ -20,7 +20,7 @@ let SKUserSharedFilePath = (SKDocumentFilePath! as NSString).appendingPathCompon
 // 通知
 // 用户登录成功通知
 let SKUserLoginSuccessNotifiction = "SKUserLoginSuccessNotifiction"
-// 当前没有用户登录通知，用于弹出登录界面
+// 当前没有用户登录通知，用于弹出登录界面(接收到该通知时需要弹出登录界面)
 let SKNoUserLoginNotifiction = "SKNoUserLoginNotifiction"
 
 // 根据给定的宽，字体大小和内容，给出label的大小

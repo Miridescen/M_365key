@@ -13,15 +13,13 @@ class SKUserInfo: NSObject, NSCoding {
     
     var thumbnail: String? {
         didSet{
-            guard let thumbnail =  thumbnail else {
-                print("缺少头像地址")
-                thumbnailData = NSData()
-                return
+            if thumbnail == "" {
+                thumbnailData = nil
+            } else {
+                let headImageStr = (thumbnail?.hasPrefix("http"))! ? thumbnail: "http://www.365key.com" + thumbnail!
+                thumbnailData = NSData(contentsOf: URL(string: headImageStr!)!)
             }
-            
-            let headImageStr = thumbnail.hasPrefix("http") ? thumbnail: "http://www.365key.com" + thumbnail
-            thumbnailData = NSData(contentsOf: URL(string: headImageStr)!)
-            
+   
         }
     }
     /*

@@ -18,14 +18,36 @@ class SKUserCenterController: UIViewController {
     
     var titleArray = ["账号信息", "我的关注", "我的留言", "设置"]
     
+    var userShared: SKUserShared?
+    
+    var headView: SKUserCenterHeadView?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(userLoginSuccess), name: NSNotification.Name(rawValue: SKUserLoginSuccessNotifiction), object: nil)
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SKNoUserLoginNotifiction), object: nil, queue: OperationQueue.main){ notifiction in
+            self.present(SKNavigationController(rootViewController: SKLoginController()), animated: true, completion: nil)
+        }
+ 
+        loadData()
         addSubView()
     }
-
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
+    func loadData() {
+        userShared = SKUserShared.getUserShared()
+        
+    }
+    func userLoginSuccess() {
+        self.userShared = SKUserShared.getUserShared()
+        self.headView?.userInfo = self.userShared?.userInfo
+    }
 
 }
 
@@ -77,7 +99,21 @@ extension SKUserCenterController: UITableViewDelegate, UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("123")
+        if indexPath.row == 3 {
+            navigationController?.pushViewController(SKUserCenterSetController(), animated: true)
+        } else {
+            if userShared == nil {
+                self.present(SKNavigationController(rootViewController: SKLoginController()), animated: true, completion: nil)
+            } else {
+                if indexPath.row == 0 {
+                    navigationController?.pushViewController(SKUserCenterAccountInfoController(), animated: true)
+                } else if indexPath.row == 1 {
+                    navigationController?.pushViewController(SKMyFocusController(), animated: true)
+                } else if indexPath.row == 2 {
+                    navigationController?.pushViewController(SKMyMessageController(), animated: true)
+                }
+            }
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 57
@@ -89,10 +125,13 @@ extension SKUserCenterController: UITableViewDelegate, UITableViewDataSource{
         return 223
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        headView = SKUserCenterHeadView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 223))
+        headView?.backgroundColor = UIColor(white: 247/255.0, alpha: 1)
         
-        let headView = SKUserCenterHeadView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 223))
-        headView.backgroundColor = UIColor(white: 247/255.0, alpha: 1)
-        
+        if userShared != nil {
+            print(456)
+            headView?.userInfo = userShared?.userInfo
+        }
         return headView
     }
 }

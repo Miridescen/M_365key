@@ -46,8 +46,9 @@ class SKLoginController: UIViewController {
     }
     
     @IBAction func registBtn(_ sender: UIButton) {
+        print(123)
         
-        navigationController?.pushViewController(SKRegisterController(), animated: true)
+        self.navigationController?.pushViewController(SKRegisterController(), animated: true)
         
     }
     
@@ -66,11 +67,9 @@ class SKLoginController: UIViewController {
     var navBar: UINavigationBar?
     
     var navItem: UINavigationItem?
- 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNav()
         
         userNameTF.delegate = self
