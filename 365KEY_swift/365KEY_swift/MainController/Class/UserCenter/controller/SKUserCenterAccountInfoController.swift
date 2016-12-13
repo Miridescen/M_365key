@@ -18,14 +18,36 @@ class SKUserCenterAccountInfoController: UIViewController {
     
     var titleArray = ["昵称", "姓名", "简介", "邮箱", "电话", "密码"]
     
-    let userShared = SKUserShared.getUserShared()
+    var userShared = SKUserShared.getUserShared()
     
     var introduceLabelTextArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        introduceLabelTextArray.append((userShared?.userInfo?.nickname)!)
+        introduceLabelTextArray.append((userShared?.userInfo?.realname)!)
+        introduceLabelTextArray.append((userShared?.userInfo?.info)!)
+        introduceLabelTextArray.append((userShared?.userInfo?.email)!)
+        introduceLabelTextArray.append((userShared?.userInfo?.tel)!)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(userLoginSuccess), name: NSNotification.Name(rawValue: SKUserLoginSuccessNotifiction), object: nil)
+        
         addSubView()
+    }
+    
+    // 更改用户信息之后，刷新UI
+    func userLoginSuccess() {
+        userShared = SKUserShared.getUserShared()
+        
+        introduceLabelTextArray.removeAll()
+        introduceLabelTextArray.append((userShared?.userInfo?.nickname)!)
+        introduceLabelTextArray.append((userShared?.userInfo?.realname)!)
+        introduceLabelTextArray.append((userShared?.userInfo?.info)!)
+        introduceLabelTextArray.append((userShared?.userInfo?.email)!)
+        introduceLabelTextArray.append((userShared?.userInfo?.tel)!)
+        
+        tableView?.reloadData()
     }
 }
 extension SKUserCenterAccountInfoController{
@@ -85,13 +107,23 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
         introdeceLabel.textColor = UIColor(white: 225/255.0, alpha: 1)
         introdeceLabel.textAlignment = .right
         introdeceLabel.font = UIFont.systemFont(ofSize: 18)
-        introdeceLabel.text = "待完善"
+        if indexPath.row == 5 {
+            introdeceLabel.text = "修改"
+        } else {
+            introdeceLabel.text = introduceLabelTextArray[indexPath.row] == "" || introduceLabelTextArray[indexPath.row].isEmpty ? "待完善" : introduceLabelTextArray[indexPath.row]
+        }
         cell.contentView.addSubview(introdeceLabel)
         
         return cell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let changeUserInfoController = SKChangeUserInfoController()
+        changeUserInfoController.title = titleArray[indexPath.row]
+        changeUserInfoController.userShared = userShared
+        
+        navigationController?.pushViewController(changeUserInfoController, animated: true)
+        
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

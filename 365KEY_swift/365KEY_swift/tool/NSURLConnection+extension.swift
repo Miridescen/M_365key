@@ -17,6 +17,26 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 用户信息页面修改用户信息请求
+    func chengeUserInfo(params: [String: AnyObject], completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
+        let urlStr = "http://www.365key.com/User/modified"
+        connectionRequest(urlString: urlStr, paramers: params){ (bool, Data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: []) as! [String: AnyObject?]
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        completion(false, nil)
+                        return
+                }
+                completion(true, code2 as? Int)
+            } else {
+                completion(false, nil)
+            }
+        }
+        
+        
+    }
     // MARK: 新闻详情获取请求
     func newsDetailDataRequest(newsID: Int64, completion: @escaping(_ isSuccess: Bool, _ newsDetailModel: SKNewsDetailModel?)->()) {
         

@@ -47,6 +47,7 @@
 		1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */; };
 		1D65E2551DB8716300C39F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2541DB8716300C39F4C /* Assets.xcassets */; };
 		1D65E2581DB8716300C39F4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D65E2561DB8716300C39F4C /* LaunchScreen.storyboard */; };
+		1D8947731DFFE37D0029ABB0 /* SKChangeUserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8947721DFFE37C0029ABB0 /* SKChangeUserInfoController.swift */; };
 		1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE341DBDF80F00745C5D /* AppDelegate.swift */; };
 		1DBABE371DBDFBEC00745C5D /* Bundle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE361DBDFBEC00745C5D /* Bundle+extension.swift */; };
 		1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE381DBDFE5000745C5D /* SKNavigationController.swift */; };
@@ -114,6 +115,7 @@
 		1D65E2541DB8716300C39F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D65E2571DB8716300C39F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D65E2591DB8716300C39F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D8947721DFFE37C0029ABB0 /* SKChangeUserInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKChangeUserInfoController.swift; sourceTree = "<group>"; };
 		1DBABE341DBDF80F00745C5D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = 365KEY_swift/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		1DBABE361DBDFBEC00745C5D /* Bundle+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+extension.swift"; sourceTree = "<group>"; };
 		1DBABE381DBDFE5000745C5D /* SKNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNavigationController.swift; sourceTree = "<group>"; };
@@ -334,6 +336,14 @@
 			path = 365KEY_swift;
 			sourceTree = "<group>";
 		};
+		1D8947711DFFE3410029ABB0 /* subController */ = {
+			isa = PBXGroup;
+			children = (
+				1D8947721DFFE37C0029ABB0 /* SKChangeUserInfoController.swift */,
+			);
+			path = subController;
+			sourceTree = "<group>";
+		};
 		1DED7DC61DB89968003E65E3 /* appDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +442,7 @@
 				1DFE2F8D1DF0199000F3C8BE /* SKMyFocusController.swift */,
 				1DFE2F8F1DF01A5C00F3C8BE /* SKMyMessageController.swift */,
 				1DFE2F891DEFFD9000F3C8BE /* SKUserCenterSetController.swift */,
+				1D8947711DFFE3410029ABB0 /* subController */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -624,6 +635,7 @@
 				1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */,
 				1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */,
 				1DED7DDE1DB8A562003E65E3 /* UIScreen+extension.swift in Sources */,
+				1D8947731DFFE37D0029ABB0 /* SKChangeUserInfoController.swift in Sources */,
 				1D60E3A71DDD904F0015A7A8 /* SKProductDetailbig_eventModel.swift in Sources */,
 				1DED7DDB1DB8A070003E65E3 /* SKLunchImageViewController.swift in Sources */,
 				1D60E3A51DDD90120015A7A8 /* SKProductDetailTeamModel.swift in Sources */,

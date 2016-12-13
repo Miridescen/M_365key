@@ -25,4 +25,16 @@ extension UIBarButtonItem{
         self.init(customView: button)    
     }
     
+    convenience init(SK_barButtonItem title: String? = "button",
+                     tragtic: AnyObject? = nil,
+                     action: Selector? = nil) {
+        let button = UIButton(SKTitleButton: title, target: tragtic, action: action)
+        
+        button.addTarget(tragtic, action: action!, for: .touchUpInside)
+        button.sizeToFit()
+        self.init(customView: button)
+        
+        
+    }
+    
 }
