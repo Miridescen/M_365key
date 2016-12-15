@@ -137,7 +137,7 @@ extension SKLoginController{
    
     }
     func checkPassword(string: String) -> Bool {
-        if string.isEmpty || string.characters.count == 0 {
+        if string.isEmpty || string.characters.count == 0 || string == ""{
             SKProgressHUD.setErrorString(with: "密码不能为空")
             return false
         }

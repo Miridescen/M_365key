@@ -118,11 +118,25 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let changeUserInfoController = SKChangeUserInfoController()
-        changeUserInfoController.title = titleArray[indexPath.row]
-        changeUserInfoController.userShared = userShared
+        if indexPath.row <= 3 {
+            let changeUserInfoController = SKChangeUserInfoController()
+            changeUserInfoController.title = titleArray[indexPath.row]
+            changeUserInfoController.userShared = userShared
+            navigationController?.pushViewController(changeUserInfoController, animated: true)
+        }
+        if indexPath.row == 4 {
+            let changePhoneNum = SKChangePhoneNumberViewController()
+            changePhoneNum.title = titleArray[indexPath.row]
+            changePhoneNum.userShared = userShared
+            navigationController?.pushViewController(changePhoneNum, animated: true)
+        }
+        if indexPath.row == 5 {
+            let changePassword = SKChangePasswordViewController()
+            changePassword.title = titleArray[indexPath.row]
+            changePassword.userShared = userShared
+            navigationController?.pushViewController(changePassword, animated: true)
+        }
         
-        navigationController?.pushViewController(changeUserInfoController, animated: true)
         
         
     }
@@ -165,6 +179,92 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
         return headView
     }
     func headViewDidClick() {
-        print("调用相册")
+        let aletrController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let action1 = UIAlertAction(title: "相册", style: .default){ action in
+            let imagePick = UIImagePickerController()
+            imagePick.sourceType = .photoLibrary
+            imagePick.delegate = self
+            self.present(imagePick, animated: true, completion: nil)
+        }
+        let action2 = UIAlertAction(title: "相机", style: .default){ action in
+            let imagePick = UIImagePickerController()
+            imagePick.sourceType = .camera
+            imagePick.delegate = self
+            self.present(imagePick, animated: true, completion: nil)
+        }
+        let action3 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        aletrController.addAction(action1)
+        aletrController.addAction(action2)
+        aletrController.addAction(action3)
+        
+        present(aletrController, animated: true, completion: nil)
+    }
+}
+extension SKUserCenterAccountInfoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print(info)
+        
+        print("上传图片")
+        let uploadImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        
+        let iamgeSize = CGSize(width: 180, height: 180)
+        UIGraphicsBeginImageContext(iamgeSize)
+        uploadImage.draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: iamgeSize))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let imageData = UIImageJPEGRepresentation(scaledImage!, 1.0)
+        
+        let urlRequest = NSMutableURLRequest(url: URL(string: "http://www.365key.com/User/edit_thumbnail")!)
+        urlRequest.httpMethod = "POST"
+        
+        var body = Data()
+        let boundaryStr = "--365key\r\n"
+        let encodStr = boundaryStr.data(using: .utf8)
+        body.append(encodStr!)
+        
+        let disPositionStr = "Content-Disposition: form-data; name=\"thumbnail\"; filename=\"thumbnail.jpeg\"\r\n"
+        let dispositonEncoderStr = disPositionStr.data(using: .utf8)
+        body.append(dispositonEncoderStr!)
+        
+        let contentTypeStr = "Content-Type:image/jpeg"
+        let contntTypeEncoderStr = contentTypeStr.data(using: .utf8)
+        body.append(contntTypeEncoderStr!)
+        
+        body.append(("\r\n").data(using: .utf8)!)
+        body.append(imageData!)
+        body.append(("\r\n").data(using: .utf8)!)
+        
+        let endStr = "365key--"
+        let encodeEndStr = endStr.data(using: .utf8)
+        body.append(encodeEndStr!)
+        
+        
+        urlRequest.httpBody = body
+        
+        let bodyLength = (body as NSData).length
+        
+        urlRequest.setValue("\(bodyLength)", forHTTPHeaderField: "Content-Length")
+        urlRequest.setValue("multipart/form-data; boundary=365key", forHTTPHeaderField: "Content-Type")
+        
+        NSURLConnection.sendAsynchronousRequest(urlRequest as URLRequest, queue: .main){ (urlResponse, data, error) in
+            
+            print(data)
+            print(urlResponse)
+            print(error)
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 }

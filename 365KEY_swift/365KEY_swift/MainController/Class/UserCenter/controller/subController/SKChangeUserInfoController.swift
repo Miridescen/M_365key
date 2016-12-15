@@ -70,7 +70,13 @@ extension SKChangeUserInfoController {
             } else if title == "简介"{
                 params["info"] = infoTF?.text as AnyObject
             } else if title == "邮箱"{
-                params["email"] = infoTF?.text as AnyObject
+                if checkPhoneNumOrEmail(string: (infoTF?.text)!) {
+                    params["email"] = infoTF?.text as AnyObject
+                } else {
+                    SKProgressHUD.setErrorString(with: "新信息格式不正确")
+                    return
+                }
+                
             }
             
             NSURLConnection.connection.chengeUserInfo(params: params, completion: { (bool, codeNum) in
@@ -86,6 +92,8 @@ extension SKChangeUserInfoController {
                     } else {
                         SKProgressHUD.setErrorString(with: "修改信息失败")
                     }
+                } else {
+                    SKProgressHUD.setErrorString(with: "修改信息失败")
                 }
             })
         } else {
@@ -94,12 +102,39 @@ extension SKChangeUserInfoController {
     }
     
     func checkEmptyString(string: String?) -> Bool {
-        if string == "" || string?.isEmpty == true {
+        if string?.isEmpty == true || string?.characters.count == 0 || string == "" {
             return false
         } else {
             return true
         }
     }
+    func checkPhoneNumOrEmail(string: String) -> Bool {
+        
+        if string.isEmpty || string.characters.count == 0 {
+            SKProgressHUD.setErrorString(with: "新信息不能为空")
+            return false
+        }
+        
+        
+        let phoneRegex = "^1(3[0-9]|5[0-9]|7[0-9]|8[0-9])\\d{8}$"
+        let phonePred = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        
+        let isPhoneNum: Bool = phonePred.evaluate(with: string)
+        
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        
+        let isEmail: Bool = emailPred.evaluate(with: string)
+        
+        if !isPhoneNum && !isEmail {
+            SKProgressHUD.setErrorString(with: "新信息格式不正确")
+            return false
+        }
+        
+        return true
+        
+    }
+    
 }
 extension SKChangeUserInfoController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
