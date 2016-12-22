@@ -209,13 +209,14 @@ extension SKUserCenterAccountInfoController: UIImagePickerControllerDelegate, UI
         print("上传图片")
         let uploadImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         
+        
         let iamgeSize = CGSize(width: 180, height: 180)
         UIGraphicsBeginImageContext(iamgeSize)
         uploadImage.draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: iamgeSize))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        let imageData = UIImageJPEGRepresentation(scaledImage!, 1.0)
+        let imageData = UIImagePNGRepresentation(scaledImage!) == nil ? UIImageJPEGRepresentation(scaledImage!, 1.0): UIImagePNGRepresentation(scaledImage!)
         
         let urlRequest = NSMutableURLRequest(url: URL(string: "http://www.365key.com/User/edit_thumbnail")!)
         urlRequest.httpMethod = "POST"
@@ -229,14 +230,29 @@ extension SKUserCenterAccountInfoController: UIImagePickerControllerDelegate, UI
         let dispositonEncoderStr = disPositionStr.data(using: .utf8)
         body.append(dispositonEncoderStr!)
         
-        let contentTypeStr = "Content-Type:image/jpeg"
+
+        
+        let contentTypeStr = UIImagePNGRepresentation(scaledImage!) == nil ? "Content-Type:image/jpeg":"Content-Type:image/png"
         let contntTypeEncoderStr = contentTypeStr.data(using: .utf8)
         body.append(contntTypeEncoderStr!)
+        
+        
         
         body.append(("\r\n").data(using: .utf8)!)
         body.append(imageData!)
         body.append(("\r\n").data(using: .utf8)!)
         
+        
+        let boundaryStr1 = "--365key\r\n"
+        let encodStr1 = boundaryStr1.data(using: .utf8)
+        body.append(encodStr1!)
+        
+        let paramsSst = "Content-Disposition: form-data; uid=\"\((userShared?.uid)!)\"\r\n"
+        let paramsEncoderStr = paramsSst.data(using: .utf8)
+        body.append(paramsEncoderStr!)
+        
+        body.append(("\r\n").data(using: .utf8)!)
+
         let endStr = "365key--"
         let encodeEndStr = endStr.data(using: .utf8)
         body.append(encodeEndStr!)
@@ -249,22 +265,11 @@ extension SKUserCenterAccountInfoController: UIImagePickerControllerDelegate, UI
         urlRequest.setValue("\(bodyLength)", forHTTPHeaderField: "Content-Length")
         urlRequest.setValue("multipart/form-data; boundary=365key", forHTTPHeaderField: "Content-Type")
         
+
         NSURLConnection.sendAsynchronousRequest(urlRequest as URLRequest, queue: .main){ (urlResponse, data, error) in
-            
-            print(data)
-            print(urlResponse)
-            print(error)
+            print("上传修改头像待完善")
+            let jsonData = try? JSONSerialization.jsonObject(with: data!, options: [])
+            print(jsonData!)
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
 }

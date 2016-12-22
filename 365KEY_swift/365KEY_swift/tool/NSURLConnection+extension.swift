@@ -17,6 +17,41 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 帮助界面用户信息反馈提交
+    func helpVCUploadUserFeedback(feedbackStr: String, completion:@escaping(_ isSuccess: Bool)->()) {
+        
+        let userShared = SKUserShared.getUserSharedNeedPresentLoginView()
+        if userShared != nil {
+            let urlStr = "http://www.365key.com/Feedback/add_feedback"
+            var params = [String: AnyObject]()
+            params["message"] = feedbackStr as AnyObject
+            params["uid"] = userShared?.uid as AnyObject
+            
+            connectionRequest(urlString: urlStr, paramers: params){ (bool, anyData) in
+                
+                if bool {
+                    let jsonData = try? JSONSerialization.jsonObject(with: anyData as! Data, options: []) as! [String: AnyObject?]
+                    let code = jsonData!["code"]
+                    guard let code1 = code,
+                        let code2 = code1 else {
+                            completion(false)
+                            return
+                    }
+                    if code2 as! Int == 0 {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                    
+                } else {
+                    completion(false)
+                }
+            }
+        } else {
+            SKProgressHUD.setErrorString(with: "请登录后提交反馈")
+        }
+        
+    }
     // MARK: 用户信息页面修改用户信息请求
     func chengeUserInfo(params: [String: AnyObject], completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
         let urlStr = "http://www.365key.com/User/modified"

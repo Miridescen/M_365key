@@ -18,6 +18,9 @@ class SKUserCenterSetController: UIViewController {
         
     var titleArray = ["新消息通知", "通用", "帮助与反馈", "关于365key"]
     
+    let userShared = SKUserShared.getUserShared()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -89,7 +92,12 @@ extension SKUserCenterSetController: UITableViewDelegate, UITableViewDataSource 
         return 57
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(123)
+        let setSubVC = SKSetSubViewController()
+        setSubVC.title = titleArray[indexPath.row]
+        setSubVC.userShared = userShared
+        
+        navigationController?.pushViewController(setSubVC, animated: true)
+   
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let bgview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 60))
