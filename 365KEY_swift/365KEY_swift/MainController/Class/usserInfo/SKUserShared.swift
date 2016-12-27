@@ -32,6 +32,11 @@ class SKUserShared: NSObject, NSCoding {
         
     }
     
+    class func defaultUserShared() {
+        
+        
+    }
+    
     class func getUserShared() -> SKUserShared? {
         
         let userShared = NSKeyedUnarchiver.unarchiveObject(withFile: SKUserSharedFilePath) as? SKUserShared ?? SKUserShared()

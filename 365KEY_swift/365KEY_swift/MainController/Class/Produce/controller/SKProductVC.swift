@@ -40,7 +40,7 @@ class SKProductVC: UIViewController {
             self.present(SKNavigationController(rootViewController: SKLoginController()), animated: true, completion: nil)
         }
         NotificationCenter.default.addObserver(self, selector: #selector(userLoginSuccess), name: NSNotification.Name(rawValue: SKUserLoginSuccessNotifiction), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(userLoginSuccess), name: NSNotification.Name(rawValue: SKUserLogoutNotifiction), object: nil)
         addSubView()
   
         loadData()
@@ -49,7 +49,6 @@ class SKProductVC: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     func userLoginSuccess() {
-        print("产品加载")
         loadData()
     }
     func loadData() {
@@ -81,7 +80,6 @@ class SKProductVC: UIViewController {
 }
 extension SKProductVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(123)
         return true
     }
 }
@@ -97,9 +95,17 @@ extension SKProductVC{
     }
     @objc private func addButtonDidClick(){
         
-        let loginVC = SKNavigationController(rootViewController: SKLoginController())
- 
-        present(loginVC, animated: true, completion: nil)
+        let userShared = SKUserShared.getUserSharedNeedPresentLoginView()
+        
+        if userShared == nil {
+            return
+        }
+        if userShared?.userInfo?.tel == nil || (userShared?.userInfo?.tel?.isEmpty)! || userShared?.userInfo?.tel == "" {
+            let nav = SKNavigationController(rootViewController: SKPerfectInfoVC())
+            present(nav, animated: true, completion: nil)
+        } else {
+            navigationController?.pushViewController(SKAddProductVC(), animated: true)
+        }
     }
     // MARK: 添加subView
     func addSubView() {

@@ -10,6 +10,7 @@
 		1C806066D10D881027947B14 /* Pods_365KEY_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */; };
 		1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */; };
 		1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */; };
+		1D25DA831E126C1700A4079B /* SKAdjustImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D25DA821E126C1700A4079B /* SKAdjustImageVC.swift */; };
 		1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */; };
 		1D2AF1661DEBCB1900E618D3 /* SKNewsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2AF1641DEBCB1900E618D3 /* SKNewsDetailController.swift */; };
 		1D2AF16A1DEBD17E00E618D3 /* SKNewsDetailHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2AF1691DEBD17E00E618D3 /* SKNewsDetailHeadView.swift */; };
@@ -56,6 +57,8 @@
 		1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE381DBDFE5000745C5D /* SKNavigationController.swift */; };
 		1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */; };
 		1DBABE411DBE0EA900745C5D /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */; };
+		1DE846F61E0D141000695153 /* SKAddProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE846F51E0D141000695153 /* SKAddProductVC.swift */; };
+		1DE846F81E0D14FE00695153 /* SKPerfectInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE846F71E0D14FE00695153 /* SKPerfectInfoVC.swift */; };
 		1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DCE1DB89D61003E65E3 /* SKTabBarController.swift */; };
 		1DED7DDB1DB8A070003E65E3 /* SKLunchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DDA1DB8A070003E65E3 /* SKLunchImageViewController.swift */; };
 		1DED7DDE1DB8A562003E65E3 /* UIScreen+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DED7DDD1DB8A562003E65E3 /* UIScreen+extension.swift */; };
@@ -79,6 +82,7 @@
 		1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_365KEY_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSessionManage.swift; sourceTree = "<group>"; };
 		1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSessionManage+extension.swift"; sourceTree = "<group>"; };
+		1D25DA821E126C1700A4079B /* SKAdjustImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKAdjustImageVC.swift; sourceTree = "<group>"; };
 		1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLConnection+extension.swift"; sourceTree = "<group>"; };
 		1D2AF1641DEBCB1900E618D3 /* SKNewsDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsDetailController.swift; sourceTree = "<group>"; };
 		1D2AF1691DEBD17E00E618D3 /* SKNewsDetailHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsDetailHeadView.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 		1DBABE381DBDFE5000745C5D /* SKNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNavigationController.swift; sourceTree = "<group>"; };
 		1DBABE3E1DBE0D5700745C5D /* UIBarButtonItem+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+extension.swift"; sourceTree = "<group>"; };
 		1DBABE401DBE0EA900745C5D /* UIButton+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
+		1DE846F51E0D141000695153 /* SKAddProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKAddProductVC.swift; sourceTree = "<group>"; };
+		1DE846F71E0D14FE00695153 /* SKPerfectInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPerfectInfoVC.swift; sourceTree = "<group>"; };
 		1DED7DCE1DB89D61003E65E3 /* SKTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTabBarController.swift; sourceTree = "<group>"; };
 		1DED7DDA1DB8A070003E65E3 /* SKLunchImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLunchImageViewController.swift; sourceTree = "<group>"; };
 		1DED7DDD1DB8A562003E65E3 /* UIScreen+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+extension.swift"; sourceTree = "<group>"; };
@@ -294,6 +300,9 @@
 			children = (
 				1D3F29781DC9D74800C0F998 /* SKProductVC.swift */,
 				1D3F29761DC9C3BF00C0F998 /* SKProductDetailController.swift */,
+				1DE846F51E0D141000695153 /* SKAddProductVC.swift */,
+				1DE846F71E0D14FE00695153 /* SKPerfectInfoVC.swift */,
+				1D25DA821E126C1700A4079B /* SKAdjustImageVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -632,6 +641,7 @@
 				1D2C6A941DE2F345007D9D4D /* SKProductDetailInfoView.swift in Sources */,
 				1D5E82001DD1776A003E9D14 /* SVProgressHUD+extension.swift in Sources */,
 				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
+				1DE846F81E0D14FE00695153 /* SKPerfectInfoVC.swift in Sources */,
 				1D39C64C1DE81E860017289F /* SKNewsVC.swift in Sources */,
 				1D2AF16A1DEBD17E00E618D3 /* SKNewsDetailHeadView.swift in Sources */,
 				1DFE2F901DF01A5C00F3C8BE /* SKMyMessageController.swift in Sources */,
@@ -649,6 +659,7 @@
 				1D60E3A11DDD8D0A0015A7A8 /* SKProductDetailUserInfoModel.swift in Sources */,
 				1D2AF16C1DEBD19C00E618D3 /* SKNewsDetailButtonView.swift in Sources */,
 				1DFE2F8C1DF0052A00F3C8BE /* SKUserCenterAccountInfoController.swift in Sources */,
+				1DE846F61E0D141000695153 /* SKAddProductVC.swift in Sources */,
 				1D8947771E00F5EA0029ABB0 /* SKChangePasswordViewController.swift in Sources */,
 				1D2C6A921DE2E90F007D9D4D /* SKProductDetailBtnView.swift in Sources */,
 				1D3F29701DC882E000C0F998 /* SKRegisterController.swift in Sources */,
@@ -674,6 +685,7 @@
 				1D2AF1661DEBCB1900E618D3 /* SKNewsDetailController.swift in Sources */,
 				1D5E82441DD459F8003E9D14 /* SKProductDetailHeadView.swift in Sources */,
 				1D8947751E00EA3A0029ABB0 /* SKChangePhoneNumberViewController.swift in Sources */,
+				1D25DA831E126C1700A4079B /* SKAdjustImageVC.swift in Sources */,
 				1D60E39F1DDD8A340015A7A8 /* SKProductDetailModel.swift in Sources */,
 				1D3F29791DC9D74800C0F998 /* SKProductVC.swift in Sources */,
 				1D5E81FE1DD05F2F003E9D14 /* commomClass.swift in Sources */,

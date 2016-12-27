@@ -32,7 +32,7 @@ class SKUserCenterController: UIViewController {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SKNoUserLoginNotifiction), object: nil, queue: OperationQueue.main){ notifiction in
             self.present(SKNavigationController(rootViewController: SKLoginController()), animated: true, completion: nil)
         }
- 
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogoutSuccess), name: NSNotification.Name(rawValue: SKUserLogoutNotifiction), object: nil)
         loadData()
         addSubView()
     }
@@ -47,6 +47,11 @@ class SKUserCenterController: UIViewController {
     func userLoginSuccess() {
         self.userShared = SKUserShared.getUserShared()
         self.headView?.userInfo = self.userShared?.userInfo
+    }
+    func userLogoutSuccess() {
+        print("退出登录")
+        self.userShared = SKUserShared.getUserShared()
+        tableView?.reloadData()
     }
 
 }

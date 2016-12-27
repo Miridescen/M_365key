@@ -20,6 +20,9 @@ class SKUserCenterSetController: UIViewController {
     
     let userShared = SKUserShared.getUserShared()
     
+    var logoutBgView: UIView?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +60,59 @@ extension SKUserCenterSetController{
     }
     func logOutBtnDidClick() {
         print("退出登录")
+        
+        let window = UIApplication.shared.windows.last
+        
+        logoutBgView = UIView(frame: (window?.bounds)!)
+        logoutBgView?.backgroundColor = UIColor(red: 40/255.0, green: 43/255.0, blue: 53/255.0, alpha: 0.6)
+        window?.addSubview(logoutBgView!)
+        
+        let appraceView = UIView(frame: CGRect(x: 30, y: (UIScreen.main.screenHeight-120)/2, width: UIScreen.main.screenWidth-60, height: 150))
+        appraceView.backgroundColor = UIColor.white
+        logoutBgView?.addSubview(appraceView)
+        
+        let iconImageView = UIImageView(frame: CGRect(x: (appraceView.frame.width-30)/2, y: 25, width: 30, height: 30))
+        iconImageView.image = UIImage(named: "img_tuichu")
+        appraceView.addSubview(iconImageView)
+        
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 80, width: appraceView.frame.width, height: 12))
+        messageLabel.text = "是否退出登录？"
+        messageLabel.font = UIFont.systemFont(ofSize: 12)
+        messageLabel.textAlignment = .center
+        messageLabel.textColor = UIColor.gray
+        appraceView.addSubview(messageLabel)
+        
+        let lineView = UIImageView(frame: CGRect(x: 0, y: 108, width: appraceView.frame.width, height: 2))
+        lineView.image = UIImage(named: "line")
+        appraceView.addSubview(lineView)
+        
+        let cancleBtn = UIButton(frame: CGRect(x: 0, y: appraceView.height-40, width: appraceView.width/2, height: 40))
+        cancleBtn.setTitle("取消", for: .normal)
+        cancleBtn.setTitleColor(UIColor.gray, for: .normal)
+        cancleBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        cancleBtn.addTarget(self, action: #selector(cancleBtnDidClick), for: .touchUpInside)
+        appraceView.addSubview(cancleBtn)
+        
+        let sureBtn = UIButton(frame: CGRect(x: appraceView.width/2, y: appraceView.height-40, width: appraceView.width/2, height: 40))
+        sureBtn.setTitle("确定", for: .normal)
+        sureBtn.setTitleColor(UIColor().mainColor, for: .normal)
+        sureBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        sureBtn.addTarget(self, action: #selector(sureBtnDidClick), for: .touchUpInside)
+        appraceView.addSubview(sureBtn)
+    }
+    
+    @objc private func cancleBtnDidClick(){
+        logoutBgView?.removeFromSuperview()
+    }
+    @objc private func sureBtnDidClick(){
+        let fileManage = FileManager()
+        
+        try? fileManage.removeItem(atPath: SKUserSharedFilePath)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SKUserLogoutNotifiction), object: nil)
+        logoutBgView?.removeFromSuperview()
+        SKProgressHUD.setSuccessString(with: "退出登录成功")
+        
     }
 }
 extension SKUserCenterSetController: UITableViewDelegate, UITableViewDataSource {

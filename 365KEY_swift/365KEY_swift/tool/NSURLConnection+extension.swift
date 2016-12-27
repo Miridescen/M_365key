@@ -17,6 +17,31 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 邮箱注册的用户在进行添加新产品的时候要完善手机信息，这个时候发送的请求
+    func perfectUserInfoRequest(with phoneNumber: String, captcha: String, password: String, uid: NSNumber,completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
+        let urlStr = "http://www.365key.com/User/reg"
+        var params = [String: AnyObject]()
+        params["phone"] = phoneNumber as AnyObject?
+        params["checkcode"] = captcha as AnyObject?
+        params["password"] = password as AnyObject?
+        params["uid"] = uid as AnyObject?
+        
+        connectionRequest(urlString: urlStr, paramers: params){ (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        completion(false, nil)
+                        return
+                }
+                completion(true, code2 as? Int)
+            } else {
+                completion(false, nil)
+            }
+        }
+        
+    }
     // MARK: 帮助界面用户信息反馈提交
     func helpVCUploadUserFeedback(feedbackStr: String, completion:@escaping(_ isSuccess: Bool)->()) {
         

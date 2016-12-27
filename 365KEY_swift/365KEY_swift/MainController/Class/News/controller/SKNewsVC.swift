@@ -34,6 +34,7 @@ class SKNewsVC: UIViewController {
             
         }
         NotificationCenter.default.addObserver(self, selector: #selector(userLoginSuccess), name: NSNotification.Name(rawValue: SKUserLoginSuccessNotifiction), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userLoginSuccess), name: NSNotification.Name(rawValue: SKUserLogoutNotifiction), object: nil)
         
         addSubView()
         
@@ -43,7 +44,6 @@ class SKNewsVC: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     func userLoginSuccess() {
-        print("新闻加载")
         loadData()
     }
     
