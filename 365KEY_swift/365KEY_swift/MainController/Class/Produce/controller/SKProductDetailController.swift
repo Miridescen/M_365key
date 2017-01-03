@@ -51,30 +51,30 @@ class SKProductDetailController: UIViewController {
 }
 extension SKProductDetailController {
     func setupSubView() {
-        bgScrollView = UIScrollView(frame: CGRect(x: 0, y: -20, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight+20))
+        bgScrollView = UIScrollView(frame: CGRect(x: 0, y: -20, width: SKScreenWidth, height: SKScreenHeight+20))
         bgScrollView?.backgroundColor = UIColor.white
         bgScrollView?.showsVerticalScrollIndicator = false
         bgScrollView?.showsHorizontalScrollIndicator = false
         bgScrollView?.delegate = self
-        bgScrollView?.contentSize = CGSize(width: 0, height: UIScreen.main.screenHeight+290-64)
+        bgScrollView?.contentSize = CGSize(width: 0, height: SKScreenHeight+290-64)
         view.insertSubview(bgScrollView!, belowSubview: navBar!)
         
         headView = Bundle.main.loadNibNamed("ProductDetailHeadView", owner: nil, options: nil)?.first as? SKProductDetailHeadView
-        headView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 290)
+        headView?.frame = CGRect(x: 0, y: 0, width: SKScreenWidth, height: 290)
         bgScrollView?.addSubview(headView!)
         
-        buttonView = SKProductDetailBtnView(frame: CGRect(x: 0, y: 290, width: UIScreen.main.screenWidth, height: 50))
+        buttonView = SKProductDetailBtnView(frame: CGRect(x: 0, y: 290, width: SKScreenWidth, height: 50))
         buttonView?.firstBtn?.addTarget(self, action: #selector(firstBtnDidClick), for: .touchUpInside)
         buttonView?.firstBtn?.isSelected = true
         buttonView?.secondBtn?.addTarget(self, action: #selector(secondBtnDidClick), for: .touchUpInside)
         buttonView?.thirdBtn?.addTarget(self, action: #selector(thirdBtnDidClick), for: .touchUpInside)
         bgScrollView?.addSubview(buttonView!)
         
-        detailView = UIView(frame: CGRect(x: 0, y: 340, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-64-50))
+        detailView = UIView(frame: CGRect(x: 0, y: 340, width: SKScreenWidth, height: SKScreenHeight-64-50))
         detailView?.backgroundColor = UIColor.white
         bgScrollView?.addSubview(detailView!)
         
-        detailInfoScrollView = SKProductDetailInfoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-64-50))
+        detailInfoScrollView = SKProductDetailInfoView(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: SKScreenHeight-64-50))
         detailInfoScrollView?.isScrollEnabled = false
         detailInfoScrollView?.bounces = false
         detailView?.addSubview(detailInfoScrollView!)
@@ -97,11 +97,11 @@ extension SKProductDetailController {
     }
     
     func setupNav() {
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        navBgView = UIView(frame: CGRect(x: 0, y: -20, width: UIScreen.main.screenWidth, height: 64))
+        navBgView = UIView(frame: CGRect(x: 0, y: -20, width: SKScreenWidth, height: 64))
         navBgView?.backgroundColor = UIColor.clear
         
         navBar?.setValue(navBgView, forKey: "backgroundView")

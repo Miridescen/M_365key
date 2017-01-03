@@ -17,6 +17,68 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 产品页搜索按钮点击后发送的请求
+    func searchProdecdRequest(params:[String: AnyObject]?,completion:@escaping (_ isSuccess: Bool, _ data: [[String: [SKProductListModel]]]?)->()) {
+        
+        let urlStr = "http://www.365key.com/Produce/get_product_list"
+        
+        connectionRequest(with: .POST, urlString: urlStr, paramers: params) { (bool, Data) in
+            
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: []) as? [String: AnyObject?] ?? [:]
+                
+                let productListDataArray = NSArray.yy_modelArray(with: SKProductListModel.self, json: jsonData?["prolist"] as Any) ?? []
+                if productListDataArray.count > 0 {
+                    
+                    var dateArray = [String?]()
+                    var dTime: String?
+                    for i in 0..<productListDataArray.count {
+                        
+                        let ProductModel = productListDataArray[i] as? SKProductListModel
+                        if i == 0{
+                            dTime = ProductModel?.showTime
+                            dateArray.append(dTime)
+                        } else {
+                            if dTime != ProductModel?.showTime{
+                                dTime = ProductModel?.showTime
+                                dateArray.append(dTime)
+                            }
+                        }
+                        
+                    }
+                    
+                    var allDataArray = [[String: [SKProductListModel]]]()
+                    
+                    for i in 0..<dateArray.count {
+                        let showTime = dateArray[i]
+                        var modelArray = [SKProductListModel]()
+                        for model in productListDataArray {
+                            
+                            if (model as! SKProductListModel).showTime == showTime {
+                                modelArray.append(model as! SKProductListModel)
+                            }
+                        }
+                        
+                        let modelDic: [String: [SKProductListModel]] = [showTime!: modelArray]
+                        
+                        allDataArray.append(modelDic)
+                        
+                    }
+                    
+                    completion(true, allDataArray)
+                    
+                } else{
+                    completion(false, nil)
+                }
+            } else {
+                completion (false, nil)
+            }
+            
+            
+            
+        }
+        
+    }
     // MARK: 邮箱注册的用户在进行添加新产品的时候要完善手机信息，这个时候发送的请求
     func perfectUserInfoRequest(with phoneNumber: String, captcha: String, password: String, uid: NSNumber,completion:@escaping(_ isSuccess: Bool, _ codeNum: Int?)->()) {
         let urlStr = "http://www.365key.com/User/reg"

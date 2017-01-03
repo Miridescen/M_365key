@@ -30,7 +30,7 @@ class SKPerfectInfoVC: UIViewController {
     }
 
     func setupSubView() {
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.barTintColor = UIColor().mainColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -42,7 +42,7 @@ class SKPerfectInfoVC: UIViewController {
         
         navBar?.items = [navItem!]
         
-        phoneNumTF = UITextField(frame: CGRect(x: 40, y: 20+64, width: UIScreen.main.screenWidth-80, height: 40))
+        phoneNumTF = UITextField(frame: CGRect(x: 40, y: 20+64, width: SKScreenWidth-80, height: 40))
         phoneNumTF?.textAlignment = .center
         phoneNumTF?.placeholder = "手机号"
         phoneNumTF?.keyboardType = .numberPad
@@ -52,7 +52,7 @@ class SKPerfectInfoVC: UIViewController {
         phoneNumTF?.delegate = self
         view.addSubview(phoneNumTF!)
         
-        captachTF = UITextField(frame: CGRect(x: 40, y: 70+64, width: UIScreen.main.screenWidth-80, height: 40))
+        captachTF = UITextField(frame: CGRect(x: 40, y: 70+64, width: SKScreenWidth-80, height: 40))
         captachTF?.textAlignment = .center
         captachTF?.placeholder = "验证码"
         captachTF?.borderStyle = .roundedRect
@@ -60,14 +60,14 @@ class SKPerfectInfoVC: UIViewController {
         captachTF?.delegate = self
         view.addSubview(captachTF!)
         
-        fitchCaptachBtn = UIButton(frame: CGRect(x: UIScreen.main.screenWidth-40-66, y: 70+64, width: 66, height: 40))
+        fitchCaptachBtn = UIButton(frame: CGRect(x: SKScreenWidth-40-66, y: 70+64, width: 66, height: 40))
         fitchCaptachBtn?.setTitle("获取", for: .normal)
         fitchCaptachBtn?.setTitleColor(UIColor.white, for: .normal)
         fitchCaptachBtn?.setBackgroundImage(UIImage(named: "bg_huoqu"), for: .normal)
         fitchCaptachBtn?.addTarget(self, action: #selector(fatchCapeachBtnDidClick), for: .touchUpInside)
         view.addSubview(fitchCaptachBtn!)
         
-        passWordTF = UITextField(frame: CGRect(x: 40, y: 70+64+50, width: UIScreen.main.screenWidth-80, height: 40))
+        passWordTF = UITextField(frame: CGRect(x: 40, y: 70+64+50, width: SKScreenWidth-80, height: 40))
         passWordTF?.textAlignment = .center
         passWordTF?.placeholder = "密码"
         passWordTF?.borderStyle = .roundedRect
@@ -75,17 +75,17 @@ class SKPerfectInfoVC: UIViewController {
         passWordTF?.delegate = self
         view.addSubview(passWordTF!)
         
-        sureBtn = UIButton(frame: CGRect(x: (UIScreen.main.screenWidth-156)/2, y: 70+64+50+74, width: 156, height: 45))
+        sureBtn = UIButton(frame: CGRect(x: (SKScreenWidth-156)/2, y: 70+64+50+74, width: 156, height: 45))
         sureBtn?.setTitle("完善信息", for: .normal)
         sureBtn?.setBackgroundImage(UIImage(named: "btm_login"), for: .normal)
         sureBtn?.addTarget(self, action: #selector(sureBtnDidClick), for: .touchUpInside)
         view.addSubview(sureBtn!)
         
-        let aggreeImageView = UIImageView(frame: CGRect(x: (UIScreen.main.screenWidth-220)/2, y: 70+64+50+74+45+29, width: 12, height: 12))
+        let aggreeImageView = UIImageView(frame: CGRect(x: (SKScreenWidth-220)/2, y: 70+64+50+74+45+29, width: 12, height: 12))
         aggreeImageView.image = UIImage(named: "btm_select")
         view.addSubview(aggreeImageView)
         
-        let aggreelabel = UILabel(frame: CGRect(x: (UIScreen.main.screenWidth-220)/2+12, y: 70+64+50+74+45+29, width: 208, height: 13))
+        let aggreelabel = UILabel(frame: CGRect(x: (SKScreenWidth-220)/2+12, y: 70+64+50+74+45+29, width: 208, height: 13))
         aggreelabel.text = "阅读并接受《365key用户协议》"
         aggreelabel.textAlignment = .center
         aggreelabel.textColor = UIColor(white: 127/225.0, alpha: 1)

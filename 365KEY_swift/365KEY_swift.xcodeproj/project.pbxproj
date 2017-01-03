@@ -19,6 +19,7 @@
 		1D2AF1701DEBD42400E618D3 /* SKNewsDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2AF16F1DEBD42400E618D3 /* SKNewsDetailModel.swift */; };
 		1D2C6A921DE2E90F007D9D4D /* SKProductDetailBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C6A911DE2E90F007D9D4D /* SKProductDetailBtnView.swift */; };
 		1D2C6A941DE2F345007D9D4D /* SKProductDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C6A931DE2F345007D9D4D /* SKProductDetailInfoView.swift */; };
+		1D2D57781E1B8EA5006789BA /* SKSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2D57771E1B8EA5006789BA /* SKSearchVC.swift */; };
 		1D39C64C1DE81E860017289F /* SKNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C64B1DE81E860017289F /* SKNewsVC.swift */; };
 		1D39C64F1DE828BA0017289F /* SKNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C64E1DE828BA0017289F /* SKNewsViewModel.swift */; };
 		1D39C6511DE8292E0017289F /* SKNewsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C6501DE8292E0017289F /* SKNewsListModel.swift */; };
@@ -91,6 +92,7 @@
 		1D2AF16F1DEBD42400E618D3 /* SKNewsDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsDetailModel.swift; sourceTree = "<group>"; };
 		1D2C6A911DE2E90F007D9D4D /* SKProductDetailBtnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailBtnView.swift; sourceTree = "<group>"; };
 		1D2C6A931DE2F345007D9D4D /* SKProductDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailInfoView.swift; sourceTree = "<group>"; };
+		1D2D57771E1B8EA5006789BA /* SKSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSearchVC.swift; sourceTree = "<group>"; };
 		1D39C64B1DE81E860017289F /* SKNewsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsVC.swift; sourceTree = "<group>"; };
 		1D39C64E1DE828BA0017289F /* SKNewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsViewModel.swift; sourceTree = "<group>"; };
 		1D39C6501DE8292E0017289F /* SKNewsListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsListModel.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				1DE846F51E0D141000695153 /* SKAddProductVC.swift */,
 				1DE846F71E0D14FE00695153 /* SKPerfectInfoVC.swift */,
 				1D25DA821E126C1700A4079B /* SKAdjustImageVC.swift */,
+				1D2D57771E1B8EA5006789BA /* SKSearchVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */,
 				1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */,
 				1D2AF1661DEBCB1900E618D3 /* SKNewsDetailController.swift in Sources */,
+				1D2D57781E1B8EA5006789BA /* SKSearchVC.swift in Sources */,
 				1D5E82441DD459F8003E9D14 /* SKProductDetailHeadView.swift in Sources */,
 				1D8947751E00EA3A0029ABB0 /* SKChangePhoneNumberViewController.swift in Sources */,
 				1D25DA831E126C1700A4079B /* SKAdjustImageVC.swift in Sources */,

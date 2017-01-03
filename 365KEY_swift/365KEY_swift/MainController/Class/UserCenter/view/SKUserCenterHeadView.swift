@@ -30,21 +30,21 @@ class SKUserCenterHeadView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        headImageView = UIImageView(frame: CGRect(x: (UIScreen.main.screenWidth-130)/2, y: 20, width: 130, height: 130))
+        headImageView = UIImageView(frame: CGRect(x: (SKScreenWidth-130)/2, y: 20, width: 130, height: 130))
         headImageView?.layer.cornerRadius = 65
         headImageView?.layer.masksToBounds = true
         headImageView?.image = UIImage(named: "pic_touxiang")
         headImageView?.isUserInteractionEnabled = true
         addSubview(headImageView!)
         
-        nameLabel = UILabel(frame: CGRect(x: 16, y: 160, width: UIScreen.main.screenWidth-32, height: 24))
+        nameLabel = UILabel(frame: CGRect(x: 16, y: 160, width: SKScreenWidth-32, height: 24))
         nameLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
         nameLabel?.textAlignment = .center
         nameLabel?.textColor = UIColor.black
         nameLabel?.text = "未登录"
         addSubview(nameLabel!)
         
-        introduceLabel = UILabel(frame: CGRect(x: 16, y: 194, width: UIScreen.main.screenWidth-32, height: 15))
+        introduceLabel = UILabel(frame: CGRect(x: 16, y: 194, width: SKScreenWidth-32, height: 15))
         introduceLabel?.font = UIFont.systemFont(ofSize: 12)
         introduceLabel?.textAlignment = .center
         introduceLabel?.textColor = UIColor(white: 152/255.0, alpha: 1)

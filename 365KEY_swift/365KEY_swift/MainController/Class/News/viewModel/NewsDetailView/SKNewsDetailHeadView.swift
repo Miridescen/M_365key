@@ -40,7 +40,7 @@ class SKNewsDetailHeadView: UIView {
                 return
             }
             
-            let titleLabelSize = SKLabelSizeWith(labelText: titleLabelText, font: UIFont.systemFont(ofSize: 20), width: UIScreen.main.screenWidth-32)
+            let titleLabelSize = SKLabelSizeWith(labelText: titleLabelText, font: UIFont.systemFont(ofSize: 20), width: SKScreenWidth-32)
             titleLabel?.frame = CGRect(origin: CGPoint(x: 16, y: 10), size: titleLabelSize)
             headImageView?.frame = CGRect(x: 16, y: 20+titleLabelSize.height, width: 35, height: 35)
             

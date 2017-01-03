@@ -28,7 +28,7 @@ class SKProduceSearchView: UIView {
     }
     
     convenience init(withAnimation animation: Bool){
-        self.init(frame: CGRect(x: 0, y: 20, width: UIScreen.main.screenWidth, height: 44))
+        self.init(frame: CGRect(x: 0, y: 20, width: SKScreenWidth, height: 44))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,7 +52,7 @@ class SKProduceSearchView: UIView {
         addSubview(searchTF!)
         
         defauleButton = UIButton(SKTitleButton: "取消", backgroundColor: UIColor().mainColor, titleColor: UIColor.white, font: nil, target: self, action: #selector(defauleButtonDidClick))
-        defauleButton?.x = UIScreen.main.screenWidth-16-40
+        defauleButton?.x = SKScreenWidth-16-40
         defauleButton?.y = 5
         defauleButton?.size = CGSize(width: 40, height: 35)
         addSubview(defauleButton!)

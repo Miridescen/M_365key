@@ -135,7 +135,7 @@ class SKRegisterController: UIViewController {
     }
     
     func setupNav() {
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.barTintColor = UIColor().mainColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]

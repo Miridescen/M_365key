@@ -26,25 +26,25 @@ class SKNewsDetailScrollView: UIView {
                     }
                 }
                 
-                formView = UIView(frame: CGRect(x: 16, y: 0, width: UIScreen.main.screenWidth-32, height: 233))
+                formView = UIView(frame: CGRect(x: 16, y: 0, width: SKScreenWidth-32, height: 233))
                 formView?.layer.borderColor = UIColor(white: 245/255.0, alpha: 1).cgColor
                 formView?.layer.borderWidth = 1
                 formView?.layer.cornerRadius = 6
                 formView?.layer.masksToBounds = true
                 
-                formView?.addSubview(formSubviewWith(titleStr: "时间", infoStr: (scrollViewModel?.showTime)!, frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth-32, height: 39)))
+                formView?.addSubview(formSubviewWith(titleStr: "时间", infoStr: (scrollViewModel?.showTime)!, frame: CGRect(x: 0, y: 0, width: SKScreenWidth-32, height: 39)))
                 
-                formView?.addSubview(formSubviewWith(titleStr: "公司", infoStr: (scrollViewModel?.company)!, frame: CGRect(x: 0, y: 39, width: UIScreen.main.screenWidth-32, height: 39)))
+                formView?.addSubview(formSubviewWith(titleStr: "公司", infoStr: (scrollViewModel?.company)!, frame: CGRect(x: 0, y: 39, width: SKScreenWidth-32, height: 39)))
                 
-                formView?.addSubview(formSubviewWith(titleStr: "行业", infoStr: (scrollViewModel?.industry)!, frame: CGRect(x: 0, y: 2*39, width: UIScreen.main.screenWidth-32, height: 39)))
+                formView?.addSubview(formSubviewWith(titleStr: "行业", infoStr: (scrollViewModel?.industry)!, frame: CGRect(x: 0, y: 2*39, width: SKScreenWidth-32, height: 39)))
                 
-                formView?.addSubview(formSubviewWith(titleStr: "金额", infoStr: (scrollViewModel?.money)!, frame: CGRect(x: 0, y: 3*39, width: UIScreen.main.screenWidth-32, height: 39)))
+                formView?.addSubview(formSubviewWith(titleStr: "金额", infoStr: (scrollViewModel?.money)!, frame: CGRect(x: 0, y: 3*39, width: SKScreenWidth-32, height: 39)))
                 
-                formView?.addSubview(formSubviewWith(titleStr: "轮次", infoStr: (scrollViewModel?.round)!, frame: CGRect(x: 0, y: 4*39, width: UIScreen.main.screenWidth-32, height: 39)))
+                formView?.addSubview(formSubviewWith(titleStr: "轮次", infoStr: (scrollViewModel?.round)!, frame: CGRect(x: 0, y: 4*39, width: SKScreenWidth-32, height: 39)))
                 
-                formView?.addSubview(formSubviewWith(titleStr: "投资方", infoStr: (scrollViewModel?.investor)!, frame: CGRect(x: 0, y: 5*39, width: UIScreen.main.screenWidth-32, height: 39)))
+                formView?.addSubview(formSubviewWith(titleStr: "投资方", infoStr: (scrollViewModel?.investor)!, frame: CGRect(x: 0, y: 5*39, width: SKScreenWidth-32, height: 39)))
                 
-                formView?.addSubview(formSubviewWith(titleStr: "地区", infoStr: (scrollViewModel?.showTime)!, frame: CGRect(x: 0, y: 6*39, width: UIScreen.main.screenWidth-32, height: 39)))
+                formView?.addSubview(formSubviewWith(titleStr: "地区", infoStr: (scrollViewModel?.showTime)!, frame: CGRect(x: 0, y: 6*39, width: SKScreenWidth-32, height: 39)))
                 scrollView?.contentInset = UIEdgeInsetsMake((scrollView?.contentInset.top)!, (scrollView?.contentInset.left)!, (scrollView?.contentInset.bottom)!+237+30, (scrollView?.contentInset.right)!)
                 scrollView?.addSubview(formView!)
             }

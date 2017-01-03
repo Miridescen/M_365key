@@ -18,10 +18,10 @@ class SKSetSubViewController: UIViewController {
     
     var userShared: SKUserShared?
     
-    lazy var notifictionView = SKNotifictionVC(frame: CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-64))
-    lazy var generalView = SkGeneralVC(frame: CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-64))
-    lazy var helpView = SKHelpVC(frame: CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-64))
-    lazy var about365keyView = SKAbout365keyVC(frame: CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-64))
+    lazy var notifictionView = SKNotifictionVC(frame: CGRect(x: 0, y: 64, width: SKScreenWidth, height: SKScreenHeight-64))
+    lazy var generalView = SkGeneralVC(frame: CGRect(x: 0, y: 64, width: SKScreenWidth, height: SKScreenHeight-64))
+    lazy var helpView = SKHelpVC(frame: CGRect(x: 0, y: 64, width: SKScreenWidth, height: SKScreenHeight-64))
+    lazy var about365keyView = SKAbout365keyVC(frame: CGRect(x: 0, y: 64, width: SKScreenWidth, height: SKScreenHeight-64))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class SKSetSubViewController: UIViewController {
 extension SKSetSubViewController {
     
     func addSubView() {
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.barTintColor = UIColor().mainColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -70,18 +70,18 @@ class SKAbout365keyVC: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        logoImage = UIImageView(frame: CGRect(x: (UIScreen.main.screenWidth-150)/2, y: 100, width: 150, height: 150))
+        logoImage = UIImageView(frame: CGRect(x: (SKScreenWidth-150)/2, y: 100, width: 150, height: 150))
         logoImage?.image = UIImage(named: "icon_logo")
         addSubview(logoImage!)
         
-        titleLabel = UILabel(frame: CGRect(x: (UIScreen.main.screenWidth-300)/2, y: 270, width: 300, height: 20))
+        titleLabel = UILabel(frame: CGRect(x: (SKScreenWidth-300)/2, y: 270, width: 300, height: 20))
         titleLabel?.textAlignment = .center
         titleLabel?.text = "365key"
         titleLabel?.textColor = UIColor(white: 189/255.0, alpha: 1)
         titleLabel?.font = UIFont.systemFont(ofSize: 18)
         addSubview(titleLabel!)
         
-        versonLable = UILabel(frame: CGRect(x: (UIScreen.main.screenWidth-300)/2, y: 310, width: 300, height: 20))
+        versonLable = UILabel(frame: CGRect(x: (SKScreenWidth-300)/2, y: 310, width: 300, height: 20))
         versonLable?.textAlignment = .center
         versonLable?.text = "版本号：\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)"
         versonLable?.textColor = UIColor(white: 189/255.0, alpha: 1)
@@ -103,14 +103,14 @@ class SKHelpVC: UIView, UITextViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        infoTV = UITextView(frame: CGRect(x: 20, y: 20, width: UIScreen.main.screenWidth-40, height: 150))
+        infoTV = UITextView(frame: CGRect(x: 20, y: 20, width: SKScreenWidth-40, height: 150))
         infoTV?.layer.borderColor = UIColor(white: 207/255.0, alpha: 1).cgColor
         infoTV?.layer.borderWidth = 1
         infoTV?.layer.cornerRadius = 6
         infoTV?.delegate = self
         addSubview(infoTV!)
         
-        uploadBtn = UIButton(frame: CGRect(x: 40, y: 10+150+20, width: UIScreen.main.screenWidth-80, height: 40))
+        uploadBtn = UIButton(frame: CGRect(x: 40, y: 10+150+20, width: SKScreenWidth-80, height: 40))
         uploadBtn?.setBackgroundImage(UIImage(named: "btm_login"), for: .normal)
         uploadBtn?.setTitle("提交", for: .normal)
         uploadBtn?.setTitleColor(UIColor.white, for: .normal)
@@ -160,14 +160,14 @@ class SkGeneralVC: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        titleLabel = UILabel(frame: CGRect(x: 16, y: 30, width: UIScreen.main.screenWidth-100, height: 30))
+        titleLabel = UILabel(frame: CGRect(x: 16, y: 30, width: SKScreenWidth-100, height: 30))
         titleLabel?.textAlignment = .left
         titleLabel?.textColor = UIColor(white: 189/255.0, alpha: 1)
         titleLabel?.font = UIFont.systemFont(ofSize: 17)
         titleLabel?.text = "非WIFI下允许播放视频"
         addSubview(titleLabel!)
         
-        switch1 = UISwitch(frame: CGRect(x: UIScreen.main.screenWidth-72, y: 30, width: 0, height: 0))
+        switch1 = UISwitch(frame: CGRect(x: SKScreenWidth-72, y: 30, width: 0, height: 0))
         switch1?.onTintColor = UIColor().mainColor
         addSubview(switch1!)
     
@@ -188,16 +188,16 @@ class SKNotifictionVC: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        imageView = UIImageView(frame: CGRect(x: (UIScreen.main.screenWidth-60)/2, y: 35, width: 60, height: 60))
+        imageView = UIImageView(frame: CGRect(x: (SKScreenWidth-60)/2, y: 35, width: 60, height: 60))
         addSubview(imageView!)
         
-        titleLabel = UILabel(frame: CGRect(x: (UIScreen.main.screenWidth-130)/2, y: 120, width: 130, height: 25))
+        titleLabel = UILabel(frame: CGRect(x: (SKScreenWidth-130)/2, y: 120, width: 130, height: 25))
         titleLabel?.textAlignment = .center
         titleLabel?.textColor = UIColor(white: 189/255.0, alpha: 1)
         titleLabel?.font = UIFont.systemFont(ofSize: 17)
         addSubview(titleLabel!)
         
-        infoLabel = UILabel(frame: CGRect(x: 40, y: 155, width: UIScreen.main.screenWidth-80, height: 60))
+        infoLabel = UILabel(frame: CGRect(x: 40, y: 155, width: SKScreenWidth-80, height: 60))
         infoLabel?.text = "要设置365key的消息通知服务，您可以在 设置>通知>365key 中手动设置"
         infoLabel?.textColor = UIColor(white: 189/255.0, alpha: 1)
         infoLabel?.numberOfLines = 0

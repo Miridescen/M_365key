@@ -52,7 +52,7 @@ class SKUserCenterAccountInfoController: UIViewController {
 }
 extension SKUserCenterAccountInfoController{
     func addSubView() {
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.barTintColor = UIColor().mainColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -87,11 +87,11 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "userCenterCell")
         cell.selectionStyle = .none
-        let lineView = UIView(frame: CGRect(x: 16, y: 56, width: UIScreen.main.screenWidth-32, height: 1))
+        let lineView = UIView(frame: CGRect(x: 16, y: 56, width: SKScreenWidth-32, height: 1))
         lineView.backgroundColor = UIColor(white: 245/255.0, alpha: 1)
         cell.contentView.addSubview(lineView)
         
-        let arrowImageView = UIImageView(frame: CGRect(x: UIScreen.main.screenWidth-39, y: 18, width: 13, height: 22))
+        let arrowImageView = UIImageView(frame: CGRect(x: SKScreenWidth-39, y: 18, width: 13, height: 22))
         arrowImageView.image = UIImage(named: "icon_content")
         cell.contentView.addSubview(arrowImageView)
         
@@ -103,7 +103,7 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
         titleLabel.font = UIFont.systemFont(ofSize: 18)
         cell.contentView.addSubview(titleLabel)
         
-        let introdeceLabel = UILabel(frame: CGRect(x: 97, y: 0, width: UIScreen.main.screenWidth-97-45, height: 55))
+        let introdeceLabel = UILabel(frame: CGRect(x: 97, y: 0, width: SKScreenWidth-97-45, height: 55))
         introdeceLabel.textColor = UIColor(white: 225/255.0, alpha: 1)
         introdeceLabel.textAlignment = .right
         introdeceLabel.font = UIFont.systemFont(ofSize: 18)
@@ -151,8 +151,8 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 170))
-        let headImageView = UIImageView(frame: CGRect(x: (UIScreen.main.screenWidth-130)/2, y: 20, width: 130, height: 130))
+        let headView = UIView(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 170))
+        let headImageView = UIImageView(frame: CGRect(x: (SKScreenWidth-130)/2, y: 20, width: 130, height: 130))
         headImageView.layer.cornerRadius = 65
         headImageView.layer.masksToBounds = true
         headImageView.isUserInteractionEnabled = true
@@ -163,13 +163,13 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
         }
         headView.addSubview(headImageView)
         
-        let cameraImage = UIImageView(frame: CGRect(x: (UIScreen.main.screenWidth-130)/2+90, y: 110, width: 40, height: 40))
+        let cameraImage = UIImageView(frame: CGRect(x: (SKScreenWidth-130)/2+90, y: 110, width: 40, height: 40))
         cameraImage.image = UIImage(named: "icon_camera")
         cameraImage.isUserInteractionEnabled = true
         
         headView.addSubview(cameraImage)
         
-        let lineView = UIView(frame: CGRect(x: 16, y: 169, width: UIScreen.main.screenWidth-32, height: 1))
+        let lineView = UIView(frame: CGRect(x: 16, y: 169, width: SKScreenWidth-32, height: 1))
         lineView.backgroundColor = UIColor(white: 245/255.0, alpha: 1)
         headView.addSubview(lineView)
         

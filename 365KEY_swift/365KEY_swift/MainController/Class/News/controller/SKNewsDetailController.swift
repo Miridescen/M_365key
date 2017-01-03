@@ -41,10 +41,10 @@ class SKNewsDetailController: UIViewController {
                 guard let titleLabelText = newsDetailModel?.content else {
                     return
                 }
-                let headViewSize = SKLabelSizeWith(labelText: titleLabelText, font: UIFont.systemFont(ofSize: 20), width: UIScreen.main.screenWidth-32)
-                self.headView?.frame = CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: 65+headViewSize.height)
-                self.buttonView?.frame = CGRect(x: 0, y: 64+65+headViewSize.height, width: UIScreen.main.screenWidth, height: 65+headViewSize.height)
-                self.foodScrollView?.frame = CGRect(x: 0, y: 64+65+50+headViewSize.height, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-(64+65+50+44+headViewSize.height))
+                let headViewSize = SKLabelSizeWith(labelText: titleLabelText, font: UIFont.systemFont(ofSize: 20), width: SKScreenWidth-32)
+                self.headView?.frame = CGRect(x: 0, y: 64, width: SKScreenWidth, height: 65+headViewSize.height)
+                self.buttonView?.frame = CGRect(x: 0, y: 64+65+headViewSize.height, width: SKScreenWidth, height: 65+headViewSize.height)
+                self.foodScrollView?.frame = CGRect(x: 0, y: 64+65+50+headViewSize.height, width: SKScreenWidth, height: SKScreenHeight-(64+65+50+44+headViewSize.height))
             }
             
         }
@@ -54,11 +54,11 @@ class SKNewsDetailController: UIViewController {
 
 extension SKNewsDetailController {
     func setupNav() {
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        navBgView = UIView(frame: CGRect(x: 0, y: -20, width: UIScreen.main.screenWidth, height: 64))
+        navBgView = UIView(frame: CGRect(x: 0, y: -20, width: SKScreenWidth, height: 64))
         navBgView?.backgroundColor = UIColor().mainColor
         
         navBar?.setValue(navBgView, forKey: "backgroundView")
@@ -97,18 +97,18 @@ extension SKNewsDetailController {
     }
     
     func setupSubView() {
-        headView = SKNewsDetailHeadView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.screenWidth, height: 65))
+        headView = SKNewsDetailHeadView(frame: CGRect(x: 0, y: 64, width: SKScreenWidth, height: 65))
         headView?.backgroundColor = UIColor.white
         view.addSubview(headView!)
         
-        buttonView = SKNewsDetailButtonView(frame: CGRect(x: 0, y: 64+65, width: UIScreen.main.screenWidth, height: 50))
+        buttonView = SKNewsDetailButtonView(frame: CGRect(x: 0, y: 64+65, width: SKScreenWidth, height: 50))
         buttonView?.firstBtn?.addTarget(self, action: #selector(firstBtnDidClick), for: .touchUpInside)
         buttonView?.firstBtn?.isSelected = true
         buttonView?.secondBtn?.addTarget(self, action: #selector(secondBtnDidClick), for: .touchUpInside)
         buttonView?.thirdBtn?.addTarget(self, action: #selector(thirdBtnDidClick), for: .touchUpInside)
         view.addSubview(buttonView!)
         
-        foodScrollView = SKNewsDetailScrollView(frame: CGRect(x: 0, y: 64+65+50, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-(64+65+50+20)))
+        foodScrollView = SKNewsDetailScrollView(frame: CGRect(x: 0, y: 64+65+50, width: SKScreenWidth, height: SKScreenHeight-(64+65+50+20)))
         view.addSubview(foodScrollView!)
     }
 }

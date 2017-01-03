@@ -21,7 +21,7 @@ class SKNewFeatureController: UIViewController {
         super.viewDidLoad()
         
         bgScrollView = UIScrollView(frame: UIScreen.main.bounds)
-        bgScrollView?.contentSize = CGSize(width: UIScreen.main.screenWidth*4, height: UIScreen.main.screenHeight)
+        bgScrollView?.contentSize = CGSize(width: SKScreenWidth*4, height: SKScreenHeight)
         bgScrollView?.isPagingEnabled = true
         bgScrollView?.bounces = false
         bgScrollView?.showsHorizontalScrollIndicator = false
@@ -32,7 +32,7 @@ class SKNewFeatureController: UIViewController {
         
         for i in 0..<4 {
             var imageView: UIImageView?
-            imageView = UIImageView(frame: CGRect(x: CGFloat(i) * UIScreen.main.screenWidth, y: 0, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight))
+            imageView = UIImageView(frame: CGRect(x: CGFloat(i) * SKScreenWidth, y: 0, width: SKScreenWidth, height: SKScreenHeight))
             imageView?.image = UIImage(named: "img_intro\(i+1)")
             imageView?.isUserInteractionEnabled = true
             bgScrollView?.addSubview(imageView!)
@@ -42,8 +42,8 @@ class SKNewFeatureController: UIViewController {
                 startButton?.backgroundColor = UIColor.clear
                 startButton?.setImage(UIImage(named:"btm_enter"), for: .normal)
                 startButton?.size = (startButton?.currentImage?.size)!
-                startButton?.x = (UIScreen.main.screenWidth-(startButton?.width)!)/2
-                startButton?.y = UIScreen.main.screenHeight-140
+                startButton?.x = (SKScreenWidth-(startButton?.width)!)/2
+                startButton?.y = SKScreenHeight-140
                 startButton?.addTarget(self, action: #selector(startButtonDidlick), for: .touchUpInside)                
                 imageView?.addSubview(startButton!)
                 
@@ -59,7 +59,7 @@ class SKNewFeatureController: UIViewController {
         pageControl?.center = (bgScrollView?.center)!
         pageControl?.currentPageIndicatorTintColor = UIColor().mainColor
         pageControl?.pageIndicatorTintColor = UIColor.gray
-        pageControl?.frame = CGRect(x: (UIScreen.main.screenWidth-100)/2, y: (UIScreen.main.screenHeight-80), width: 100, height: 30)
+        pageControl?.frame = CGRect(x: (SKScreenWidth-100)/2, y: (SKScreenHeight-80), width: 100, height: 30)
         pageControl?.currentPage = 0
         
         view.addSubview(pageControl!)
@@ -85,7 +85,7 @@ extension SKNewFeatureController: UIScrollViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
        
-        pageControl?.currentPage = Int((scrollView.contentOffset.x + UIScreen.main.screenWidth/2)/UIScreen.main.screenWidth)
+        pageControl?.currentPage = Int((scrollView.contentOffset.x + SKScreenWidth/2)/SKScreenWidth)
     }
 }
 

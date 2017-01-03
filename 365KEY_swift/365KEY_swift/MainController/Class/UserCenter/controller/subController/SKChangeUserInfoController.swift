@@ -32,7 +32,7 @@ class SKChangeUserInfoController: UIViewController {
 extension SKChangeUserInfoController {
 
     func addSubView() {
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.barTintColor = UIColor().mainColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -47,7 +47,7 @@ extension SKChangeUserInfoController {
         
         navBar?.items = [navItem!]
         
-        infoTF = UITextField(frame: CGRect(x: 40, y: 26+64, width: UIScreen.main.screenWidth-80, height: 40))
+        infoTF = UITextField(frame: CGRect(x: 40, y: 26+64, width: SKScreenWidth-80, height: 40))
         infoTF?.placeholder = "新\(title!)"
         infoTF?.textAlignment = .center
         infoTF?.borderStyle = .roundedRect

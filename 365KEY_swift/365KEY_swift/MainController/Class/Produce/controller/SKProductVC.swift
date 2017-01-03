@@ -30,7 +30,7 @@ class SKProductVC: UIViewController {
     
     var productViewModel = SKProductViewModel()
     
-    lazy var noInfoLabel = UILabel(frame: CGRect(x: 0, y: 50, width: UIScreen.main.screenWidth, height: 50))
+    lazy var noInfoLabel = UILabel(frame: CGRect(x: 0, y: 50, width: SKScreenWidth, height: 50))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +80,22 @@ class SKProductVC: UIViewController {
 }
 extension SKProductVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        var parames = [String: AnyObject]()
+        parames["name"] = textField.text as AnyObject
+        parames["id"] = SKUserShared.getUserShared()?.uid as AnyObject
+        
+        NSURLConnection.connection.searchProdecdRequest(params: parames) { (bool, anyData) in
+            if bool {
+                let searchProductVC = SKSearchVC()
+                searchProductVC.data = anyData!
+                self.navigationController?.pushViewController(searchProductVC, animated: true)
+            } else {
+                SKProgressHUD.setErrorString(with: "没有您要的产品")
+            }
+        }
+        
+        
         return true
     }
 }
@@ -110,7 +126,7 @@ extension SKProductVC{
     // MARK: 添加subView
     func addSubView() {
         
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.barTintColor = UIColor().mainColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -150,7 +166,7 @@ extension SKProductVC{
         
 
         let footView = UIButton()
-        footView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 60)
+        footView.frame = CGRect(x: 0, y: 0, width: SKScreenWidth, height: 60)
         footView.setTitle("点击加载更多", for: .normal)
         footView.setTitleColor(UIColor.black, for: .normal)
         footView.addTarget(self, action: #selector(touchFooterView), for: .touchUpInside)
@@ -218,7 +234,7 @@ extension SKProductVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         
-        view.frame = CGRect(x: 0, y: -10, width: UIScreen.main.screenWidth, height: 40)
+        view.frame = CGRect(x: 0, y: -10, width: SKScreenWidth, height: 40)
         view.backgroundColor = UIColor.white
         
         let todayDate = Date().description
@@ -232,7 +248,7 @@ extension SKProductVC: UITableViewDelegate, UITableViewDataSource{
         let titleText = value == todayDateStr ? "Today":value
         
         let titleLabel = UILabel()
-        titleLabel.frame = CGRect(x: 16, y: 20, width: UIScreen.main.screenWidth-10, height: 20)
+        titleLabel.frame = CGRect(x: 16, y: 20, width: SKScreenWidth-10, height: 20)
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor(red: 254/255.0, green: 216/255.0, blue: 203/255.0, alpha: 1.0)
         titleLabel.font = UIFont.systemFont(ofSize: 19)

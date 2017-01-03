@@ -33,7 +33,7 @@ class SKUserCenterSetController: UIViewController {
 }
 extension SKUserCenterSetController{
     func addSubView() {
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.barTintColor = UIColor().mainColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -67,7 +67,7 @@ extension SKUserCenterSetController{
         logoutBgView?.backgroundColor = UIColor(red: 40/255.0, green: 43/255.0, blue: 53/255.0, alpha: 0.6)
         window?.addSubview(logoutBgView!)
         
-        let appraceView = UIView(frame: CGRect(x: 30, y: (UIScreen.main.screenHeight-120)/2, width: UIScreen.main.screenWidth-60, height: 150))
+        let appraceView = UIView(frame: CGRect(x: 30, y: (SKScreenHeight-120)/2, width: SKScreenWidth-60, height: 150))
         appraceView.backgroundColor = UIColor.white
         logoutBgView?.addSubview(appraceView)
         
@@ -130,11 +130,11 @@ extension SKUserCenterSetController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "userCenterSetCell")
         cell.selectionStyle = .none
-        let lineView = UIView(frame: CGRect(x: 16, y: 56, width: UIScreen.main.screenWidth-32, height: 1))
+        let lineView = UIView(frame: CGRect(x: 16, y: 56, width: SKScreenWidth-32, height: 1))
         lineView.backgroundColor = UIColor(white: 245/255.0, alpha: 1)
         cell.contentView.addSubview(lineView)
         
-        let arrowImageView = UIImageView(frame: CGRect(x: UIScreen.main.screenWidth-39, y: 18, width: 13, height: 22))
+        let arrowImageView = UIImageView(frame: CGRect(x: SKScreenWidth-39, y: 18, width: 13, height: 22))
         arrowImageView.image = UIImage(named: "icon_content")
         cell.contentView.addSubview(arrowImageView)
         
@@ -156,9 +156,9 @@ extension SKUserCenterSetController: UITableViewDelegate, UITableViewDataSource 
    
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let bgview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 60))
+        let bgview = UIView(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 60))
         
-        let logoutBtn = UIButton(frame: CGRect(x: 40, y: 10, width: UIScreen.main.screenWidth-80, height: 40))
+        let logoutBtn = UIButton(frame: CGRect(x: 40, y: 10, width: SKScreenWidth-80, height: 40))
         logoutBtn.setBackgroundImage(UIImage(named: "btm_login"), for: .normal)
         logoutBtn.setTitle("退出登录", for: .normal)
         logoutBtn.setTitleColor(UIColor.white, for: .normal)

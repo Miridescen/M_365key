@@ -37,7 +37,7 @@ class SKChangePhoneNumberViewController: UIViewController {
 extension SKChangePhoneNumberViewController {
     
     func addSubView() {
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 64))
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 64))
         navBar?.isTranslucent = false
         navBar?.barTintColor = UIColor().mainColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -52,7 +52,7 @@ extension SKChangePhoneNumberViewController {
         
         navBar?.items = [navItem!]
         
-        newPhoneNumTF = UITextField(frame: CGRect(x: 40, y: 26+64, width: UIScreen.main.screenWidth-80, height: 40))
+        newPhoneNumTF = UITextField(frame: CGRect(x: 40, y: 26+64, width: SKScreenWidth-80, height: 40))
         newPhoneNumTF?.placeholder = "新\(title!)"
         newPhoneNumTF?.textAlignment = .center
         newPhoneNumTF?.borderStyle = .roundedRect
@@ -60,14 +60,14 @@ extension SKChangePhoneNumberViewController {
         newPhoneNumTF?.delegate = self
         view.addSubview(newPhoneNumTF!)
         
-        captachTF = UITextField(frame: CGRect(x: 40, y: 26+64+10+40, width: UIScreen.main.screenWidth-80, height: 40))
+        captachTF = UITextField(frame: CGRect(x: 40, y: 26+64+10+40, width: SKScreenWidth-80, height: 40))
         captachTF?.placeholder = "验证码"
         captachTF?.textAlignment = .center
         captachTF?.borderStyle = .roundedRect
         captachTF?.delegate = self
         view.addSubview(captachTF!)
         
-        fatchCapeachBtn = UIButton(frame: CGRect(x: UIScreen.main.screenWidth-80-66, y: 0, width: 66, height: 40))
+        fatchCapeachBtn = UIButton(frame: CGRect(x: SKScreenWidth-80-66, y: 0, width: 66, height: 40))
         fatchCapeachBtn?.setTitle("获取", for: .normal)
         fatchCapeachBtn?.setTitleColor(UIColor.white, for: .normal)
         fatchCapeachBtn?.setBackgroundImage(UIImage(named: "bg_huoqu"), for: .normal)

@@ -15,13 +15,13 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
         didSet{
             // 产品相册
             if (model?.produceinfo?.pimglist?.count)! > 0 {
-                pivView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: 174))
+                pivView = UIView(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 174))
                 pivView?.backgroundColor = UIColor(red: 231/255.0, green: 235/255.0, blue: 240/255.0, alpha: 1)
                 addSubview(pivView!)
                 contentHeight = 174
                 let count = (model?.produceinfo?.pimglist?.count)!
                 
-                let picScrollView = UIScrollView(frame: CGRect(x: 0, y: 11, width: UIScreen.main.screenWidth, height: 135))
+                let picScrollView = UIScrollView(frame: CGRect(x: 0, y: 11, width: SKScreenWidth, height: 135))
                 picScrollView.delegate = self
                 picScrollView.showsHorizontalScrollIndicator = false
                 picScrollView.showsVerticalScrollIndicator = false
@@ -63,12 +63,12 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
                 
                 pivView?.addSubview(picScrollView)
                 
-                let bgLineView = UIImageView(frame: CGRect(x: 16, y: 157, width: UIScreen.main.screenWidth-32, height: 6))
+                let bgLineView = UIImageView(frame: CGRect(x: 16, y: 157, width: SKScreenWidth-32, height: 6))
                 bgLineView.image = UIImage(named: "pic_xiangqingbg")
                 pivView?.addSubview(bgLineView)
                 
-                lineIndicatorView = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth-32, height: 6))
-                lineIndicatorView?.contentSize = CGSize(width: UIScreen.main.screenWidth-132, height: 0)
+                lineIndicatorView = UIScrollView(frame: CGRect(x: 0, y: 0, width: SKScreenWidth-32, height: 6))
+                lineIndicatorView?.contentSize = CGSize(width: SKScreenWidth-132, height: 0)
                 lineIndicatorView?.contentOffset = CGPoint(x: 0, y: 0)
                 lineIndicatorView?.showsVerticalScrollIndicator = false
                 lineIndicatorView?.showsHorizontalScrollIndicator = false
@@ -86,7 +86,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
             productInfo?.addSubview(titleView(withString: "产品简介"))
             
             let prdiuctInfoText = UILabel()
-            let labelSize = SKLabelSizeWith(labelText: (model?.produceinfo?.info)!, font: UIFont.systemFont(ofSize: 15), width: UIScreen.main.screenWidth-32)
+            let labelSize = SKLabelSizeWith(labelText: (model?.produceinfo?.info)!, font: UIFont.systemFont(ofSize: 15), width: SKScreenWidth-32)
             prdiuctInfoText.frame = CGRect(origin: CGPoint(x: 16, y: 60), size: labelSize)
             prdiuctInfoText.text = model?.produceinfo?.info
             prdiuctInfoText.textColor = UIColor(white: 152/255.0, alpha: 1)
@@ -94,7 +94,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
             prdiuctInfoText.font = UIFont.systemFont(ofSize: 15)
             productInfo?.addSubview(prdiuctInfoText)
             
-            productInfo?.frame = CGRect(x: 0, y: contentHeight, width: UIScreen.main.screenWidth, height: 80+labelSize.height)
+            productInfo?.frame = CGRect(x: 0, y: contentHeight, width: SKScreenWidth, height: 80+labelSize.height)
             
             contentHeight += (80+labelSize.height)
             // 产品优势
@@ -108,7 +108,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
                 productSuperiority?.addSubview(titleView(withString: "产品优势"))
                 
                 let prdiuctSuperiorityText = UILabel()
-                let labelSize = SKLabelSizeWith(labelText: (model?.produceinfo?.advantage)!, font: UIFont.systemFont(ofSize: 15), width: UIScreen.main.screenWidth-32)
+                let labelSize = SKLabelSizeWith(labelText: (model?.produceinfo?.advantage)!, font: UIFont.systemFont(ofSize: 15), width: SKScreenWidth-32)
                 prdiuctSuperiorityText.frame = CGRect(origin: CGPoint(x: 16, y: 60), size: labelSize)
                 prdiuctSuperiorityText.text = model?.produceinfo?.advantage
                 prdiuctSuperiorityText.textColor = UIColor(white: 152/255.0, alpha: 1)
@@ -116,7 +116,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
                 prdiuctSuperiorityText.font = UIFont.systemFont(ofSize: 15)
                 productSuperiority?.addSubview(prdiuctSuperiorityText)
                 
-                productSuperiority?.frame = CGRect(x: 0, y: contentHeight, width: UIScreen.main.screenWidth, height: 80+labelSize.height)
+                productSuperiority?.frame = CGRect(x: 0, y: contentHeight, width: SKScreenWidth, height: 80+labelSize.height)
                 
                 contentHeight += (80+labelSize.height)
                 
@@ -125,7 +125,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
             if (model?.team?.count)! > 0 {
                 let count = (model?.team?.count)!
                 
-                teamView = UIView(frame: CGRect(x: 0, y: contentHeight, width: UIScreen.main.screenWidth, height: CGFloat(count*120)+80))
+                teamView = UIView(frame: CGRect(x: 0, y: contentHeight, width: SKScreenWidth, height: CGFloat(count*120)+80))
                 teamView?.backgroundColor = UIColor.white
                 addSubview(teamView!)
                 
@@ -136,7 +136,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
                 for i in 0..<count {
                     let teamModel = model?.team![i] as! SKProductDetailTeamModel
                     
-                    let subTeamView = UIView(frame: CGRect(x: 0, y: CGFloat(60+i*120), width: UIScreen.main.screenWidth, height: 120))
+                    let subTeamView = UIView(frame: CGRect(x: 0, y: CGFloat(60+i*120), width: SKScreenWidth, height: 120))
                     let headImage = UIImageView(frame: CGRect(x: 32, y: 16, width: 35, height: 35))
                     headImage.layer.cornerRadius = 17.5
                     headImage.layer.masksToBounds = true
@@ -147,19 +147,19 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
                     }
                     subTeamView.addSubview(headImage)
                     
-                    let nameLabel = UILabel(frame: CGRect(x: 83, y: 0, width: UIScreen.main.screenWidth-96, height: 20))
+                    let nameLabel = UILabel(frame: CGRect(x: 83, y: 0, width: SKScreenWidth-96, height: 20))
                     nameLabel.text = teamModel.name
                     nameLabel.textColor = UIColor.black
                     nameLabel.font = UIFont.systemFont(ofSize: 19)
                     subTeamView.addSubview(nameLabel)
                     
-                    let jobLabel = UILabel(frame: CGRect(x: 83, y: 35, width: UIScreen.main.screenWidth-96, height: 17))
+                    let jobLabel = UILabel(frame: CGRect(x: 83, y: 35, width: SKScreenWidth-96, height: 17))
                     jobLabel.text = teamModel.job
                     jobLabel.textColor = UIColor.black
                     jobLabel.font = UIFont.systemFont(ofSize: 16)
                     subTeamView.addSubview(jobLabel)
                     
-                    let introduceLabel = UILabel(frame: CGRect(x: 83, y: 62, width: UIScreen.main.screenWidth-96, height: 40))
+                    let introduceLabel = UILabel(frame: CGRect(x: 83, y: 62, width: SKScreenWidth-96, height: 40))
                     introduceLabel.text = teamModel.info
                     introduceLabel.textColor = UIColor(white: 152/255.0, alpha: 1)
                     introduceLabel.font = UIFont.systemFont(ofSize: 15)
@@ -177,7 +177,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
             if (model?.big_event?.count)! > 0 {
                 let count = (model?.big_event?.count)!
                 
-                bigeventView = UIView(frame: CGRect(x: 0, y: contentHeight, width: UIScreen.main.screenWidth, height: CGFloat(count*50+60)))
+                bigeventView = UIView(frame: CGRect(x: 0, y: contentHeight, width: SKScreenWidth, height: CGFloat(count*50+60)))
                 bigeventView?.backgroundColor = UIColor.white
                 
                 addSubview(bigeventView!)
@@ -189,7 +189,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
                     let bagEventModel = model?.big_event?[i] as! SKProductDetailbig_eventModel
                     
                     
-                    let everySubView = UIView(frame: CGRect(x: 0, y: CGFloat(60+i*50), width: UIScreen.main.screenWidth, height: 50))
+                    let everySubView = UIView(frame: CGRect(x: 0, y: CGFloat(60+i*50), width: SKScreenWidth, height: 50))
                     
                     let dataLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 70, height: 13))
                     print(bagEventModel.time!)
@@ -213,7 +213,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
                     smallPointView.backgroundColor = UIColor.white
                     bigPointView.addSubview(smallPointView)
                     
-                    let eventLabel = UILabel(frame: CGRect(x: 126, y: 0, width: UIScreen.main.screenWidth-142, height: 16))
+                    let eventLabel = UILabel(frame: CGRect(x: 126, y: 0, width: SKScreenWidth-142, height: 16))
                     eventLabel.text = bagEventModel.events
                     eventLabel.textColor = UIColor(white: 152/255.0, alpha: 1)
                     eventLabel.font = UIFont.systemFont(ofSize: 15)
@@ -261,13 +261,13 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
     
     func linewView() -> UIView {
         let view = UIView()
-        view.frame = CGRect(x: 16, y: 0, width: UIScreen.main.screenWidth-32, height: 0.5)
+        view.frame = CGRect(x: 16, y: 0, width: SKScreenWidth-32, height: 0.5)
         view.backgroundColor = UIColor(white: 245/255.0, alpha: 1)
         return view
     }
     
     func titleView(withString: String) -> UIView {
-        let titleView = UILabel(frame: CGRect(x: 16, y: 20, width: UIScreen.main.screenWidth-32, height: 20))
+        let titleView = UILabel(frame: CGRect(x: 16, y: 20, width: SKScreenWidth-32, height: 20))
         titleView.text = withString
         titleView.textColor = UIColor.black
         titleView.font = UIFont.systemFont(ofSize: 19)
@@ -285,7 +285,7 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
     
     // 相册滑动的代理
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        lineIndicatorView?.setContentOffset(CGPoint(x: -scrollView.contentOffset.x*(UIScreen.main.screenWidth-132)/(scrollView.contentSize.width-UIScreen.main.screenWidth), y: 0), animated: false)
+        lineIndicatorView?.setContentOffset(CGPoint(x: -scrollView.contentOffset.x*(SKScreenWidth-132)/(scrollView.contentSize.width-SKScreenWidth), y: 0), animated: false)
     }
 
 }
@@ -294,24 +294,24 @@ class photoAlbumView: UIScrollView {
     
     override var tag: Int{
         didSet{
-            setContentOffset(CGPoint(x: CGFloat(tag)*UIScreen.main.screenWidth, y: 0), animated: false)
+            setContentOffset(CGPoint(x: CGFloat(tag)*SKScreenWidth, y: 0), animated: false)
         }
     }
     
     
     convenience init(with imageArray: [SKProductDetailPimgModel]){
         self.init()
-        frame = CGRect(x: 0, y: 0, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight)
+        frame = CGRect(x: 0, y: 0, width: SKScreenWidth, height: SKScreenHeight)
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
         isPagingEnabled = true
         bounces = false
         backgroundColor = UIColor.black
-        contentSize = CGSize(width: UIScreen.main.screenWidth*CGFloat(imageArray.count), height: 0)
+        contentSize = CGSize(width: SKScreenWidth*CGFloat(imageArray.count), height: 0)
         for i in 0..<imageArray.count {
             let pimModel = imageArray[i] as SKProductDetailPimgModel
             let image = UIImageView()
-            image.frame = CGRect(x: CGFloat(i)*UIScreen.main.screenWidth, y: 75, width: UIScreen.main.screenWidth, height: UIScreen.main.screenHeight-150)
+            image.frame = CGRect(x: CGFloat(i)*SKScreenWidth, y: 75, width: SKScreenWidth, height: SKScreenHeight-150)
             image.isUserInteractionEnabled = true
             image.contentMode = .scaleAspectFit
             image.clipsToBounds = true

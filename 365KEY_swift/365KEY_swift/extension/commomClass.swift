@@ -15,6 +15,13 @@ let SKDocumentFilePath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
 
 // 存储登录的用户信息的路径
 let SKUserSharedFilePath = (SKDocumentFilePath! as NSString).appendingPathComponent("userShared.json")
+// -------------------------------------------------------------------------------------
+// 屏幕宽 
+let SKScreenWidth = UIScreen.main.screenWidth
+// 屏幕高
+let SKScreenHeight = UIScreen.main.screenHeight
+// 主题色
+let SKMainColor = UIColor().mainColor
 
 
 // 通知 -----------------------------------------------------------------------------------------
