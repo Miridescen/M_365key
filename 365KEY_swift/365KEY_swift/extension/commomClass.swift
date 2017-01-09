@@ -44,4 +44,11 @@ func SKLabelSizeWith(labelText: String, font: UIFont = UIFont.systemFont(ofSize:
     return (cString?.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attrs, context: nil).size)!
    
 }
+func SKlabelSizeWith(labelText: String, font: UIFont = UIFont.systemFont(ofSize: 17)) -> CGSize {
+    let attrs = [NSFontAttributeName: font]
+    
+    let cString = NSString(cString: labelText.cString(using: String.Encoding.utf8)!, encoding: String.Encoding.utf8.rawValue)
+    
+    return (cString?.boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT)), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attrs, context: nil).size)!
+}
 

@@ -268,8 +268,7 @@ extension SKUserCenterAccountInfoController: UIImagePickerControllerDelegate, UI
 
         NSURLConnection.sendAsynchronousRequest(urlRequest as URLRequest, queue: .main){ (urlResponse, data, error) in
             print("上传修改头像待完善")
-            let jsonData = try? JSONSerialization.jsonObject(with: data!, options: [])
-            print(jsonData!)
+//            let jsonData = try? JSONSerialization.jsonObject(with: data!, options: [])
         }
     }
 }

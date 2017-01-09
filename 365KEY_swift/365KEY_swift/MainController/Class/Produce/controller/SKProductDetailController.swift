@@ -22,13 +22,19 @@ class SKProductDetailController: UIViewController {
     var detailView:UIView?
     
     var detailInfoScrollView: SKProductDetailInfoView? // 产品详情的view
-    var detailCommectView: UIView? // 相关评论的view
+    var detailCommectView: SKCommentsTV? // 相关评论的view
     var detailSimilarView: UIView? // 相似产品的view
     
+    lazy var NoInfoView = SKNoInfoView(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: SKScreenHeight-64-50))
+    lazy var takeCommentsView = SKTakeCommentView(frame: CGRect(x: 0, y: SKScreenHeight-50, width: SKScreenWidth, height: 50))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        
         setupNav()
         
         loadData()
@@ -36,6 +42,50 @@ class SKProductDetailController: UIViewController {
         setupSubView()
         
     }
+    deinit{
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    @objc private func keyboardWillShow(notifiction: Notification) {
+        
+        let animationDuration = notifiction.userInfo?[AnyHashable("UIKeyboardAnimationDurationUserInfoKey")]
+        
+        let animationCurve = notifiction.userInfo?[AnyHashable("UIKeyboardAnimationCurveUserInfoKey")]
+        
+        let keyboardRect: CGRect = notifiction.userInfo?[AnyHashable("UIKeyboardFrameEndUserInfoKey")] as! CGRect
+        let keyBoardHeight = keyboardRect.height
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(animationDuration as! TimeInterval)
+        UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: animationCurve as! Int)!)
+        
+        takeCommentsView.frame = CGRect(x: 0, y: SKScreenHeight-50-keyBoardHeight, width: SKScreenWidth, height: 50)
+        
+        UIView.commitAnimations()
+        
+        
+        
+    }
+    @objc private func keyboardWillHide(notifiction: Notification) {
+        let animationDuration = notifiction.userInfo?[AnyHashable("UIKeyboardAnimationDurationUserInfoKey")]
+        
+        let animationCurve = notifiction.userInfo?[AnyHashable("UIKeyboardAnimationCurveUserInfoKey")]
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(animationDuration as! TimeInterval)
+        UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: animationCurve as! Int)!)
+        
+        takeCommentsView.frame = CGRect(x: 0, y: SKScreenHeight-50, width: SKScreenWidth, height: 50)
+        
+        UIView.commitAnimations()
+    }
+
+}
+extension SKProductDetailController {
+    
     func loadData() {
         NSURLConnection.connection.productDetailRequest(with: (productListModel?.id)!){ isSuccess, productDetailModel in
             if isSuccess {
@@ -47,9 +97,6 @@ class SKProductDetailController: UIViewController {
             
         }
     }
-
-}
-extension SKProductDetailController {
     func setupSubView() {
         bgScrollView = UIScrollView(frame: CGRect(x: 0, y: -20, width: SKScreenWidth, height: SKScreenHeight+20))
         bgScrollView?.backgroundColor = UIColor.white
@@ -84,16 +131,52 @@ extension SKProductDetailController {
         btn.isSelected = true
         buttonView?.secondBtn?.isSelected = false
         buttonView?.thirdBtn?.isSelected = false
+        
+        detailView?.bringSubview(toFront: detailInfoScrollView!)
+        
+        takeCommentsView.takeCommentTF?.resignFirstResponder()
+        takeCommentsView.isHidden = true
     }
     @objc func secondBtnDidClick(btn: UIButton){
         btn.isSelected = true
         buttonView?.firstBtn?.isSelected = false
         buttonView?.thirdBtn?.isSelected = false
+        
+        takeCommentsView.submmentBtn?.addTarget(self, action: #selector(submitCommitsBtnDidClick), for: .touchUpInside)
+        view.addSubview(self.takeCommentsView)
+        takeCommentsView.isHidden = false
+        
+        print("相关评论请求")
+        var parames = [String: AnyObject]()
+        parames["id"] = productListModel?.id as AnyObject
+        parames["type"] = "pro" as AnyObject
+        NSURLConnection.connection.productsCommentsRequest(params: parames) { (bool, dataArray) in
+
+            if bool {
+                if (dataArray?.count)! > 0 {
+                    self.detailCommectView = SKCommentsTV(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: SKScreenHeight-64-50), style: UITableViewStyle.init(rawValue: 0)!)
+                    self.detailCommectView?.dataSourceArray = dataArray!
+                    self.detailView?.addSubview(self.detailCommectView!)
+                } else {
+                    self.detailView?.insertSubview(self.NoInfoView, at: (self.detailView?.subviews.count)!)
+                }
+            } else {
+                self.detailView?.insertSubview(self.NoInfoView, at: (self.detailView?.subviews.count)!)
+
+            }
+    
+        }
+        
     }
     @objc func thirdBtnDidClick(btn: UIButton){
         btn.isSelected = true
         buttonView?.secondBtn?.isSelected = false
         buttonView?.firstBtn?.isSelected = false
+        
+        self.detailView?.insertSubview(self.NoInfoView, at: (self.detailView?.subviews.count)!)
+        
+        takeCommentsView.takeCommentTF?.resignFirstResponder()
+        takeCommentsView.isHidden = true
     }
     
     func setupNav() {
@@ -122,6 +205,11 @@ extension SKProductDetailController {
         
         print("分享按钮点击")
     }
+    
+    @objc private func submitCommitsBtnDidClick(){
+        print("123")
+    }
+    
 }
 
 extension SKProductDetailController: UIScrollViewDelegate{
@@ -145,11 +233,7 @@ extension SKProductDetailController: UIScrollViewDelegate{
         
     }
     
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        print("anyimation = \(scrollView.contentOffset.y)")
-    }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("decelerating = \(scrollView.contentOffset.y)")
         let scale = (scrollView.contentOffset.y+20)/226
         if scale<=1 && scale>=0 {
             navBgView?.backgroundColor = UIColor(red: 252/255.0, green: 102/255.0, blue: 34/255.0, alpha: scale)
@@ -157,6 +241,68 @@ extension SKProductDetailController: UIScrollViewDelegate{
     }
     
 }
+
+class SKNoInfoView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = UIColor.white
+        
+        let noInfoImage = UIImageView(frame: CGRect(x: (SKScreenWidth-50)/2, y: 30, width: 50, height: 50))
+        noInfoImage.image = UIImage(named: "pic_touxiang")
+        addSubview(noInfoImage)
+        
+        let noInfoLabel = UILabel(frame: CGRect(x: (SKScreenWidth-150)/2, y: 50+30, width: 150, height: 50))
+        noInfoLabel.text = "暂无内容"
+        noInfoLabel.textAlignment = .center
+        noInfoLabel.textColor = UIColor(white: 225/255.0, alpha: 1)
+        addSubview(noInfoLabel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class SKTakeCommentView: UIView, UITextFieldDelegate {
+    
+    var takeCommentTF: UITextField?
+    var submmentBtn: UIButton?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = UIColor(white: 247/255.0, alpha: 1)
+        
+        takeCommentTF = UITextField(frame: CGRect(x: 16, y: 6, width: SKScreenWidth-89, height: 37))
+        takeCommentTF?.returnKeyType = .done
+        takeCommentTF?.placeholder = "评论："
+        takeCommentTF?.borderStyle = .roundedRect
+        takeCommentTF?.delegate = self
+        addSubview(takeCommentTF!)
+        
+        submmentBtn = UIButton(frame: CGRect(x: (takeCommentTF?.frame.maxX)!-5, y: 5, width: 57, height: 39))
+        submmentBtn?.setBackgroundImage(UIImage(named: "bg_huoqu"), for: .normal)
+        submmentBtn?.setTitle("发表", for: .normal)
+        submmentBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        submmentBtn?.setTitleColor(UIColor.white, for: .normal)
+        addSubview(submmentBtn!)
+        
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+}
+
 
 
 

@@ -49,7 +49,6 @@ class SKNewsDetailHeadView: UIView {
                 return
             }
             let nameLabelSize = SKLabelSizeWith(labelText: nameLabelText, font: UIFont.systemFont(ofSize: 12), width: CGFloat(MAXFLOAT))
-            print(nameLabelSize)
             nameLabel?.frame = CGRect(origin: CGPoint(x: 60, y: 28+titleLabelSize.height), size: nameLabelSize)
             
             timeLabel?.frame = CGRect(x: 60+nameLabelSize.width+20, y: 28+titleLabelSize.height, width: 200, height: nameLabelSize.height)

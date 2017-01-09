@@ -59,7 +59,6 @@ extension SKUserCenterSetController{
         _ = navigationController?.popViewController(animated: true)
     }
     func logOutBtnDidClick() {
-        print("退出登录")
         
         let window = UIApplication.shared.windows.last
         

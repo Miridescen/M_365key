@@ -42,7 +42,6 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
                     pimImage.tag = 1000+i
                     pimImage.contentMode = .scaleAspectFit
                     
-                    print(pimgModel.showPro_img!)
                     if pimgModel.showPro_img == nil {
                         pimImage.image = UIImage(named: "pic_touxiang_little")
                     } else {
@@ -192,7 +191,6 @@ class SKProductDetailInfoView: UIScrollView, UIScrollViewDelegate {
                     let everySubView = UIView(frame: CGRect(x: 0, y: CGFloat(60+i*50), width: SKScreenWidth, height: 50))
                     
                     let dataLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 70, height: 13))
-                    print(bagEventModel.time!)
                     let dataStr = bagEventModel.time?.description
                     let strIndex = dataStr?.index((dataStr?.startIndex)!, offsetBy: 10)
                     let showStr = dataStr?.substring(to: strIndex!)

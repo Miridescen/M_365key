@@ -17,6 +17,99 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 产品详情页提交评论按钮点击发送的请求
+    func produceDetailClickSubmitRequest(messageStr: String, id: Int64, completion: @escaping((_ isSuccess: Bool)->())) {
+        let userShard = SKUserShared.getUserSharedNeedPresentLoginView()
+        if userShard != nil {
+            let urlStr = "http://www.365key.com/Produce/addcommit_mobile"
+            var parames = [String: AnyObject]()
+            parames["uid"] = userShard?.uid as AnyObject
+            parames["model"] = "pro" as AnyObject
+            parames["message"] = messageStr as AnyObject
+            parames["id"] = id as AnyObject
+            
+        }
+        
+        
+        
+    }
+    // MARK: 产品详情也点击相关评论按钮发送的请求
+    func productsCommentsRequest(params: [String: AnyObject], completion: @escaping(_ isSuccess: Bool, _ jsonData: [SKCommentsModel]?)->()) {
+        let urlStr = "http://www.365key.com/Produce/get_commit_by_id"
+        connectionRequest(urlString: urlStr, paramers: params) { (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as? [String: AnyObject?] ?? [:]
+                let commitlistArray = NSArray.yy_modelArray(with: SKCommentsModel.self, json: jsonData?["commitlist"] as Any) ?? []
+                if commitlistArray.count > 0 {
+                    completion(true, commitlistArray as? [SKCommentsModel])
+                } else {
+                    completion(false, nil)
+                }
+            } else {
+                completion(false, nil)
+            }
+        }
+        
+    }
+    // MARK: 行业资讯页搜索按钮点击后发送的请求
+    func searchNewsRequest(params:[String: AnyObject]?,completion:@escaping (_ isSuccess: Bool, _ data: [[String: [SKNewsListModel]]]?)->()) {
+        let urlStr = "http://www.365key.com/Event/get_event_list_mobile"
+        
+        connectionRequest(with: .POST, urlString: urlStr, paramers: params) { (bool, Data) in
+            
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: Data as! Data, options: []) as? [String: AnyObject?] ?? [:]
+                let newsListDataArray = NSArray.yy_modelArray(with: SKNewsListModel.self, json: jsonData?["eventlist"] as Any) ?? []
+                
+                if newsListDataArray.count > 0 {
+                    
+                    var dateArray = [String?]()
+                    var dTime: String?
+                    for i in 0..<newsListDataArray.count {
+                        
+                        let newsModel = newsListDataArray[i] as? SKNewsListModel
+                        if i == 0{
+                            dTime = newsModel?.showTime
+                            dateArray.append(dTime)
+                        } else {
+                            if dTime != newsModel?.showTime{
+                                dTime = newsModel?.showTime
+                                dateArray.append(dTime)
+                            }
+                        }
+                        
+                    }
+                    
+                    var allDataArray = [[String: [SKNewsListModel]]]()
+                    
+                    for i in 0..<dateArray.count {
+                        let showTime = dateArray[i]
+                        var modelArray = [SKNewsListModel]()
+                        for model in newsListDataArray {
+                            
+                            if (model as! SKNewsListModel).showTime == showTime {
+                                modelArray.append(model as! SKNewsListModel)
+                            }
+                        }
+                        
+                        let modelDic: [String: [SKNewsListModel]] = [showTime!: modelArray]
+                        
+                        allDataArray.append(modelDic)
+                        
+                    }
+                    completion(true, allDataArray)
+                    
+                } else{
+                    completion(false, nil)
+                }
+                
+            } else {
+                completion (false, nil)
+            }
+            
+        }
+        
+    }
     // MARK: 产品页搜索按钮点击后发送的请求
     func searchProdecdRequest(params:[String: AnyObject]?,completion:@escaping (_ isSuccess: Bool, _ data: [[String: [SKProductListModel]]]?)->()) {
         

@@ -46,7 +46,6 @@ class SKLoginController: UIViewController {
     }
     
     @IBAction func registBtn(_ sender: UIButton) {
-        print(123)
         
         self.navigationController?.pushViewController(SKRegisterController(), animated: true)
         

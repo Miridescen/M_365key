@@ -49,7 +49,6 @@ class SKUserCenterController: UIViewController {
         self.headView?.userInfo = self.userShared?.userInfo
     }
     func userLogoutSuccess() {
-        print("退出登录")
         self.userShared = SKUserShared.getUserShared()
         tableView?.reloadData()
     }
@@ -134,7 +133,6 @@ extension SKUserCenterController: UITableViewDelegate, UITableViewDataSource{
         headView?.backgroundColor = UIColor(white: 247/255.0, alpha: 1)
         
         if userShared != nil {
-            print(456)
             headView?.userInfo = userShared?.userInfo
         }
         return headView

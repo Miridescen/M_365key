@@ -243,5 +243,22 @@ extension SKNewsVC: UITableViewDelegate, UITableViewDataSource{
     }
 }
 extension SKNewsVC: UITextFieldDelegate{
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        var parames = [String: AnyObject]()
+        parames["title"] = textField.text as AnyObject
+        parames["uid"] = SKUserShared.getUserShared()?.uid as AnyObject
+        
+        NSURLConnection.connection.searchNewsRequest(params: parames) { (bool, anyData) in
+            if bool {
+                let searchNewsVC = SKNewsSearchVC()
+                searchNewsVC.data = anyData!
+                self.navigationController?.pushViewController(searchNewsVC, animated: true)
+            } else {
+                SKProgressHUD.setErrorString(with: "没有搜索的资讯")
+            }
+        }
+        
+        return true
+    }
 }

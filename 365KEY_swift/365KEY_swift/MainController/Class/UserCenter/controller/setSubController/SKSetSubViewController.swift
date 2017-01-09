@@ -83,7 +83,7 @@ class SKAbout365keyVC: UIView {
         
         versonLable = UILabel(frame: CGRect(x: (SKScreenWidth-300)/2, y: 310, width: 300, height: 20))
         versonLable?.textAlignment = .center
-        versonLable?.text = "版本号：\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)"
+        versonLable?.text = "版本号：\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)"
         versonLable?.textColor = UIColor(white: 189/255.0, alpha: 1)
         versonLable?.font = UIFont.systemFont(ofSize: 18)
         addSubview(versonLable!)

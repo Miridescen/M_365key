@@ -21,13 +21,9 @@ extension SKSessionManage{
         params["type"] = "iOS"
         
         let urlStr = "http://www.365key.com/User/login"
-        print("\(params)")
-        
-        
-        
+  
         request(url: urlStr, paramers: params as [String : AnyObject]) { (any, Bool) in
             
-            print("登录请求\(Bool)")
             if Bool {
                 print(any as AnyObject)
             }

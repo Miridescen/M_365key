@@ -20,6 +20,9 @@
 		1D2C6A921DE2E90F007D9D4D /* SKProductDetailBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C6A911DE2E90F007D9D4D /* SKProductDetailBtnView.swift */; };
 		1D2C6A941DE2F345007D9D4D /* SKProductDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C6A931DE2F345007D9D4D /* SKProductDetailInfoView.swift */; };
 		1D2D57781E1B8EA5006789BA /* SKSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2D57771E1B8EA5006789BA /* SKSearchVC.swift */; };
+		1D2D577A1E1C8ACD006789BA /* SKNewsSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2D57791E1C8ACC006789BA /* SKNewsSearchVC.swift */; };
+		1D2D577C1E1C95D9006789BA /* SKCommentsTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2D577B1E1C95D9006789BA /* SKCommentsTV.swift */; };
+		1D2D577E1E1C9DC3006789BA /* SKCommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2D577D1E1C9DC3006789BA /* SKCommentsModel.swift */; };
 		1D39C64C1DE81E860017289F /* SKNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C64B1DE81E860017289F /* SKNewsVC.swift */; };
 		1D39C64F1DE828BA0017289F /* SKNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C64E1DE828BA0017289F /* SKNewsViewModel.swift */; };
 		1D39C6511DE8292E0017289F /* SKNewsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D39C6501DE8292E0017289F /* SKNewsListModel.swift */; };
@@ -93,6 +96,9 @@
 		1D2C6A911DE2E90F007D9D4D /* SKProductDetailBtnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailBtnView.swift; sourceTree = "<group>"; };
 		1D2C6A931DE2F345007D9D4D /* SKProductDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailInfoView.swift; sourceTree = "<group>"; };
 		1D2D57771E1B8EA5006789BA /* SKSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSearchVC.swift; sourceTree = "<group>"; };
+		1D2D57791E1C8ACC006789BA /* SKNewsSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsSearchVC.swift; sourceTree = "<group>"; };
+		1D2D577B1E1C95D9006789BA /* SKCommentsTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCommentsTV.swift; sourceTree = "<group>"; };
+		1D2D577D1E1C9DC3006789BA /* SKCommentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCommentsModel.swift; sourceTree = "<group>"; };
 		1D39C64B1DE81E860017289F /* SKNewsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsVC.swift; sourceTree = "<group>"; };
 		1D39C64E1DE828BA0017289F /* SKNewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsViewModel.swift; sourceTree = "<group>"; };
 		1D39C6501DE8292E0017289F /* SKNewsListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNewsListModel.swift; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 			children = (
 				1D39C64B1DE81E860017289F /* SKNewsVC.swift */,
 				1D2AF1641DEBCB1900E618D3 /* SKNewsDetailController.swift */,
+				1D2D57791E1C8ACC006789BA /* SKNewsSearchVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -317,6 +324,7 @@
 				1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */,
 				1DEF23161DC1E8990063968B /* SKProdectCell.swift */,
 				1DEF23171DC1E8990063968B /* SKProdectCell.xib */,
+				1D2D577B1E1C95D9006789BA /* SKCommentsTV.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -441,6 +449,7 @@
 				1D60E39D1DDD8A120015A7A8 /* productDetailModel */,
 				1DEF230F1DC0A6420063968B /* SKProductListModel.swift */,
 				1DEF23101DC0A6420063968B /* SKProductUserModel.swift */,
+				1D2D577D1E1C9DC3006789BA /* SKCommentsModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -644,12 +653,14 @@
 				1D2C6A941DE2F345007D9D4D /* SKProductDetailInfoView.swift in Sources */,
 				1D5E82001DD1776A003E9D14 /* SVProgressHUD+extension.swift in Sources */,
 				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
+				1D2D577E1E1C9DC3006789BA /* SKCommentsModel.swift in Sources */,
 				1DE846F81E0D14FE00695153 /* SKPerfectInfoVC.swift in Sources */,
 				1D39C64C1DE81E860017289F /* SKNewsVC.swift in Sources */,
 				1D2AF16A1DEBD17E00E618D3 /* SKNewsDetailHeadView.swift in Sources */,
 				1DFE2F901DF01A5C00F3C8BE /* SKMyMessageController.swift in Sources */,
 				1D2AF16E1DEBD1AF00E618D3 /* SKNewsDetailScrollView.swift in Sources */,
 				1DFE2F8E1DF0199000F3C8BE /* SKMyFocusController.swift in Sources */,
+				1D2D577A1E1C8ACD006789BA /* SKNewsSearchVC.swift in Sources */,
 				1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */,
 				1D3F296C1DC8721A00C0F998 /* SKLoginController.swift in Sources */,
 				1D60E3A91DDD97EA0015A7A8 /* SKProductDetailPimgModel.swift in Sources */,
@@ -700,6 +711,7 @@
 				1DEF23181DC1E8990063968B /* SKProdectCell.swift in Sources */,
 				1D39C6541DE839C50017289F /* SKNewsCell.swift in Sources */,
 				1DBABE411DBE0EA900745C5D /* UIButton+extension.swift in Sources */,
+				1D2D577C1E1C95D9006789BA /* SKCommentsTV.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

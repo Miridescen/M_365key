@@ -48,7 +48,6 @@ class SKNewFeatureController: UIViewController {
                 imageView?.addSubview(startButton!)
                 
                 
-                print(123456)
             }
             
         }

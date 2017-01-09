@@ -63,7 +63,7 @@ class SKUserShared: NSObject, NSCoding {
         
         
     }
-    // 用于获取登录信息失败是弹出登录界面的方法（上面的方法及时获取登录信息失败也不弹出登录按钮）
+    // 用于获取登录信息失败是否弹出登录界面的方法（上面的方法及时获取登录信息失败也不弹出登录按钮）
     class func getUserSharedNeedPresentLoginView() -> SKUserShared? {
         
         let userShared = NSKeyedUnarchiver.unarchiveObject(withFile: SKUserSharedFilePath) as? SKUserShared ?? SKUserShared()
