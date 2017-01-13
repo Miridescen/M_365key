@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         Thread.sleep(forTimeInterval: 0)
+        
+        setupThirdPart()
+        
         window = UIWindow()
         window?.backgroundColor = UIColor.black
         window?.makeKeyAndVisible()
@@ -68,12 +72,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func setupThirdPart() {
+        
+        print("添加友盟")        
+        
+        UMSocialManager.default().openLog(true)
+        
+        UMSocialManager.default().umSocialAppkey = SKUmengAppkey
+        
+        UMSocialManager.default().setPlaform(.wechatSession, appKey: "wx103f02429520e22a", appSecret: "917e835bcbf456855153b5d269c14fa8", redirectURL: "http://www.365key.com/")
+        UMSocialManager.default().setPlaform(.sina, appKey: "427523869", appSecret: "8d75b401cd428781dad652f433412fb2", redirectURL: "http://www.365key.com/")
+        UMSocialManager.default().setPlaform(.QQ, appKey: "1105002030", appSecret: "xRx0aAFjC6gXEQRq", redirectURL: "http://www.365key.com/")
+        
+//        socialManage?.removePlatformProvider(withPlatformTypes: [UMSocialPlatformType.wechatFavorite, UMSocialPlatformType.qzone])
+        
+        UMSocialManager.default().removePlatformProvider(with: UMSocialPlatformType.wechatFavorite)
+        UMSocialManager.default().removePlatformProvider(with: UMSocialPlatformType.qzone)
+        
+        
+    }
     
-    
-    
-    
-    
-    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        let result = UMSocialManager.default().handleOpen(url)
+        if !result {
+            
+        }
+        return result
+        
+    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

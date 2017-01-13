@@ -45,7 +45,7 @@ class SKNewsDetailScrollView: UIView {
                 formView?.addSubview(formSubviewWith(titleStr: "投资方", infoStr: (scrollViewModel?.investor)!, frame: CGRect(x: 0, y: 5*39, width: SKScreenWidth-32, height: 39)))
                 
                 formView?.addSubview(formSubviewWith(titleStr: "地区", infoStr: (scrollViewModel?.showTime)!, frame: CGRect(x: 0, y: 6*39, width: SKScreenWidth-32, height: 39)))
-                scrollView?.contentInset = UIEdgeInsetsMake((scrollView?.contentInset.top)!, (scrollView?.contentInset.left)!, (scrollView?.contentInset.bottom)!+237+30, (scrollView?.contentInset.right)!)
+                scrollView?.contentInset = UIEdgeInsetsMake((scrollView?.contentInset.top)!, (scrollView?.contentInset.left)!, (scrollView?.contentInset.bottom)!+237+30+50, (scrollView?.contentInset.right)!)
                 scrollView?.addSubview(formView!)
             }
         }

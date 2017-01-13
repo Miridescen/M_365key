@@ -22,9 +22,8 @@ class SKProductDetailController: UIViewController {
     var detailView:UIView?
     
     var detailInfoScrollView: SKProductDetailInfoView? // 产品详情的view
-    var detailCommectView: SKCommentsTV? // 相关评论的view
-    var detailSimilarView: UIView? // 相似产品的view
-    
+
+    lazy var detailCommectView = SKCommentsTV(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: SKScreenHeight-64-50), style: UITableViewStyle.init(rawValue: 0)!)
     lazy var NoInfoView = SKNoInfoView(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: SKScreenHeight-64-50))
     lazy var takeCommentsView = SKTakeCommentView(frame: CGRect(x: 0, y: SKScreenHeight-50, width: SKScreenWidth, height: 50))
     
@@ -154,9 +153,8 @@ extension SKProductDetailController {
 
             if bool {
                 if (dataArray?.count)! > 0 {
-                    self.detailCommectView = SKCommentsTV(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: SKScreenHeight-64-50), style: UITableViewStyle.init(rawValue: 0)!)
-                    self.detailCommectView?.dataSourceArray = dataArray!
-                    self.detailView?.addSubview(self.detailCommectView!)
+                    self.detailCommectView.dataSourceArray = dataArray!
+                    self.detailView?.addSubview(self.detailCommectView)
                 } else {
                     self.detailView?.insertSubview(self.NoInfoView, at: (self.detailView?.subviews.count)!)
                 }
@@ -202,12 +200,73 @@ extension SKProductDetailController {
         _ = navigationController?.popViewController(animated: true)
     }
     @objc private func shareButtonDidClick(){
-        
-        print("分享按钮点击")
+        print(UMSocialManager.default().platformTypeArray)
+        UMSocialUIManager.showShareMenuViewInWindow { (planttempType, userInfo) in
+            
+            let messageObject = UMSocialMessageObject.init()
+            messageObject.text = self.productListModel?.pro_name
+            let shareObject = UMShareWebpageObject.init()
+            shareObject.title = self.productListModel?.pro_name
+            shareObject.descr = self.productListModel?.info
+            shareObject.thumbImage = self.headView?.headImageView.image
+            shareObject.webpageUrl = self.headView?.model?.url
+            
+            messageObject.shareObject = shareObject
+            
+            UMSocialManager.default().share(to: planttempType, messageObject: messageObject, currentViewController: self, completion: { (shareResponse, error) in
+                if error != nil {
+                    SKProgressHUD.setErrorString(with: "分享失败")
+                } else {
+                    SKProgressHUD.setSuccessString(with: "分享成功")
+                }
+            })
+        }
     }
     
     @objc private func submitCommitsBtnDidClick(){
-        print("123")
+        
+        if !checkComments(string: (takeCommentsView.takeCommentTF?.text)!) {
+            return
+        }
+        
+        NSURLConnection.connection.produceDetailClickSubmitRequest(messageStr: (takeCommentsView.takeCommentTF?.text)!, id: (productListModel?.id)!, model: "pro") { (bool) in
+            
+            if bool {
+                self.takeCommentsView.takeCommentTF?.text = ""
+                self.takeCommentsView.takeCommentTF?.resignFirstResponder()
+                
+                var parames = [String: AnyObject]()
+                parames["id"] = self.productListModel?.id as AnyObject
+                parames["type"] = "pro" as AnyObject
+                NSURLConnection.connection.productsCommentsRequest(params: parames) { (bool, dataArray) in
+                    
+                    if bool {
+                        if (dataArray?.count)! > 0 {
+                            self.detailCommectView.dataSourceArray = dataArray!
+                            self.detailCommectView.reloadData()
+                            self.detailView?.addSubview(self.detailCommectView)
+                        } else {
+                            self.detailView?.insertSubview(self.NoInfoView, at: (self.detailView?.subviews.count)!)
+                        }
+                    } else {
+                        self.detailView?.insertSubview(self.NoInfoView, at: (self.detailView?.subviews.count)!)
+                        
+                    }
+                    
+                }
+            } else {
+                SKProgressHUD.setErrorString(with: "提交评论失败")
+            }
+            
+        }
+    }
+    
+    func checkComments(string: String) -> Bool {
+        if string.isEmpty || string.characters.count == 0 {
+            SKProgressHUD.setErrorString(with: "评论内容不能为空")
+            return false
+        }
+        return true
     }
     
 }

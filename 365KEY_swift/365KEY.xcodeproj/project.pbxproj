@@ -39,7 +39,6 @@
 		1D5E81FA1DD02330003E9D14 /* SKUserShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81F91DD02330003E9D14 /* SKUserShared.swift */; };
 		1D5E81FC1DD02399003E9D14 /* SKUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81FB1DD02399003E9D14 /* SKUserInfo.swift */; };
 		1D5E81FE1DD05F2F003E9D14 /* commomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81FD1DD05F2F003E9D14 /* commomClass.swift */; };
-		1D5E82001DD1776A003E9D14 /* SVProgressHUD+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E81FF1DD1776A003E9D14 /* SVProgressHUD+extension.swift */; };
 		1D5E82021DD1788B003E9D14 /* SKProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E82011DD1788B003E9D14 /* SKProgressHUD.swift */; };
 		1D5E82441DD459F8003E9D14 /* SKProductDetailHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E82431DD459F8003E9D14 /* SKProductDetailHeadView.swift */; };
 		1D5E82481DD45A54003E9D14 /* ProductDetailHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5E82471DD45A54003E9D14 /* ProductDetailHeadView.xib */; };
@@ -74,6 +73,15 @@
 		1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF23141DC1A5E80063968B /* SKProductViewModel.swift */; };
 		1DEF23181DC1E8990063968B /* SKProdectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF23161DC1E8990063968B /* SKProdectCell.swift */; };
 		1DEF23191DC1E8990063968B /* SKProdectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEF23171DC1E8990063968B /* SKProdectCell.xib */; };
+		1DF986331E25C39B001633FC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF986321E25C39B001633FC /* libsqlite3.tbd */; };
+		1DF986351E25C3AB001633FC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF986341E25C3AB001633FC /* SystemConfiguration.framework */; };
+		1DF986371E25C3B8001633FC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF986361E25C3B8001633FC /* CoreTelephony.framework */; };
+		1DF986391E25C3C8001633FC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF986381E25C3C8001633FC /* ImageIO.framework */; };
+		1DF9863B1E25C3E1001633FC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF9863A1E25C3E1001633FC /* libz.tbd */; };
+		1DF9863D1E25C3F7001633FC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF9863C1E25C3F7001633FC /* libc++.tbd */; };
+		1DF9863F1E28AEFA001633FC /* SKMyFocusProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9863E1E28AEFA001633FC /* SKMyFocusProductModel.swift */; };
+		1DF986411E28AF12001633FC /* SKMuFocusPeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF986401E28AF12001633FC /* SKMuFocusPeopleModel.swift */; };
+		1DF986431E28BBF9001633FC /* SKMyfocusProductTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF986421E28BBF9001633FC /* SKMyfocusProductTV.swift */; };
 		1DFE2F861DEEADB200F3C8BE /* SKUserCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE2F851DEEADB200F3C8BE /* SKUserCenterController.swift */; };
 		1DFE2F881DEEB36D00F3C8BE /* SKUserCenterHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE2F871DEEB36D00F3C8BE /* SKUserCenterHeadView.swift */; };
 		1DFE2F8A1DEFFD9000F3C8BE /* SKUserCenterSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE2F891DEFFD9000F3C8BE /* SKUserCenterSetController.swift */; };
@@ -115,7 +123,6 @@
 		1D5E81F91DD02330003E9D14 /* SKUserShared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserShared.swift; sourceTree = "<group>"; };
 		1D5E81FB1DD02399003E9D14 /* SKUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserInfo.swift; sourceTree = "<group>"; };
 		1D5E81FD1DD05F2F003E9D14 /* commomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commomClass.swift; sourceTree = "<group>"; };
-		1D5E81FF1DD1776A003E9D14 /* SVProgressHUD+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+extension.swift"; sourceTree = "<group>"; };
 		1D5E82011DD1788B003E9D14 /* SKProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProgressHUD.swift; sourceTree = "<group>"; };
 		1D5E82431DD459F8003E9D14 /* SKProductDetailHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailHeadView.swift; sourceTree = "<group>"; };
 		1D5E82471DD45A54003E9D14 /* ProductDetailHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailHeadView.xib; sourceTree = "<group>"; };
@@ -126,7 +133,7 @@
 		1D60E3A61DDD904F0015A7A8 /* SKProductDetailbig_eventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailbig_eventModel.swift; sourceTree = "<group>"; };
 		1D60E3A81DDD97EA0015A7A8 /* SKProductDetailPimgModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductDetailPimgModel.swift; sourceTree = "<group>"; };
 		1D63CF941DBEF3F400955DDF /* SKProduceSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduceSearchView.swift; sourceTree = "<group>"; };
-		1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 365KEY_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D65E24A1DB8716300C39F4C /* 365KEY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 365KEY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D65E2541DB8716300C39F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D65E2571DB8716300C39F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D65E2591DB8716300C39F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,6 +159,16 @@
 		1DEF23141DC1A5E80063968B /* SKProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductViewModel.swift; sourceTree = "<group>"; };
 		1DEF23161DC1E8990063968B /* SKProdectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProdectCell.swift; sourceTree = "<group>"; };
 		1DEF23171DC1E8990063968B /* SKProdectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SKProdectCell.xib; sourceTree = "<group>"; };
+		1DEF87881E248BA400CBBDFC /* SK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SK-Bridging-Header.h"; sourceTree = "<group>"; };
+		1DF986321E25C39B001633FC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1DF986341E25C3AB001633FC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1DF986361E25C3B8001633FC /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1DF986381E25C3C8001633FC /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1DF9863A1E25C3E1001633FC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		1DF9863C1E25C3F7001633FC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		1DF9863E1E28AEFA001633FC /* SKMyFocusProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKMyFocusProductModel.swift; path = 365KEY_swift/SKMyFocusProductModel.swift; sourceTree = SOURCE_ROOT; };
+		1DF986401E28AF12001633FC /* SKMuFocusPeopleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKMuFocusPeopleModel.swift; path = 365KEY_swift/SKMuFocusPeopleModel.swift; sourceTree = SOURCE_ROOT; };
+		1DF986421E28BBF9001633FC /* SKMyfocusProductTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMyfocusProductTV.swift; sourceTree = "<group>"; };
 		1DFE2F851DEEADB200F3C8BE /* SKUserCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserCenterController.swift; sourceTree = "<group>"; };
 		1DFE2F871DEEB36D00F3C8BE /* SKUserCenterHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserCenterHeadView.swift; sourceTree = "<group>"; };
 		1DFE2F891DEFFD9000F3C8BE /* SKUserCenterSetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserCenterSetController.swift; sourceTree = "<group>"; };
@@ -167,6 +184,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF9863D1E25C3F7001633FC /* libc++.tbd in Frameworks */,
+				1DF9863B1E25C3E1001633FC /* libz.tbd in Frameworks */,
+				1DF986391E25C3C8001633FC /* ImageIO.framework in Frameworks */,
+				1DF986371E25C3B8001633FC /* CoreTelephony.framework in Frameworks */,
+				1DF986351E25C3AB001633FC /* SystemConfiguration.framework in Frameworks */,
+				1DF986331E25C39B001633FC /* libsqlite3.tbd in Frameworks */,
 				1C806066D10D881027947B14 /* Pods_365KEY_swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,7 +203,6 @@
 				1D0580DA1DBF552800D8A1DA /* SKSessionManage.swift */,
 				1D0580DC1DBF556400D8A1DA /* SKSessionManage+extension.swift */,
 				1D2849C21DC6E3FB00C53E61 /* NSURLConnection+extension.swift */,
-				1D5E81FF1DD1776A003E9D14 /* SVProgressHUD+extension.swift */,
 				1D5E82011DD1788B003E9D14 /* SKProgressHUD.swift */,
 			);
 			path = tool;
@@ -343,7 +365,7 @@
 		1D65E24B1DB8716300C39F4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */,
+				1D65E24A1DB8716300C39F4C /* 365KEY.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -357,6 +379,7 @@
 				1D0580D71DBF49CE00D8A1DA /* tool */,
 				1D65E2541DB8716300C39F4C /* Assets.xcassets */,
 				1D65E2561DB8716300C39F4C /* LaunchScreen.storyboard */,
+				1DEF87881E248BA400CBBDFC /* SK-Bridging-Header.h */,
 				1D65E2591DB8716300C39F4C /* Info.plist */,
 			);
 			path = 365KEY_swift;
@@ -489,6 +512,8 @@
 		1DFE2F831DEEAD4900F3C8BE /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1DF9863E1E28AEFA001633FC /* SKMyFocusProductModel.swift */,
+				1DF986401E28AF12001633FC /* SKMuFocusPeopleModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -497,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				1DFE2F871DEEB36D00F3C8BE /* SKUserCenterHeadView.swift */,
+				1DF986421E28BBF9001633FC /* SKMyfocusProductTV.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -513,6 +539,12 @@
 		F73DE949BA3DDB396CE53725 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1DF9863C1E25C3F7001633FC /* libc++.tbd */,
+				1DF9863A1E25C3E1001633FC /* libz.tbd */,
+				1DF986381E25C3C8001633FC /* ImageIO.framework */,
+				1DF986361E25C3B8001633FC /* CoreTelephony.framework */,
+				1DF986341E25C3AB001633FC /* SystemConfiguration.framework */,
+				1DF986321E25C39B001633FC /* libsqlite3.tbd */,
 				1AAECD7F17064CBCF5CE8953 /* Pods_365KEY_swift.framework */,
 			);
 			name = Frameworks;
@@ -521,9 +553,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D65E2491DB8716300C39F4C /* 365KEY_swift */ = {
+		1D65E2491DB8716300C39F4C /* 365KEY */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D65E25C1DB8716300C39F4C /* Build configuration list for PBXNativeTarget "365KEY_swift" */;
+			buildConfigurationList = 1D65E25C1DB8716300C39F4C /* Build configuration list for PBXNativeTarget "365KEY" */;
 			buildPhases = (
 				103A18E19AD81138ACB81107 /* [CP] Check Pods Manifest.lock */,
 				1D65E2461DB8716300C39F4C /* Sources */,
@@ -536,9 +568,9 @@
 			);
 			dependencies = (
 			);
-			name = 365KEY_swift;
+			name = 365KEY;
 			productName = 365KEY_swift;
-			productReference = 1D65E24A1DB8716300C39F4C /* 365KEY_swift.app */;
+			productReference = 1D65E24A1DB8716300C39F4C /* 365KEY.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -555,11 +587,11 @@
 					1D65E2491DB8716300C39F4C = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = W2A55P52D2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
-			buildConfigurationList = 1D65E2451DB8716300C39F4C /* Build configuration list for PBXProject "365KEY_swift" */;
+			buildConfigurationList = 1D65E2451DB8716300C39F4C /* Build configuration list for PBXProject "365KEY" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -572,7 +604,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D65E2491DB8716300C39F4C /* 365KEY_swift */,
+				1D65E2491DB8716300C39F4C /* 365KEY */,
 			);
 		};
 /* End PBXProject section */
@@ -608,7 +640,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C3D18AE1AF4D5421F1118846 /* [CP] Embed Pods Frameworks */ = {
@@ -651,7 +683,6 @@
 				1D5E81FC1DD02399003E9D14 /* SKUserInfo.swift in Sources */,
 				1D2AF1701DEBD42400E618D3 /* SKNewsDetailModel.swift in Sources */,
 				1D2C6A941DE2F345007D9D4D /* SKProductDetailInfoView.swift in Sources */,
-				1D5E82001DD1776A003E9D14 /* SVProgressHUD+extension.swift in Sources */,
 				1DBABE3F1DBE0D5700745C5D /* UIBarButtonItem+extension.swift in Sources */,
 				1D2D577E1E1C9DC3006789BA /* SKCommentsModel.swift in Sources */,
 				1DE846F81E0D14FE00695153 /* SKPerfectInfoVC.swift in Sources */,
@@ -676,6 +707,7 @@
 				1DE846F61E0D141000695153 /* SKAddProductVC.swift in Sources */,
 				1D8947771E00F5EA0029ABB0 /* SKChangePasswordViewController.swift in Sources */,
 				1D2C6A921DE2E90F007D9D4D /* SKProductDetailBtnView.swift in Sources */,
+				1DF986411E28AF12001633FC /* SKMuFocusPeopleModel.swift in Sources */,
 				1D3F29701DC882E000C0F998 /* SKRegisterController.swift in Sources */,
 				1DBABE351DBDF80F00745C5D /* AppDelegate.swift in Sources */,
 				1DBABE391DBDFE5000745C5D /* SKNavigationController.swift in Sources */,
@@ -686,6 +718,7 @@
 				1D60E3A51DDD90120015A7A8 /* SKProductDetailTeamModel.swift in Sources */,
 				1DED7DE11DB8B786003E65E3 /* SKNewFeatureController.swift in Sources */,
 				1D5E81FA1DD02330003E9D14 /* SKUserShared.swift in Sources */,
+				1DF986431E28BBF9001633FC /* SKMyfocusProductTV.swift in Sources */,
 				1D63CF951DBEF3F400955DDF /* SKProduceSearchView.swift in Sources */,
 				1D5E82021DD1788B003E9D14 /* SKProgressHUD.swift in Sources */,
 				1DFE2F881DEEB36D00F3C8BE /* SKUserCenterHeadView.swift in Sources */,
@@ -693,6 +726,7 @@
 				1DEF23151DC1A5E80063968B /* SKProductViewModel.swift in Sources */,
 				1D0580DB1DBF552800D8A1DA /* SKSessionManage.swift in Sources */,
 				1D0580DD1DBF556400D8A1DA /* SKSessionManage+extension.swift in Sources */,
+				1DF9863F1E28AEFA001633FC /* SKMyFocusProductModel.swift in Sources */,
 				1D39C64F1DE828BA0017289F /* SKNewsViewModel.swift in Sources */,
 				1DED7DCF1DB89D61003E65E3 /* SKTabBarController.swift in Sources */,
 				1D2849C31DC6E3FB00C53E61 /* NSURLConnection+extension.swift in Sources */,
@@ -751,6 +785,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Wang (2Y7M97R756)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -773,6 +808,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-Objc";
+				PROVISIONING_PROFILE = "72295f52-0d2e-4274-a398-aec9b10b67bc";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -801,6 +838,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Wang (2Y7M97R756)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -816,6 +854,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-Objc";
+				PROVISIONING_PROFILE = "72295f52-0d2e-4274-a398-aec9b10b67bc";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -827,13 +867,19 @@
 			baseConfigurationReference = DB4787D9ED2691CA7F518BB4 /* Pods-365KEY_swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Wang (2Y7M97R756)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lei Wang (2Y7M97R756)";
 				DEVELOPMENT_TEAM = W2A55P52D2;
 				INFOPLIST_FILE = 365KEY_swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "DoNews.-65KEY-swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.365key.365keyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "72295f52-0d2e-4274-a398-aec9b10b67bc";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "365KEY_swift/SK-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -842,20 +888,26 @@
 			baseConfigurationReference = 782C16053B71CC14B077BDE0 /* Pods-365KEY_swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lei Wang (2Y7M97R756)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lei Wang (2Y7M97R756)";
 				DEVELOPMENT_TEAM = W2A55P52D2;
 				INFOPLIST_FILE = 365KEY_swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "DoNews.-65KEY-swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.365key.365keyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "72295f52-0d2e-4274-a398-aec9b10b67bc";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "365KEY_swift/SK-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D65E2451DB8716300C39F4C /* Build configuration list for PBXProject "365KEY_swift" */ = {
+		1D65E2451DB8716300C39F4C /* Build configuration list for PBXProject "365KEY" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D65E25A1DB8716300C39F4C /* Debug */,
@@ -864,7 +916,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1D65E25C1DB8716300C39F4C /* Build configuration list for PBXNativeTarget "365KEY_swift" */ = {
+		1D65E25C1DB8716300C39F4C /* Build configuration list for PBXNativeTarget "365KEY" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D65E25D1DB8716300C39F4C /* Debug */,

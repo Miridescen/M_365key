@@ -17,16 +17,92 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 用户中心我的关注产品取消关注按钮点击发送的请求
+    func userCenterMyFocusProductDfaultFocusRequest(params: [String: AnyObject], completion: @escaping(_ isSuccess: Bool)->()) {
+        let urlStr = "http://www.365key.com/Right/cancel_follow_modile"
+        connectionRequest(urlString: urlStr, paramers: params) { (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        completion(false)
+                        return
+                }
+                if code2 as! Int == 0 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            } else {
+                completion(false)
+            }
+        }
+        
+    }
+    // MARK: 用户中心我的关注数据请求
+    func userCenterMyFocusDataRqeuest(completion: @escaping(_ isSuccess: Bool, _ data: [SKProductListModel]?)->()) {
+        let userShard = SKUserShared.getUserSharedNeedPresentLoginView()
+        if userShard != nil {
+            let urlStr = "http://www.365key.com/User/personal_center"
+            var params = [String: AnyObject]()
+            params["id"] = userShard?.uid as AnyObject
+            params["type"] = "IOS" as AnyObject
+            
+            connectionRequest(urlString: urlStr, paramers: params, completion: { (bool, data) in
+                if bool {
+                    let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                    let productDataArray = NSArray.yy_modelArray(with: SKProductListModel.self, json: jsonData?["pro_list"] as Any)
+//                    let peopleDataArray = jsonData?["entre_list"]
+                    if (productDataArray?.count)! > 0 {
+                        completion(true, productDataArray as! [SKProductListModel]?)
+                    } else {
+                        completion(false, nil)
+                    }
+                        
+                } else {
+                    completion(false, nil)
+                }
+            })
+            
+            
+        }
+        
+        
+    }
     // MARK: 产品详情页提交评论按钮点击发送的请求
-    func produceDetailClickSubmitRequest(messageStr: String, id: Int64, completion: @escaping((_ isSuccess: Bool)->())) {
+    func produceDetailClickSubmitRequest(messageStr: String, id: Int64, model: String, completion: @escaping((_ isSuccess: Bool)->())) {
         let userShard = SKUserShared.getUserSharedNeedPresentLoginView()
         if userShard != nil {
             let urlStr = "http://www.365key.com/Produce/addcommit_mobile"
             var parames = [String: AnyObject]()
             parames["uid"] = userShard?.uid as AnyObject
-            parames["model"] = "pro" as AnyObject
+            parames["model"] = model as AnyObject
             parames["message"] = messageStr as AnyObject
             parames["id"] = id as AnyObject
+            
+            connectionRequest(urlString: urlStr, paramers: parames, completion: { (bool, data) in
+                if bool {
+                    let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                    
+                    guard let jsondata = jsonData,
+                    let code = jsondata["code"],
+                        let code1 = code else {
+                            return
+                    }
+                    
+                    if code1 as! Int == 0 {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                    
+                } else {
+                    completion(false)
+                }
+                
+                
+            })
             
         }
         

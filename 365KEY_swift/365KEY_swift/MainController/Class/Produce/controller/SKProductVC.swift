@@ -44,6 +44,7 @@ class SKProductVC: UIViewController {
         addSubView()
   
         loadData()
+        
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -74,6 +75,8 @@ class SKProductVC: UIViewController {
             
         }
         isPullUp = false
+        
+        
     
     }
 

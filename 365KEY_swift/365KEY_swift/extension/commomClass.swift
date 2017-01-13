@@ -23,7 +23,6 @@ let SKScreenHeight = UIScreen.main.screenHeight
 // 主题色
 let SKMainColor = UIColor().mainColor
 
-
 // 通知 -----------------------------------------------------------------------------------------
 
 // 用户登录成功通知
@@ -32,6 +31,12 @@ let SKUserLoginSuccessNotifiction = "SKUserLoginSuccessNotifiction"
 let SKNoUserLoginNotifiction = "SKNoUserLoginNotifiction"
 // 用户退出登录通知
 let SKUserLogoutNotifiction = "SKUserLogoutNotifiction"
+
+// 友盟 -------------------------------------------------------------------------------------
+// 友盟分享appkey
+let SKUmengAppkey = "56a5cb6b67e58efe070012bc"
+// 友盟推送Scret
+let SKUmengPushScret = "woilje10dvrdwrttdzuaem02znmqhcgu"
 
 
 // --------------------------------------------------------------------------------------------

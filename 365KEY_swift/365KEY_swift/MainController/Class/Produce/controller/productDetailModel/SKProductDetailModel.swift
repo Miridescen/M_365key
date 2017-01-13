@@ -18,6 +18,7 @@ class SKProductDetailModel: NSObject, YYModel {
     
     var team: NSArray?
     
+    
     var big_event: NSArray?
  
     override var description: String{

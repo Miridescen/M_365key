@@ -14,12 +14,14 @@ class SKProgressHUD: SVProgressHUD {
     class func setErrorString(with string: String) {
         SVProgressHUD.setForegroundColor(UIColor.white)
         SVProgressHUD.setBackgroundColor(UIColor.black)
+        SVProgressHUD.setMinimumDismissTimeInterval(0.7)
         SVProgressHUD.showError(withStatus: string)
     }
     
     class func setSuccessString(with string: String) {
         SVProgressHUD.setForegroundColor(UIColor.white)
         SVProgressHUD.setBackgroundColor(UIColor.black)
+        SVProgressHUD.setMinimumDismissTimeInterval(0.7)
         SVProgressHUD.showSuccess(withStatus: string)
     }
 
