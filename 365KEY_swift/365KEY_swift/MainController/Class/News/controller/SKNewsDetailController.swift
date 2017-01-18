@@ -131,6 +131,10 @@ extension SKNewsDetailController {
     }
     @objc private func shareButtonDidClick(){
         
+        let thumbImageView = UIImageView()
+        thumbImageView.sd_setImage(with: URL(string: (headView?.newsDetailModel?.big_img)!))
+        
+        
         UMSocialUIManager.showShareMenuViewInWindow { (planttempType, userInfo) in
             
             let messageObject = UMSocialMessageObject.init()
@@ -139,7 +143,7 @@ extension SKNewsDetailController {
             shareObject.title = self.headView?.newsDetailModel?.content
             shareObject.descr = self.headView?.newsDetailModel?.describes
             shareObject.webpageUrl = self.headView?.newsDetailModel?.url
-            shareObject.thumbImage = self.headView?.newsDetailModel?.big_img
+            shareObject.thumbImage = thumbImageView.image
             
             messageObject.shareObject = shareObject
             

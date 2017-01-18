@@ -53,14 +53,90 @@ class SKLoginController: UIViewController {
     
     @IBAction func weixinLoginBtn(_ sender: UIButton) {
         print("微信登录")
+        UMSocialManager.default().getUserInfo(with: .wechatSession, currentViewController: self) { (responder, error) in
+            
+            if error == nil {
+                let userInfoResponder: UMSocialUserInfoResponse = responder as! UMSocialUserInfoResponse
+                print("userInfoResponder.name == \(userInfoResponder.name)")
+                print("iconurl == \(userInfoResponder.iconurl)")
+                print("openid == \(userInfoResponder.openid)")
+                
+                var params = [String: AnyObject]()
+                params["from"] = "wx" as AnyObject
+                params["nickname"] = userInfoResponder.name as AnyObject
+                params["thumbnail"] = userInfoResponder.iconurl as AnyObject
+                params["openid"] = userInfoResponder.accessToken as AnyObject
+                
+                NSURLConnection.connection.thirdPartLoginRequest(params: params, completion: { (bool) in
+                    if bool {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        SKProgressHUD.setErrorString(with: "登录失败")
+                    }
+                })
+            } else {
+                SKProgressHUD.setErrorString(with: "登录失败")
+            }
+        }
         
     }
     @IBAction func qqLoginBtn(_ sender: UIButton) {
         print("QQ登录")
+        UMSocialManager.default().getUserInfo(with: .QQ, currentViewController: self) { (responder, error) in
+            
+            if error == nil {
+                let userInfoResponder: UMSocialUserInfoResponse = responder as! UMSocialUserInfoResponse
+                print("userInfoResponder.name == \(userInfoResponder.name)")
+                print("iconurl == \(userInfoResponder.iconurl)")
+                print("openid == \(userInfoResponder.openid)")
+                
+                var params = [String: AnyObject]()
+                params["from"] = "qq" as AnyObject
+                params["nickname"] = userInfoResponder.name as AnyObject
+                params["thumbnail"] = userInfoResponder.iconurl as AnyObject
+                params["openid"] = userInfoResponder.openid as AnyObject
+                
+                NSURLConnection.connection.thirdPartLoginRequest(params: params, completion: { (bool) in
+                    if bool {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        SKProgressHUD.setErrorString(with: "登录失败")
+                    }
+                })
+            } else {
+                SKProgressHUD.setErrorString(with: "登录失败")
+            }
+        }
+        
     }
     
     @IBAction func weiboLoginBtn(_ sender: UIButton) {
         print("微博登录")
+        UMSocialManager.default().getUserInfo(with: .sina, currentViewController: self) { (responder, error) in
+            
+            if error == nil {
+                let userInfoResponder: UMSocialUserInfoResponse = responder as! UMSocialUserInfoResponse
+                print("userInfoResponder.name == \(userInfoResponder.name)")
+                print("iconurl == \(userInfoResponder.iconurl)")
+                print("openid == \(userInfoResponder.openid)")
+                
+                var params = [String: AnyObject]()
+                params["from"] = "wb" as AnyObject
+                params["nickname"] = userInfoResponder.name as AnyObject
+                params["thumbnail"] = userInfoResponder.iconurl as AnyObject
+                params["openid"] = userInfoResponder.accessToken as AnyObject
+                
+                NSURLConnection.connection.thirdPartLoginRequest(params: params, completion: { (bool) in
+                    if bool {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        SKProgressHUD.setErrorString(with: "登录失败")
+                    }
+                })
+            } else {
+                SKProgressHUD.setErrorString(with: "登录失败")
+            }
+        }
     }
     
     var navBar: UINavigationBar?

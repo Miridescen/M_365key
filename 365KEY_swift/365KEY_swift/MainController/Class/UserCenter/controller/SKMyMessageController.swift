@@ -14,13 +14,87 @@ class SKMyMessageController: UIViewController {
     
     var navItem: UINavigationItem?
     
-    var tableView: UITableView?
+    var dataArray: [SKMyMessageModel]?
     
+    var rowHeightArray: [CGFloat]?
+    var bgView: UIView?
+    
+    lazy var takeCommentsView = SKTakeCommentView(frame: CGRect(x: 0, y: SKScreenHeight-50, width: SKScreenWidth, height: 50))
+    
+    lazy var NoinfoView = SKNoInfoView(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: SKScreenHeight-64))
+    
+    lazy var myMessageTV = SKMyMessageTV(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: SKScreenHeight-64), style: UITableViewStyle.init(rawValue: 0)!)
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         addSubView()
+        
+        loadData()
+        
+        
     }
-
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func loadData() {
+        NSURLConnection.connection.userCenterMyMessageRequest { (bool, dataArray) in
+            if bool {
+                self.dataArray = dataArray
+                self.myMessageTV.dataSourceArray = dataArray!
+                self.myMessageTV.rowHeightArray = self.rowHeightArrayWith(modelArray: dataArray!)!
+                self.myMessageTV.reloadData()
+                
+                self.bgView?.addSubview(self.myMessageTV)
+                
+                
+            } else {
+                self.bgView?.insertSubview(self.NoinfoView, at: (self.bgView?.subviews.count)!)
+            }
+        }
+    }
+    @objc private func keyboardWillShow(notifiction: Notification) {
+        
+        let animationDuration = notifiction.userInfo?[AnyHashable("UIKeyboardAnimationDurationUserInfoKey")]
+        
+        let animationCurve = notifiction.userInfo?[AnyHashable("UIKeyboardAnimationCurveUserInfoKey")]
+        
+        let keyboardRect: CGRect = notifiction.userInfo?[AnyHashable("UIKeyboardFrameEndUserInfoKey")] as! CGRect
+        let keyBoardHeight = keyboardRect.height
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(animationDuration as! TimeInterval)
+        UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: animationCurve as! Int)!)
+        
+        takeCommentsView.frame = CGRect(x: 0, y: SKScreenHeight-50-keyBoardHeight, width: SKScreenWidth, height: 50)
+        
+        UIView.commitAnimations()
+        
+        
+        
+    }
+    @objc private func keyboardWillHide(notifiction: Notification) {
+        let animationDuration = notifiction.userInfo?[AnyHashable("UIKeyboardAnimationDurationUserInfoKey")]
+        
+        let animationCurve = notifiction.userInfo?[AnyHashable("UIKeyboardAnimationCurveUserInfoKey")]
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(animationDuration as! TimeInterval)
+        UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: animationCurve as! Int)!)
+        
+        takeCommentsView.frame = CGRect(x: 0, y: SKScreenHeight-50, width: SKScreenWidth, height: 50)
+        
+        UIView.commitAnimations()
+        
+        takeCommentsView.removeFromSuperview()
+    }
+    
+    
 }
 extension SKMyMessageController{
     func addSubView() {
@@ -36,32 +110,45 @@ extension SKMyMessageController{
         
         navBar?.items = [navItem!]
         
-        tableView = UITableView(frame: view.bounds)
-        tableView?.delegate = self
-        tableView?.dataSource = self
-        tableView?.separatorStyle = .none
-        tableView?.contentInset = UIEdgeInsets(top: 44, left: 0, bottom:  tabBarController?.tabBar.bounds.height ?? 49, right: 0)
-        tableView?.bounces = false
-        tableView?.showsVerticalScrollIndicator = false
-        view.insertSubview(tableView!, at: 0)
+        bgView = UIView(frame: CGRect(x: 0, y: 64, width: SKScreenWidth, height: SKScreenHeight-64))
+        view.addSubview(bgView!)
         
     }
     
     @objc private func backBtnDidClick(){
         _ = navigationController?.popViewController(animated: true)
     }
-}
-extension SKMyMessageController: UITableViewDataSource, UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "userCenterMyMessageCell")
-        
-        return cell
-        
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func rowHeightArrayWith(modelArray: [SKMyMessageModel]) -> [CGFloat]? {
+        if (dataArray?.count)! > 0 {
+            var heightArray =  [CGFloat]()
+            
+            for mesageModel in modelArray {
+                var messageHeight = SKLabelSizeWith(labelText: mesageModel.message!, font: UIFont.systemFont(ofSize: 16), width: SKScreenWidth-78).height
+                
+                if mesageModel.childcount == 0 {
+                    messageHeight += 104
+                    messageHeight += 10
+                    heightArray.append(messageHeight)
+                    messageHeight = 0
+                } else {
+                    var subCommentsHeight: CGFloat = 0
+                    for childModel in mesageModel.childcommit! {
+                        let childCommentsHeight = SKLabelSizeWith(labelText: (childModel as! SKMyMessageModel).message!, font: UIFont.systemFont(ofSize: 16), width: SKScreenWidth-78).height
+                        subCommentsHeight += childCommentsHeight
+                    }
+                    subCommentsHeight += messageHeight
+                    subCommentsHeight += 10
+                    subCommentsHeight += CGFloat(mesageModel.childcount*10)
+                    subCommentsHeight += 104
+                    heightArray.append(subCommentsHeight)
+                    subCommentsHeight = 0
+                    messageHeight = 0
+                }
+            }
+            return heightArray
+        } else {
+            return nil
+        }
         
     }
 }

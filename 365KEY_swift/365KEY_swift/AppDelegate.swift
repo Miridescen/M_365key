@@ -76,15 +76,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("添加友盟")        
         
-        UMSocialManager.default().openLog(true)
+//        UMSocialManager.default().openLog(true)
         
         UMSocialManager.default().umSocialAppkey = SKUmengAppkey
         
         UMSocialManager.default().setPlaform(.wechatSession, appKey: "wx103f02429520e22a", appSecret: "917e835bcbf456855153b5d269c14fa8", redirectURL: "http://www.365key.com/")
         UMSocialManager.default().setPlaform(.sina, appKey: "427523869", appSecret: "8d75b401cd428781dad652f433412fb2", redirectURL: "http://www.365key.com/")
         UMSocialManager.default().setPlaform(.QQ, appKey: "1105002030", appSecret: "xRx0aAFjC6gXEQRq", redirectURL: "http://www.365key.com/")
-        
-//        socialManage?.removePlatformProvider(withPlatformTypes: [UMSocialPlatformType.wechatFavorite, UMSocialPlatformType.qzone])
         
         UMSocialManager.default().removePlatformProvider(with: UMSocialPlatformType.wechatFavorite)
         UMSocialManager.default().removePlatformProvider(with: UMSocialPlatformType.qzone)

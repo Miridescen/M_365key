@@ -82,6 +82,9 @@
 		1DF9863F1E28AEFA001633FC /* SKMyFocusProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9863E1E28AEFA001633FC /* SKMyFocusProductModel.swift */; };
 		1DF986411E28AF12001633FC /* SKMuFocusPeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF986401E28AF12001633FC /* SKMuFocusPeopleModel.swift */; };
 		1DF986431E28BBF9001633FC /* SKMyfocusProductTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF986421E28BBF9001633FC /* SKMyfocusProductTV.swift */; };
+		1DF986451E2C6968001633FC /* SKMyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF986441E2C6968001633FC /* SKMyMessageModel.swift */; };
+		1DF986471E2DF83C001633FC /* SKMyMessageTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF986461E2DF83C001633FC /* SKMyMessageTV.swift */; };
+		1DF986491E2F5BD5001633FC /* SKAdjustHeadImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF986481E2F5BD5001633FC /* SKAdjustHeadImageVC.swift */; };
 		1DFE2F861DEEADB200F3C8BE /* SKUserCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE2F851DEEADB200F3C8BE /* SKUserCenterController.swift */; };
 		1DFE2F881DEEB36D00F3C8BE /* SKUserCenterHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE2F871DEEB36D00F3C8BE /* SKUserCenterHeadView.swift */; };
 		1DFE2F8A1DEFFD9000F3C8BE /* SKUserCenterSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE2F891DEFFD9000F3C8BE /* SKUserCenterSetController.swift */; };
@@ -169,6 +172,9 @@
 		1DF9863E1E28AEFA001633FC /* SKMyFocusProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKMyFocusProductModel.swift; path = 365KEY_swift/SKMyFocusProductModel.swift; sourceTree = SOURCE_ROOT; };
 		1DF986401E28AF12001633FC /* SKMuFocusPeopleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKMuFocusPeopleModel.swift; path = 365KEY_swift/SKMuFocusPeopleModel.swift; sourceTree = SOURCE_ROOT; };
 		1DF986421E28BBF9001633FC /* SKMyfocusProductTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMyfocusProductTV.swift; sourceTree = "<group>"; };
+		1DF986441E2C6968001633FC /* SKMyMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKMyMessageModel.swift; path = 365KEY_swift/MainController/Class/UserCenter/view/SKMyMessageModel.swift; sourceTree = SOURCE_ROOT; };
+		1DF986461E2DF83C001633FC /* SKMyMessageTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMyMessageTV.swift; sourceTree = "<group>"; };
+		1DF986481E2F5BD5001633FC /* SKAdjustHeadImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKAdjustHeadImageVC.swift; sourceTree = "<group>"; };
 		1DFE2F851DEEADB200F3C8BE /* SKUserCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserCenterController.swift; sourceTree = "<group>"; };
 		1DFE2F871DEEB36D00F3C8BE /* SKUserCenterHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserCenterHeadView.swift; sourceTree = "<group>"; };
 		1DFE2F891DEFFD9000F3C8BE /* SKUserCenterSetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUserCenterSetController.swift; sourceTree = "<group>"; };
@@ -500,6 +506,7 @@
 			children = (
 				1DFE2F851DEEADB200F3C8BE /* SKUserCenterController.swift */,
 				1DFE2F8B1DF0052A00F3C8BE /* SKUserCenterAccountInfoController.swift */,
+				1DF986481E2F5BD5001633FC /* SKAdjustHeadImageVC.swift */,
 				1D8947711DFFE3410029ABB0 /* UserAccountSubController */,
 				1DFE2F8D1DF0199000F3C8BE /* SKMyFocusController.swift */,
 				1DFE2F8F1DF01A5C00F3C8BE /* SKMyMessageController.swift */,
@@ -514,6 +521,7 @@
 			children = (
 				1DF9863E1E28AEFA001633FC /* SKMyFocusProductModel.swift */,
 				1DF986401E28AF12001633FC /* SKMuFocusPeopleModel.swift */,
+				1DF986441E2C6968001633FC /* SKMyMessageModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -523,6 +531,7 @@
 			children = (
 				1DFE2F871DEEB36D00F3C8BE /* SKUserCenterHeadView.swift */,
 				1DF986421E28BBF9001633FC /* SKMyfocusProductTV.swift */,
+				1DF986461E2DF83C001633FC /* SKMyMessageTV.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -692,6 +701,8 @@
 				1D2AF16E1DEBD1AF00E618D3 /* SKNewsDetailScrollView.swift in Sources */,
 				1DFE2F8E1DF0199000F3C8BE /* SKMyFocusController.swift in Sources */,
 				1D2D577A1E1C8ACD006789BA /* SKNewsSearchVC.swift in Sources */,
+				1DF986451E2C6968001633FC /* SKMyMessageModel.swift in Sources */,
+				1DF986471E2DF83C001633FC /* SKMyMessageTV.swift in Sources */,
 				1DEF23111DC0A6420063968B /* SKProductListModel.swift in Sources */,
 				1D3F296C1DC8721A00C0F998 /* SKLoginController.swift in Sources */,
 				1D60E3A91DDD97EA0015A7A8 /* SKProductDetailPimgModel.swift in Sources */,
@@ -733,6 +744,7 @@
 				1D2AF1661DEBCB1900E618D3 /* SKNewsDetailController.swift in Sources */,
 				1D2D57781E1B8EA5006789BA /* SKSearchVC.swift in Sources */,
 				1D5E82441DD459F8003E9D14 /* SKProductDetailHeadView.swift in Sources */,
+				1DF986491E2F5BD5001633FC /* SKAdjustHeadImageVC.swift in Sources */,
 				1D8947751E00EA3A0029ABB0 /* SKChangePhoneNumberViewController.swift in Sources */,
 				1D25DA831E126C1700A4079B /* SKAdjustImageVC.swift in Sources */,
 				1D60E39F1DDD8A340015A7A8 /* SKProductDetailModel.swift in Sources */,

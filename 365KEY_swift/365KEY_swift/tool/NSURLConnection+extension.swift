@@ -17,6 +17,123 @@ extension NSURLConnection{
         return connectionShare
         
     }()
+    // MARK: 个人中心我的留言提交评论按钮点击发送的请求
+    func usercenterMymessageClickSubmitRequest(messageStr: String, id: Int64, model: String, pid: Int64, completion: @escaping((_ isSuccess: Bool)->())) {
+        let userShard = SKUserShared.getUserSharedNeedPresentLoginView()
+        if userShard != nil {
+            let urlStr = "http://www.365key.com/Produce/addcommit_mobile"
+            var parames = [String: AnyObject]()
+            parames["uid"] = userShard?.uid as AnyObject
+            parames["model"] = model as AnyObject
+            parames["message"] = messageStr as AnyObject
+            parames["id"] = id as AnyObject
+            parames["pid"] = pid as AnyObject
+            
+            connectionRequest(urlString: urlStr, paramers: parames, completion: { (bool, data) in
+                if bool {
+                    let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                    
+                    guard let jsondata = jsonData,
+                        let code = jsondata["code"],
+                        let code1 = code else {
+                            return
+                    }
+                    
+                    if code1 as! Int == 0 {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                    
+                } else {
+                    completion(false)
+                }
+                
+                
+            })
+            
+        }
+        
+        
+        
+    }
+    // MARK: 第三方登录发送的请求
+    func thirdPartLoginRequest(params: [String: AnyObject], completion: @escaping(_ isSuccess: Bool)->()) {
+        let urlStr = "http://www.365key.com/User/third_parth_login"
+        connectionRequest(urlString: urlStr, paramers: params) { (bool, data) in
+            if bool {
+                let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String: AnyObject?]
+                
+                print("jsonData == \(jsonData)")
+                
+                let code = jsonData!["code"]
+                guard let code1 = code,
+                    let code2 = code1 else {
+                        completion(false)
+                        return
+                }
+                if code2 as! Int == 0 {
+                    let uid = jsonData?["uid"]
+                    guard let uid1 = uid,
+                        let uid2 = uid1 else {
+                            completion(false)
+                            return
+                    }
+                    
+                    var uidInt: Int
+                    if (params["from"] as! String) == "qq" { // 如果不做判断QQ登录返回的数据类型不一样会崩溃
+                        uidInt = Int(uid2 as! String)!
+                    } else {
+                        uidInt = uid2 as! Int
+                    }
+                    
+                    let userShared = SKUserShared()
+                    userShared.uid = NSNumber(value: uidInt)
+                    SKUserShared.saveUserShared(shared: userShared)                    
+                    self.userInfoRequest(compeltion: { (bool) in
+                        bool ? completion(true) : completion(false)
+                    })
+                    
+                } else {
+                    completion(false)
+                }
+ 
+ 
+                
+            }
+        }
+        
+    }
+    // MARK: 获取用户中心我的留言数据的请求
+    func userCenterMyMessageRequest(completion: @escaping(_ isSuccess: Bool, _ dataArray: [SKMyMessageModel]?)->()) {
+        
+        
+        let userShard = SKUserShared.getUserSharedNeedPresentLoginView()
+        if userShard != nil {
+            let urlStr = "http://www.365key.com/User/get_center_message"
+            var params = [String: AnyObject]()
+            params["uid"] = userShard?.uid as AnyObject
+            
+            connectionRequest(urlString: urlStr, paramers: params, completion: { (bool, data) in
+                if bool {
+                    let jsonData = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [String: AnyObject?]
+                    let dataArray = NSArray.yy_modelArray(with: SKMyMessageModel.self, json: jsonData?["list"] as Any)
+                    
+                    if (dataArray?.count)! > 0 {
+                        completion(true, dataArray as! [SKMyMessageModel]?)
+                    } else {
+                        completion(false, nil)
+                    }
+                } else {
+                    completion(false, nil)
+                }
+            })
+            
+            
+        }
+        
+        
+    }
     // MARK: 用户中心我的关注产品取消关注按钮点击发送的请求
     func userCenterMyFocusProductDfaultFocusRequest(params: [String: AnyObject], completion: @escaping(_ isSuccess: Bool)->()) {
         let urlStr = "http://www.365key.com/Right/cancel_follow_modile"

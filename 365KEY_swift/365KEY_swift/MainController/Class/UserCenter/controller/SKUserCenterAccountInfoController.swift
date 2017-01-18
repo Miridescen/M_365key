@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class SKUserCenterAccountInfoController: UIViewController {
     
@@ -21,6 +22,9 @@ class SKUserCenterAccountInfoController: UIViewController {
     var userShared = SKUserShared.getUserShared()
     
     var introduceLabelTextArray = [String]()
+    
+    var headImageView: UIImageView?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,16 +156,16 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: SKScreenWidth, height: 170))
-        let headImageView = UIImageView(frame: CGRect(x: (SKScreenWidth-130)/2, y: 20, width: 130, height: 130))
-        headImageView.layer.cornerRadius = 65
-        headImageView.layer.masksToBounds = true
-        headImageView.isUserInteractionEnabled = true
+        headImageView = UIImageView(frame: CGRect(x: (SKScreenWidth-130)/2, y: 20, width: 130, height: 130))
+        headImageView?.layer.cornerRadius = 65
+        headImageView?.layer.masksToBounds = true
+        headImageView?.isUserInteractionEnabled = true
         if userShared?.userInfo?.thumbnailData == nil {
-            headImageView.image = UIImage(named: "pic_touxiang")
+            headImageView?.image = UIImage(named: "pic_touxiang")
         } else {
-            headImageView.image = UIImage(data: userShared?.userInfo?.thumbnailData as! Data)
+            headImageView?.image = UIImage(data: userShared?.userInfo?.thumbnailData as! Data)
         }
-        headView.addSubview(headImageView)
+        headView.addSubview(headImageView!)
         
         let cameraImage = UIImageView(frame: CGRect(x: (SKScreenWidth-130)/2+90, y: 110, width: 40, height: 40))
         cameraImage.image = UIImage(named: "icon_camera")
@@ -182,16 +186,24 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
         let aletrController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let action1 = UIAlertAction(title: "相册", style: .default){ action in
-            let imagePick = UIImagePickerController()
-            imagePick.sourceType = .photoLibrary
-            imagePick.delegate = self
-            self.present(imagePick, animated: true, completion: nil)
+            let imagePickVC = SKImagePick()
+            imagePickVC.sourceType = .photoLibrary
+            imagePickVC.delegate = self
+            imagePickVC.navigationBar.isTranslucent = false
+            imagePickVC.navigationBar.barTintColor = UIColor().mainColor
+            imagePickVC.navigationBar.tintColor = UIColor.white
+            imagePickVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            self.present(imagePickVC, animated: true, completion: nil)
         }
         let action2 = UIAlertAction(title: "相机", style: .default){ action in
-            let imagePick = UIImagePickerController()
-            imagePick.sourceType = .camera
-            imagePick.delegate = self
-            self.present(imagePick, animated: true, completion: nil)
+            let imagePickVC = SKImagePick()
+            imagePickVC.sourceType = .camera
+            imagePickVC.delegate = self
+            imagePickVC.navigationBar.isTranslucent = false
+            imagePickVC.navigationBar.barTintColor = UIColor().mainColor
+            imagePickVC.navigationBar.tintColor = UIColor.white
+            imagePickVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            self.present(imagePickVC, animated: true, completion: nil)
         }
         let action3 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         
@@ -202,10 +214,53 @@ extension SKUserCenterAccountInfoController: UITableViewDataSource, UITableViewD
         present(aletrController, animated: true, completion: nil)
     }
 }
+extension SKUserCenterAccountInfoController: SKAdjustHeadImageVCDelegate{
+    func getImageSuccess(image: UIImage) {
+        let urlStr = "http://www.365key.com/User/edit_thumbnail"
+        var params = [String: AnyObject]()
+        params["uid"] = userShared?.uid as AnyObject
+        
+        let shareManage = AFHTTPSessionManager()
+        shareManage.responseSerializer = AFHTTPResponseSerializer()
+        
+        shareManage.post(urlStr, parameters: params, constructingBodyWith: { (AFMultipartFormData) in
+            let imageData = UIImageJPEGRepresentation(image, 1)
+            AFMultipartFormData.appendPart(withFileData: imageData!, name: "thumbnail", fileName: "test.jpeg", mimeType: "image/jpeg")
+        }, progress: nil, success: { (task, any) in
+            
+            let jsonData = try? JSONSerialization.jsonObject(with: any as! Data, options: []) as! [String: AnyObject?]
+            
+            guard let jsondata = jsonData,
+                let code = jsondata["code"],
+                let code1 = code else {
+                    SKProgressHUD.setErrorString(with: "头像修改失败")
+                    return
+            }
+            if code1 as! Int == 1 {
+                self.headImageView?.image = image
+                NSURLConnection.connection.userInfoRequest(compeltion: { (bool) in
+                    SKProgressHUD.setSuccessString(with: "头像修改成功")
+                })
+            } else {
+                SKProgressHUD.setErrorString(with: "头像修改失败")
+            }
+            
+            
+            
+        }) { (task, error) in
+            SKProgressHUD.setErrorString(with: "头像修改失败")
+        }
+    }
+}
 extension SKUserCenterAccountInfoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print(info)
         
+        let adjustheadImageVC = SKAdjustHeadImageVC()
+        adjustheadImageVC.delegate = self
+        adjustheadImageVC.selectImage = info["UIImagePickerControllerOriginalImage"] as! UIImage?
+        
+        picker.pushViewController(adjustheadImageVC, animated: true)
+        /*
         print("上传图片")
         let uploadImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         
@@ -270,5 +325,7 @@ extension SKUserCenterAccountInfoController: UIImagePickerControllerDelegate, UI
             print("上传修改头像待完善")
 //            let jsonData = try? JSONSerialization.jsonObject(with: data!, options: [])
         }
+ */
     }
 }
+
